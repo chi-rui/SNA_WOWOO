@@ -1,0 +1,209 @@
+@media screen and (min-width: 768px) {
+  
+  #theModal .modal-dialog  {width:900px;}
+
+}
+@media screen and (min-width: 992px) {
+  
+  #theModal .modal-dialog  {width:900px;}
+
+}
+#theModal .modal-dialog  {width:75%;}
+
+label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #f00;
+}
+ .funkyradio label {
+  width: auto;
+  height:auto;
+  text-align:left;
+  text-align:left;
+  font-weight: normal;
+
+}
+
+.funkyradio input[type="radio"]:empty {
+  display: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label{
+  position: relative;
+  line-height: 2.5em;
+  text-indent: 3.25em;
+  margin-top: 1em;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.funkyradio input[type="radio"]:empty ~ label:before {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 2.5em;
+  background: #D1D3D4;
+  border-radius: 3px 0 0 3px;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label{
+  color: #888;
+}
+
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before {
+  content: '\2714';
+  text-indent: .9em;
+  color: #C2C2C2;
+}
+
+.funkyradio input[type="radio"]:checked ~ label{
+  color: #777;
+}
+
+.funkyradio input[type="radio"]:checked ~ label:before {
+  content: '\2714';
+  text-indent: .9em;
+  color: #333;
+  background-color: #ccc;
+}
+
+.funkyradio input[type="radio"]:focus ~ label:before {
+  box-shadow: 0 0 0 3px #999;
+}
+
+.funkyradio-default input[type="radio"]:checked ~ label:before {
+  color: #333;
+  background-color: #ccc;
+}
+
+.funkyradio-primary input[type="radio"]:checked ~ label:before{
+  color: #fff;
+  background-color: #337ab7;
+}
+
+.funkyradio-success input[type="radio"]:checked ~ label:before{
+  color: #fff;
+  background-color: #5cb85c;
+}
+
+.funkyradio-danger input[type="radio"]:checked ~ label:before {
+  color: #fff;
+  background-color: #d9534f;
+}
+
+.funkyradio-warning input[type="radio"]:checked ~ label:before{
+  color: #fff;
+  background-color: #f0ad4e;
+}
+
+.funkyradio-info input[type="radio"]:checked ~ label:before {
+  color: #fff;
+  background-color: #5bc0de;
+}
+.rightMenu {
+    position:relative;
+    float:right;
+    width:auto;
+}
+
+.right
+{
+    float:right;
+}
+input         {
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:300px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus     { outline:none; }
+
+/* LABEL ======================================= */
+
+
+/* active state */
+input:focus ~ label, input:valid ~ label    {
+  
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar  { position:relative; display:block; width:300px; }
+.bar:before, .bar:after   {
+  content:'';
+  height:2px; 
+  width:0;
+  bottom:1px; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%; 
+  width:100px; 
+  top:25%; 
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to  { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to  { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to  { width:0; background:transparent; }
+}
+
+.center {
+  margin:auto;
+}
+
+#title {
+  width:60%;
+  font-size:40px;
+}

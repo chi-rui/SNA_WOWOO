@@ -1,0 +1,423 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Agency - Start Bootstrap Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'css/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <!--link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"-->
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <!--link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'-->
+    <!--achievement-->
+    <!--link rel="stylesheet" href="css/skillbar.css"-->
+    <!-- Theme CSS -->
+    <link href="{% static 'css/agency.css' %}" rel="stylesheet">
+    <link href="{% static 'css/Xuan.css' %}" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+    
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">WoWoo</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul>
+                    <li>
+                        <a id="login">Login</a>
+                        <a class="ring"><div><img class="ring_img" src="{% static 'img/tones.png' %}"></div></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Tell You Something About Truth!</div>
+                <div class="intro-heading">She just doesn't like you!</div>
+                <a href="#content" class="page-scroll btn-xl">Go find the truth</a>
+            </div>
+        </div>
+    </header>
+    <div class = "col-md-1"></div>
+    
+    <!--side bar-->
+    <div id="sidebar" class = "col-md-3">
+        <div id="left">
+            
+            <div id="info_profile">
+                
+                <div class="frame">
+                    <div class ="switch1">成就列表</div>
+                    <img class="headshot" src="{% static 'img/head.gif' %}">
+                </div>
+                
+                <div class="clear"></div>
+                <div></div>
+            </div>
+            <div id="info_achievement" class="hidden">
+                <div class="achievement">
+                    <div id = "box" class="box">
+                        <div class="box_inside" >
+                            <img class="medal" src="{% static 'img/medal.png' %}">
+                        </div>
+                    </div>
+                </div>
+                <div class ="switch2">個人檔案</div>
+                <div class="clear"></div>
+                <div class="achieve">
+<!--
+                    <ul>
+                        <li>
+                            <p class="achievename">total posts : 01</p>
+                        </li>
+                    </ul>
+-->
+                    <ul>
+                        <li>
+                            <p class="achievename">achievement_1</p>
+                            <div id="myProgress">
+                              <div id="myBar" class="bar1"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p class="achievename">achievement_2</p>
+                            <div id="myProgress">
+                              <div id="myBar" class="bar2"></div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p class="achievename">achievement_3</p>
+                            <div id="myProgress">
+                              <div id="myBar" class="bar3"></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!--main content-->
+    <div id="content" class="col-md-6">
+
+        <!--div class="buttons"-->
+            <ul>
+                <li>
+                    <a class="butt"><div class="buttons">熱門</div></a>
+                    <a class="butt"><div class="buttons">最新</div></a>
+                    <a class="butt"><div class="buttons">個人</div></a>
+                    <a class="post" data-toggle="modal" href="#theModal" >Post</a>
+                            <!--位置跑掉問題-->
+                    <div class="buttons_search">
+                        <a class = "search">
+                            <img class="search_img" src="{% static 'img/search.png' %}">
+                            <input class="find" type="text" placeholder="對某句話有疑惑嘛?">
+                        </a>
+                    </div>
+                            <!--位置跑掉問題-->
+                </li>
+            </ul>
+        <!--/div-->
+        
+        <div class="clear"></div>
+        
+        <a class="block" href="content.html">
+            <div class="cont1">
+                <img class="views" src="{% static 'img/about/1.jpg' %}">
+                <img class="header" src="{% static 'img/about/3.jpg' %}">
+                <div class="text">
+                    <h3 class="title">Example</h3>
+                    <small><p class="sec">Go to see content example page.</p></small>
+                </div>
+            </div>
+        </a>
+        <div class="clear"></div>
+        <div class="cont2">
+            <img class="views" src="{% static 'img/about/1.jpg' %}">
+            <img class="header" src="{% static 'img/about/3.jpg' %}">
+            <div class="text">
+                <h3 class="title">Title</h3>
+                <small><p class="sec">focus content</p></small>
+            </div>            
+        </div>
+        <div class="clear"></div>
+        <div class="cont1">
+            <img class="views" src="{% static 'img/about/1.jpg' %}">
+            <img class="header" src="{% static 'img/about/3.jpg' %}">
+            <div class="text">
+                <h3 class="title">Title</h3>
+                <small><p class="sec">focus content</p></small>
+            </div>            
+        </div>
+        <div class="clear"></div>
+        <div class="cont2">
+            <img class="views" src="{% static 'img/about/1.jpg' %}">
+            <img class="header" src="{% static 'img/about/3.jpg' %}">
+            <div class="text">
+                <h3 class="title">Title</h3>
+                <small><p class="sec">focus content</p></small>
+            </div>            
+        </div>
+        <div class="clear"></div>
+        <div class="cont1">
+            <img class="views" src="{% static 'img/about/1.jpg' %}">
+            <img class="header" src="{% static 'img/about/3.jpg' %}">
+            <div class="text">
+                <h3 class="title">Title</h3>
+                <small><p class="sec">focus content</p></small>
+            </div>            
+        </div>
+        <div class="clear"></div>
+        <div class="cont2">
+            <img class="views" src="{% static 'img/about/1.jpg' %}">
+            <img class="header" src="{% static 'img/about/3.jpg' %}">
+            <div class="text">
+                <h3 class="title">Title</h3>
+                <small><p class="sec">focus content</p></small>
+            </div>            
+        </div>
+        <div class="clear"></div>
+        <div class="cont1">
+            <img class="views" src="{% static 'img/about/1.jpg' %}">
+            <img class="header" src="{% static 'img/about/3.jpg' %}">
+            <div class="text">
+                <h3 class="title">Title</h3>
+                <small><p class="sec">focus content</p></small>
+            </div>            
+        </div>
+        <div class="clear"></div>
+        <div class="cont2">
+            <img class="views" src="{% static 'img/about/1.jpg' %}">
+            <img class="header" src="{% static 'img/about/3.jpg' %}">
+            <div class="text">
+                <h3 class="title">Title</h3>
+                <small><p class="sec">focus content</p></small>
+            </div>            
+        </div>
+        <div class="clear"></div>
+        <div class="cont1">
+            <img class="views" src="{% static 'img/about/1.jpg' %}">
+            <img class="header" src="{% static 'img/about/3.jpg' %}">
+            <div class="text">
+                <h3 class="title">Title</h3>
+                <small><p class="sec">focus content</p></small>
+            </div>            
+        </div>
+        <div class="clear"></div>
+        <div class="cont2">
+            <img class="views" src="{% static 'img/about/1.jpg' %}">
+            <img class="header" src="{% static 'img/about/3.jpg' %}">
+            <div class="text">
+                <h3 class="title">Title</h3>
+                <small><p class="sec">focus content</p></small>
+            </div>            
+        </div>
+        
+    </div>
+    <div class = "col-md-2"></div>
+    <!--div class="col-md-3 achievement">
+        <div id = "box" class="box">
+            <div class="box_inside" >
+                <img class="medal" src="img/medal.png">
+            </div>
+        </div>
+    </div-->
+    <div class="clear"></div>
+    
+    <!--footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Copyright &copy; Your Website 2016</span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="#"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer-->
+    <!-- PostModal -->
+    <div id="theModal" class="modal fade text-center" style="height:auto;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                    <input id="title" class="center" type="text" placeholder="Title" required>        
+                </div>
+                <div class="modal-body">
+                    <div class="container" >
+                        <div class="row text-center">
+                            <div class="funkyradio" style="margin-left:20%;" id="div3">
+                                <div class="funkyradio-primary col-lg-12 text-center" style="display:line;">
+                                    <input type="radio" name="radio" id="radio1" checked/>
+                                    <label class="col-lg-8" for="radio1">
+                                    <img src="{% static 'img/male.jpeg' %}" class="img-circle" style="width:20px;height:30px;margin-left: -10%;">
+                                </label>
+                                    <input type="text" class="form-control col-lg-6" id="usr" style="width:50%;margin-top: 1.5%;">
+                                </div>
+
+                                <div class="funkyradio-danger col-lg-12" style="display:line;">
+                                    <input type="radio" name="radio" id="radio2" />
+                                    <label class="col-lg-6" for="radio2">
+                                    <img src="{% static 'img/female.jpeg' %}" class="img-circle" style="width:20px;height:30px;margin-left: -10%;">
+                                </label>
+                                    <input type="text" class="form-control col-lg-6" id="usr" style="width:50%;margin-top: 1.5%;">
+                                </div>
+                            </div>
+                            <div class="span4">
+                                <div class="btn-group">
+                                    <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <span class="glyphicon glyphicon-plus btn-lg" aria-hidden="true"></span>
+
+                                    </a>
+                                    <ul class="dropdown-menu rightMenu">
+                                        <li>
+                                            <div class="btn-group">
+
+                                                <button type="button" id="btnAddmale"> <img src="{% static 'img/male.jpeg' %}" class="img-circle" style="width:20px;height:30px;"> </button>
+                                                <button type="button" id="btnAddfemale"> <img src="{% static 'img/female.jpeg' %}" class="img-circle" style="width:20px;height:30px;"> </button>
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row col-lg-12 text-center " style="margin-top: 5%;">
+
+                                <label class="col-lg-2 col-md-4">
+                                    <input type="radio" name="fb" value="small" />
+                                    <img src="{% static 'img/emotion/emotions1.jpg' %}" style="width:90px;height:115px;">
+                                </label>
+                                <label class="col-lg-2 col-md-4">
+                                    <input type="radio" name="fb" value="small" />
+                                    <img src="{% static 'img/emotion/emotions2.jpg' %}" style="width:90px;height:115px;">
+                                </label>
+                                <label class="col-lg-2 col-md-4">
+                                    <input type="radio" name="fb" value="small" />
+                                    <img src="{% static 'img/emotion/emotions3.jpg' %}" style="width:90px;height:115px;">
+                                </label>
+                                <label class="col-lg-2 col-md-4">
+                                    <input type="radio" name="fb" value="small" />
+                                    <img src="{% static 'img/emotion/emotions4.jpg' %}" style="width:90px;height:115px;">
+                                </label>
+                                <label class="col-lg-2 col-md-4">
+                                    <input type="radio" name="fb" value="small" />
+                                    <img src="{% static 'img/emotion/emotions5.jpg' %}" style="width:90px;height:115px;">
+                                </label>
+                                <label class="col-lg-2 col-md-4">
+                                    <input type="radio" name="fb" value="small" />
+                                    <img src="{% static 'img/emotion/emotions6.jpg' %}" style="width:90px;height:115px;">
+                                </label>
+                                <label class="col-lg-2 col-md-4">
+                                    <input type="radio" name="fb" value="small" />
+                                    <img src="{% static 'img/emotion/emotions7.jpg' %}" style="width:90px;height:115px;">
+                                </label>
+                                <label class="col-lg-2 col-md-4">
+                                    <input type="radio" name="fb" value="small" />
+                                    <img src="{% static 'img/emotion/emotions9.jpg' %}" style="width:90px;height:115px;">
+                                </label>
+                                <label class="col-lg-2 col-md-4">
+                                    <input type="radio" name="fb" value="small" />
+                                    <img src="{% static 'img/emotion/emotions10.jpg' %}" style="width:90px;height:115px;">
+                                </label>
+                                <label class="col-lg-2 col-md-4">
+                                    <input type="radio" name="fb" value="small" />
+                                    <img src="{% static 'img/emotion/emotions11.jpg' %}" style="width:90px;height:115px;">
+                                </label>
+
+                            </div>
+
+                            <div class="row col-lg-12 text-center">
+                                <form action="" method="post">
+
+                            </div>
+                            <div class="form-group text-center">
+                                <button class="btn btn-primary btn-lg" style="color:white;"> 
+                                Send</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery/jquery.min.js' %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'css/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript --><!-- button slide -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <!--script src="js/jqBootstrapValidation.js"></script-->
+    <!--script src="js/contact_me.js"></script-->
+
+    <!-- Theme JavaScript -->
+    <script src="{% static 'js/agency.js' %}"></script>
+    <script src="{% static 'js/Xuan.js' %}"></script>
+    
+    <!-- Fixed the sidebar -->
+    <script src="{% static 'js/Ray.js' %}" type="text/JavaScript"></script>
+    
+</body>
+
+</html>
