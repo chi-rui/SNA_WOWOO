@@ -261,139 +261,87 @@
         </div>
     </div-->
     <div class="clear"></div>
-    
-    <!--footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <span class="copyright">Copyright &copy; Your Website 2016</span>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Terms of Use</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer-->
-    <!-- PostModal -->
-    <div id="theModal" class="modal fade text-center" style="height:auto;">
+
+    <!-- Post -->
+    <div id="theModal" class="modal fade text-center" >
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" style="">
                     <button type="button" class="close" data-dismiss="modal">X</button>
                     <input id="title" class="center" type="text" placeholder="Title" required>        
                 </div>
+
                 <div class="modal-body">
-                    <div class="container" >
-                        <div class="row text-center">
-                            <div class="funkyradio" style="margin-left:20%;" id="div3">
-                                <div class="funkyradio-primary col-lg-12 text-center" style="display:line;">
-                                    <input type="radio" name="radio" id="radio1" checked/>
-                                    <label class="col-lg-8" for="radio1">
-                                    <img src="{% static 'img/male.jpeg' %}" class="img-circle" style="width:20px;height:30px;margin-left: -10%;">
+
+                <h3> 哪一句話最讓你捉摸不透呢 </h3>   
+                    <form id="dialog">
+
+                        <!-- one input text -->
+                        <div class ="row">
+                            <div class = "col-lg-2"></div>
+                            <div class="radio col-lg-8 dialog">
+                                <input type="radio" name="optradio" id="0">
+                                <label for = "0" class="btn btn-default btn-circle btn-lg active col-lg-1"><i class="fa fa-question questionmark"  checked></i>
                                 </label>
-                                    <input type="text" class="form-control col-lg-6" id="usr" style="width:50%;margin-top: 1.5%;">
+                                <div class=" col-lg-1 " style="margin-left:-1%;margin-right:3%">
+                                <select>
+                                      <option>&#xf183;</option>
+                                      <option>&#xf182;</option>
+                                   
+                                </select>
                                 </div>
 
-                                <div class="funkyradio-danger col-lg-12" style="display:line;">
-                                    <input type="radio" name="radio" id="radio2" />
-                                    <label class="col-lg-6" for="radio2">
-                                    <img src="{% static 'img/female.jpeg' %}" class="img-circle" style="width:20px;height:30px;margin-left: -10%;">
-                                </label>
-                                    <input type="text" class="form-control col-lg-6" id="usr" style="width:50%;margin-top: 1.5%;">
-                                </div>
+                                           
+                                <input type="text" class="form-control col-lg-8" style="width:70%;height:40px;font-size:18px; " placeholder="他說..."   name="hostemail"  >
                             </div>
-                            <div class="span4">
-                                <div class="btn-group">
-                                    <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
-                                        <span class="glyphicon glyphicon-plus btn-lg" aria-hidden="true"></span>
-
-                                    </a>
-                                    <ul class="dropdown-menu rightMenu">
-                                        <li>
-                                            <div class="btn-group">
-
-                                                <button type="button" id="btnAddmale"> <img src="{% static 'img/male.jpeg' %}" class="img-circle" style="width:20px;height:30px;"> </button>
-                                                <button type="button" id="btnAddfemale"> <img src="{% static 'img/female.jpeg' %}" class="img-circle" style="width:20px;height:30px;"> </button>
-
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-
-
-                            </div>
-
-                            <div class="row col-lg-12 text-center " style="margin-top: 5%;">
-
-                                <label class="col-lg-2 col-md-4">
-                                    <input type="radio" name="fb" value="small" />
-                                    <img src="{% static 'img/emotion/emotions1.jpg' %}" style="width:90px;height:115px;">
-                                </label>
-                                <label class="col-lg-2 col-md-4">
-                                    <input type="radio" name="fb" value="small" />
-                                    <img src="{% static 'img/emotion/emotions2.jpg' %}" style="width:90px;height:115px;">
-                                </label>
-                                <label class="col-lg-2 col-md-4">
-                                    <input type="radio" name="fb" value="small" />
-                                    <img src="{% static 'img/emotion/emotions3.jpg' %}" style="width:90px;height:115px;">
-                                </label>
-                                <label class="col-lg-2 col-md-4">
-                                    <input type="radio" name="fb" value="small" />
-                                    <img src="{% static 'img/emotion/emotions4.jpg' %}" style="width:90px;height:115px;">
-                                </label>
-                                <label class="col-lg-2 col-md-4">
-                                    <input type="radio" name="fb" value="small" />
-                                    <img src="{% static 'img/emotion/emotions5.jpg' %}" style="width:90px;height:115px;">
-                                </label>
-                                <label class="col-lg-2 col-md-4">
-                                    <input type="radio" name="fb" value="small" />
-                                    <img src="{% static 'img/emotion/emotions6.jpg' %}" style="width:90px;height:115px;">
-                                </label>
-                                <label class="col-lg-2 col-md-4">
-                                    <input type="radio" name="fb" value="small" />
-                                    <img src="{% static 'img/emotion/emotions7.jpg' %}" style="width:90px;height:115px;">
-                                </label>
-                                <label class="col-lg-2 col-md-4">
-                                    <input type="radio" name="fb" value="small" />
-                                    <img src="{% static 'img/emotion/emotions9.jpg' %}" style="width:90px;height:115px;">
-                                </label>
-                                <label class="col-lg-2 col-md-4">
-                                    <input type="radio" name="fb" value="small" />
-                                    <img src="{% static 'img/emotion/emotions10.jpg' %}" style="width:90px;height:115px;">
-                                </label>
-                                <label class="col-lg-2 col-md-4">
-                                    <input type="radio" name="fb" value="small" />
-                                    <img src="{% static 'img/emotion/emotions11.jpg' %}" style="width:90px;height:115px;">
-                                </label>
-
-                            </div>
-
-                            <div class="row col-lg-12 text-center">
-                                <form action="" method="post">
-
-                            </div>
-                            <div class="form-group text-center">
-                                <button class="btn btn-primary btn-lg" style="color:white;"> 
-                                Send</button>
-                            </div>
-                            </form>
+                            <div class = "col-lg-2"></div>
                         </div>
-                    </div>
+
+                        <!-- one input text -->
+                        <div class ="row">
+                            <div class = "col-lg-2"></div>
+                            <div class="radio col-lg-8 dialog">
+                                <input type="radio" name="optradio" id="1">
+                                <label for = "1" class="btn btn-default btn-circle btn-lg active col-lg-1"><i class="fa fa-question questionmark"  checked></i>
+                                </label>
+                                <div class=" col-lg-1 " style="margin-left:-1%;margin-right:3%">
+                                <select>
+                                      <option>&#xf182;</option>
+                                      <option>&#xf183;</option>
+                                   
+                                </select>
+                                </div>
+
+                                           
+                                <input type="text" class="form-control col-lg-8" style="width:70%;height:40px;font-size:18px;" placeholder="他說 ..."   name="hostemail"  >
+                            </div>
+                            <div class = "col-lg-2"></div>
+                        </div>
+
+                        <!-- add button -->
+                        <div class ="row">
+                            <div class="btn-group">
+                                <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-plus fa-2x" style = "color:#18aa8d"></i>
+                                </a>
+                                <ul class="dropdown-menu ">
+                                    <li>
+                                        <div class="btn-group">
+                                            <button type="button" id="btnAddmale"> <i class="fa fa-male questionmark"  ></i> </button>
+                                            <button type="button" id="btnAddfemale"> <i class="fa fa-female questionmark"  ></i></button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- send button -->
+                        <div class="col-lg-7"></div>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary btn-lg" style="color:white;background:#18aa8d;"> 
+                            Send</button>
+                        </div>
+                    </form>    
                 </div>
             </div>
         </div>
