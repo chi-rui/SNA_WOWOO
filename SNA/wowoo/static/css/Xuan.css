@@ -1,209 +1,139 @@
 @media screen and (min-width: 768px) {
   
-  #theModal .modal-dialog  {width:900px;}
+  #theModal .modal-dialog  {width:700px;}
 
 }
 @media screen and (min-width: 992px) {
   
-  #theModal .modal-dialog  {width:900px;}
+  #theModal .modal-dialog  {width:700px;}
 
 }
-#theModal .modal-dialog  {width:75%;}
+#theModal .modal-dialog  {width:60%;}
 
-label > input{ /* HIDE RADIO */
-  visibility: hidden; /* Makes input not-clickable */
-  position: absolute; /* Remove input from document flow */
-}
-label > input + img{ /* IMAGE STYLES */
-  cursor:pointer;
-  border:2px solid transparent;
-}
-label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
-  border:2px solid #f00;
-}
- .funkyradio label {
-  width: auto;
-  height:auto;
-  text-align:left;
-  text-align:left;
-  font-weight: normal;
 
+
+
+input[type="radio"]:empty {
+  /*display: none;*/
 }
 
-.funkyradio input[type="radio"]:empty {
-  display: none;
-}
 
-.funkyradio input[type="radio"]:empty ~ label{
-  position: relative;
-  line-height: 2.5em;
-  text-indent: 3.25em;
-  margin-top: 1em;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
 
-.funkyradio input[type="radio"]:empty ~ label:before {
-  position: absolute;
-  display: block;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  content: '';
-  width: 2.5em;
-  background: #D1D3D4;
-  border-radius: 3px 0 0 3px;
-}
-
-.funkyradio input[type="radio"]:hover:not(:checked) ~ label{
-  color: #888;
-}
-
-.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before {
-  content: '\2714';
-  text-indent: .9em;
-  color: #C2C2C2;
-}
-
-.funkyradio input[type="radio"]:checked ~ label{
-  color: #777;
-}
-
-.funkyradio input[type="radio"]:checked ~ label:before {
-  content: '\2714';
-  text-indent: .9em;
-  color: #333;
-  background-color: #ccc;
-}
-
-.funkyradio input[type="radio"]:focus ~ label:before {
-  box-shadow: 0 0 0 3px #999;
-}
-
-.funkyradio-default input[type="radio"]:checked ~ label:before {
-  color: #333;
-  background-color: #ccc;
-}
-
-.funkyradio-primary input[type="radio"]:checked ~ label:before{
-  color: #fff;
-  background-color: #337ab7;
-}
-
-.funkyradio-success input[type="radio"]:checked ~ label:before{
-  color: #fff;
-  background-color: #5cb85c;
-}
-
-.funkyradio-danger input[type="radio"]:checked ~ label:before {
-  color: #fff;
-  background-color: #d9534f;
-}
-
-.funkyradio-warning input[type="radio"]:checked ~ label:before{
-  color: #fff;
-  background-color: #f0ad4e;
-}
-
-.funkyradio-info input[type="radio"]:checked ~ label:before {
-  color: #fff;
-  background-color: #5bc0de;
-}
 .rightMenu {
     position:relative;
     float:right;
     width:auto;
 }
 
+/*物件從右開始置放*/
 .right
 {
     float:right;
 }
-input         {
-  font-size:18px;
-  padding:10px 10px 10px 5px;
-  display:block;
-  width:300px;
-  border:none;
-  border-bottom:1px solid #757575;
-}
-input:focus     { outline:none; }
 
-/* LABEL ======================================= */
-
-
-/* active state */
-input:focus ~ label, input:valid ~ label    {
-  
-  font-size:14px;
-  color:#5264AE;
-}
-
-/* BOTTOM BARS ================================= */
-.bar  { position:relative; display:block; width:300px; }
-.bar:before, .bar:after   {
-  content:'';
-  height:2px; 
-  width:0;
-  bottom:1px; 
-  position:absolute;
-  background:#5264AE; 
-  transition:0.2s ease all; 
-  -moz-transition:0.2s ease all; 
-  -webkit-transition:0.2s ease all;
-}
-.bar:before {
-  left:50%;
-}
-.bar:after {
-  right:50%; 
-}
-
-/* active state */
-input:focus ~ .bar:before, input:focus ~ .bar:after {
-  width:50%;
-}
-
-/* HIGHLIGHTER ================================== */
-.highlight {
-  position:absolute;
-  height:60%; 
-  width:100px; 
-  top:25%; 
-  left:0;
-  pointer-events:none;
-  opacity:0.5;
-}
-
-/* active state */
-input:focus ~ .highlight {
-  -webkit-animation:inputHighlighter 0.3s ease;
-  -moz-animation:inputHighlighter 0.3s ease;
-  animation:inputHighlighter 0.3s ease;
-}
-
-/* ANIMATIONS ================ */
-@-webkit-keyframes inputHighlighter {
-  from { background:#5264AE; }
-  to  { width:0; background:transparent; }
-}
-@-moz-keyframes inputHighlighter {
-  from { background:#5264AE; }
-  to  { width:0; background:transparent; }
-}
-@keyframes inputHighlighter {
-  from { background:#5264AE; }
-  to  { width:0; background:transparent; }
-}
-
-.center {
-  margin:auto;
-}
-
+/*post title style*/
 #title {
+  text-align:center;
   width:60%;
-  font-size:40px;
+  height:100%;
+  font-size:36px;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+  color:black;
+  font-weight:600;
 }
+
+/*modal top background and style*/
+.modal-header {
+  text-align:center;
+  height: auto;
+  width: 100%;
+  font-size: 18px;
+  background: #18aa8d;
+  color: white;
+  line-height: 150%;
+  border-radius: 3px 3px 0 0;
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+/*whole input style including input radio & text*/
+.dialog {
+  height:50px;
+  background-color:#18aa8d;
+  border-radius: 60px;
+  padding:5px 5px 5px 5px;
+}
+
+/*input radio icon questonmark*/
+.questionmark {
+  font-size:26px;
+  margin-left: 3px; 
+}
+
+/*input select male & female*/
+.genderwrapper {
+  margin:0px 5px 0px 5px;
+  padding:5px ;
+  background-color:#18aa8d;
+  color:white;
+  height:40px;
+}
+
+/*select circle*/
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 60px;;
+  background-color: #7CEECE;
+}
+/*select circle big size*/
+.btn-circle.btn-lg {
+  width: 40px;
+  height: 40px;
+  padding: 8px 8px;
+  font-size: 18px;
+  line-height: 1.33;
+  
+}
+
+/*input style*/
+input[type=radio]:empty ~ label {
+  background:white;
+
+}
+
+/*input style after hover*/
+input[type=radio]:hover ~ label {
+  background:#Bbbbbb;
+}
+
+/*input style after checked*/
+input[type=radio]:checked ~ label {
+  border: 3px solid white;
+  background:#15aa8b;
+  color:white;
+}
+
+/*select style*/
+select {
+  font-family: 'FontAwesome', 'Second Font name';
+  background-color:#18aa8d;
+  color:white;
+  cursor: pointer;
+  font-size:30px;
+  height:40px;
+  border:none;
+  text-align:center;
+  margin-right:5%;
+    appearance:none;
+-moz-appearance:none;
+-webkit-appearance:none;
+ display:table-row;
+
+}
+
+
