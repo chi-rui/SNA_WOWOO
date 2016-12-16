@@ -38,7 +38,105 @@
 </head>
     
 <body id="page-top" class="index">
+<script>
+function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+            FB.api('/me',{fields: 'name,email'},  function(response) {
+                user_Id = response.id;
+                user_name = response.name;
+                user_email = response.email;
+    
+                
+            });
+             
+            FB.api('/me/picture?width=240&height=240', function(response) {
+                userpicture = response.data.url;
+  
+                $.get('/getuserid/',{
+                    userId: user_Id,
+                    userName: user_name,
+                    userPicture : userpicture,
+                    userEmail : user_email,
+                }, function(data) {  ;});          
+            });
+            
+            console.log("welcome")
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+    
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+  
+    }
+  }
 
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+     
+      statusChangeCallback(response);
+       
+    });
+  }
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '910500799080831',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+   
+   function fb_login(){
+    FB.login(function(response) {
+
+        if (response.authResponse) {
+            
+            //console.log(response); // dump complete info
+            FB.api('/me',{fields: 'name,email'},  function(response) {
+                user_Id = response.id;
+                user_name = response.name;
+                user_email = response.email;
+    
+              
+            });
+             
+            FB.api('/me/picture?width=240&height=240', function(response) {
+                userpicture = response.data.url;
+             
+                    
+                $.get('/getuserid/',{
+                    userId: user_Id,
+                    userName: user_name,
+                    userPicture : userpicture,
+                    userEmail : user_email,
+                }, function(data) {  ;});          
+            });
+           
+        } 
+    }, {
+        scope: 'public_profile,email'
+    });
+   
+}
+</script>
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
@@ -54,7 +152,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul>
                     <li>
-                        <a id="login">Login</a>
+                        <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login">Login</a>
+                         <div id="status" class="hidden" ></div>
+
+                    </li>
+                    <li>
+                       
                         <a class="ring"><div><img class="ring_img" src="{% static 'img/tones.png' %}"></div></a>
                     </li>
                 </ul>
@@ -171,87 +274,17 @@
                 </div>
             </div>
         </a>
+        {% for posts in posts %}
         <div class="clear"></div>
         <div class="cont2">
             <img class="views" src="{% static 'img/about/1.jpg' %}">
             <img class="header" src="{% static 'img/about/3.jpg' %}">
             <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
+                <h3 class="title">{{ posts.post_title }}</h3>
+                <small><p class="sec">{{ posts.post_question }}</p></small>
             </div>            
         </div>
-        <div class="clear"></div>
-        <div class="cont1">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont2">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont1">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont2">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont1">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont2">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont1">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont2">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
+        {% endfor %}
         
     </div>
     <div class = "col-md-2"></div>
