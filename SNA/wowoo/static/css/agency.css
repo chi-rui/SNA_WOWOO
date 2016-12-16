@@ -1056,79 +1056,341 @@ body {
   webkit-tap-highlight-color: #18aa8d;
 }
 
-.leftinfo {
-
-}
-
 .mid {
-  margin-top: 70px;
-  background-color: #ffffaa;
+  margin-top: 75px;
+  border-radius: 7.5px;
+  padding: 0;
+  background-color: #fff;
   min-height: 768px;
 }
 
-.post-header{
-  padding-left: 0;
-  padding-right: 0;
+.poster-info{
+  margin: 0 50px;
 }
 
-.post-content .content{
-  background-color: #c3e5c3;
-  border-radius: 5px;
+
+.poster-avatar{
+  margin: 30px 0 0 7.5%;
 }
 
-.content .row{
-  padding: 10px;
+.postername{
+  margin-top: 40px;
+  padding: 0px 10px;
+  border-bottom: 1px solid hsl(0, 0%, 92.5%);
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.textdata{
-  padding-left: 5px;
-  padding-right: 5px;
-  background-color: #ffffff;
-  border-radius: 5px;
+.post-title{
+  margin: 20px 50px;
+  border-bottom: 1px solid hsl(0, 0%, 92.5%);
+  text-align: center;
+  font-family: "Microsoft JhengHei", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 36px;
 }
 
-.content img{
-  margin-left: 18%;
+.post-content{
+  margin: 0 50px;
+  border-radius: 7.5px;
+}
+
+.content-chat{
+  border-bottom: 1px solid #fff;
+  border-radius: 7.5px 7.5px 0 0;
+  background-color: hsl(0, 0%, 92.5%);
+}
+
+.message-border:first-child{
+  padding: 35px 0 10px;
+}
+
+.message-border{
+  padding: 10px 0 10px;
+}
+
+.content-avatar-left{
+  position:relative;
+  left: 7.5%;
+}
+
+.content-avatar-left > img{
+  padding-bottom: 5px;
   border-radius: 30%;
+}
+
+
+.content-avatar-right{
+  position:relative;
+  right: 7.5%;
+}
+
+.content-avatar-right > img{
+  padding-bottom: 5px;
+  border-radius: 30%;
+}
+
+.float-left{
+  float: left;
+}
+
+.float-right{
+  float: right;
+}
+
+.content-textdata-left{
+  position:relative;
+  left: 10%;
+  margin-top: 35px;
+  padding: 5px 10px;
+  background-color: #ffffff;
+  border-radius: 0px 7.5px 7.5px 7.5px;
+  max-width: 50%;
+}
+
+.content-textdata-left:after{
+  border-width: 0px 10px 10px 0px;
+  border-color: transparent #fff transparent transparent;
+  top: 0;
+  left: -10px;
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.content-textdata-right{
+  position:relative;
+  right: 10%;
+  margin-top: 35px;
+  padding: 5px 10px;
+  background-color: #ffffff;
+  border-radius: 7.5px 0 7.5px 7.5px;
+  max-width: 50%;
+}
+
+.content-textdata-right:after{
+  border-width: 0px 0 10px 10px;
+  border-color: transparent transparent transparent #fff;
+  top: 0;
+  right: -10px;
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.guess{
+  background-color: #00A480;
+  color: #fff;
+}
+
+.guess:after{
+  border-width: 0px 10px 10px 0px;
+  border-color: transparent #00A480 transparent transparent;
+  top: 0;
+  left: -10px;
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.content-chat-footer{
+  background-color:  hsl(0, 0%, 92.5%);
+  border-radius: 0 0 7.5px 7.5px;
+  padding: 0 0 30px; 
+}
+
+.post-info{
+  margin: 50px 0 0 7.5%;
+  padding: 0px 5px;
+  background-color: #ffffff;
+  border-radius: 7.5px;
+  max-width: 65%;
+}
+
+.post-info > span{
+  border-right: 1px solid hsl(0, 0%, 92.5%);
+  display: inline-block;
+  margin-right: 5px;
+  padding-right: 5px;
+}
+
+.fa{
+  margin: 5px;
+}
+
+.post-info > span:last-child{
+  border-right: 0;
+}
+
+.post-info a{
+    color: #60be4f;
+}
+
+.post-like a:hover, a:active{
+  color: #ff0777
+}
+
+.facebook-share .fa{
+    color: #3b5998;
+}
+
+.facebook-share a:hover, a:active{
+    color: #333;
+}
+
+.Show-result-button{
+    background-color: #00A480;
+    border: none;
+    margin-top: 40px;
+    margin-right: 7.5%;
+    padding: 10px 15px;
+    color: #FFFFFF;
+    border-radius: 10%;
+    font-size: 20px;
+}
+
+.Show-result-button:hover, .Show-result-button:active, .Show-result-button:visited , .{
+  background-color: #66A1D2;
+  color: #FFFFFF;
+}
+
+#resultBorder{
+  position: relative;
+  right: 7.5%;
+  background-color: #fff;
+  border-radius: 7.5px;
+  padding: 10px 10px 0;
+  width: 110px;
+  z-index: 1;
+}
+
+.result-emotion{
+  position: relative;
+  width: 20%;
 }
 
 .progress-bar {
   color: black;
 }
 
+.comment-title h3{
+  margin: 0 0 20px 0;
+  background-color: #fff;
+  border-bottom: 1px solid hsl(0, 0%, 92.5%);
+  padding: 100px 7.5% 10px 7.5%; 
+}
+
 .comment{
   padding-left: 0;
   padding-right: 0;
+  background-color: hsl(0, 0%, 92.5%);
+  border-radius: 7.5px;
 }
 
-.comment .row{
-  padding: 10px;
+.comment-border:first-child{
+  margin: 7px 7.5%;
+  border-style: solid;
+  background-color: hsl(0, 0%, 92.5%);
+  border-width: 0;
+  border-bottom: 1px solid #fff;
+  padding: 10px 0;
 }
 
-.comments{
-  background-color: #c3e5c3;
-  border-radius: 5px;
+.comment-border{
+  margin: 7px 7.5%;
+  border-style: solid;
+  background-color: hsl(0, 0%, 92.5%);
+  border-width: 0;
+  border-bottom: 1px solid #fff;
+  padding: 10px 0;
+}
+
+.comment-border:last-child{
+  margin: 7px 7.5%;
+  border-style: solid;
+  background-color: hsl(0, 0%, 92.5%);
+  border-width: 0;
+  padding: 10px 0;
 }
 
 .personalinfo{
-  padding: 0px 10px;
+
 }
 
 .comment-avatar img{
-  padding-bottom: 5px;
   border-radius: 30%;
 }
 
 .comment-emotion{
-  float: right;
-  margin-right: 20px;
+  padding-top: 35px;
 }
 
 .username{
-  clear: both;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #ffffff;
+  border-radius: 7.5px;
   text-align: center;
 }
 
-.rightinfo {
+.comment-textdata{
+  position: relative;
+  left: 15%;
+  max-width: 50%;
+}
 
-}   
+.comment-menu{
+  margin-top: -5px;
+}
+
+.comment-menu a{
+  color: #333;
+}
+
+.comment-menu a:hover, a:active{
+  color: #fff;
+}
+
+#commentMenu{
+  background-color: #fff;
+  border-radius: 7.5px;
+}
+
+.myEmotion{
+  margin-left: 70px;
+}
+
+.myEmotion img{
+  margin-bottom: 5px;
+}
+
+.comment-textarea{
+  position: relative;
+  left: 14%;
+  max-width: 50%;
+}
+
+.Submit-comment-button{
+    background-color: #00A480;
+    border: none;
+    position: absolute;
+    right: 13.5%;
+    bottom: 1.5%;
+    padding: 10px 15px;
+    color: #FFFFFF;
+    border-radius: 10%;
+    font-size: 20px;
+}
+
+.Submit-comment-button::hover{
+  background-color: #5ED2B8;
+  color: #FFFFFF;
+}  
