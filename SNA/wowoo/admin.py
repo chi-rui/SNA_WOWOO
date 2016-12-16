@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import wowoo
+from .models import user
 
 # Register your models here.
-admin.site.register(wowoo)
+admin.site.register(user)
