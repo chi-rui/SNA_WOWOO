@@ -15,8 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from wowoo.views import home, test
+# from wowoo.views import test
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', 'wowoo.views.home'),
+    url(r'^$', home),
+    url(r'^test/', test),
 ]
