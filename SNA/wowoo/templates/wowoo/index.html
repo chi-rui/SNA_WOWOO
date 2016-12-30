@@ -19,7 +19,7 @@
     <!-- FontAwesome Css -->
     <script src="https://use.fontawesome.com/e07011ff1d.js"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"-->
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <!--link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'-->
@@ -38,6 +38,16 @@
 </head>
     
 <body id="page-top" class="index">
+    <div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+
 <script>
 function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -136,6 +146,7 @@ function statusChangeCallback(response) {
     });
    
 }
+
 </script>
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -154,6 +165,7 @@ function statusChangeCallback(response) {
                     <li>
                         <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login">Login</a>
                          <div id="status" class="hidden" ></div>
+	<!-- Your like button code -->
 
                     </li>
                     <li>
@@ -259,6 +271,12 @@ function statusChangeCallback(response) {
                     </div>
                             <!--位置跑掉問題-->
                 </li>
+                	<div class="fb-like" 
+		data-href="https://sna-wenxuanlee.c9users.io/" 
+		data-layout="standard" 
+		data-action="like" 
+		data-show-faces="true">
+	</div>
             </ul>
         <!--/div-->
         
@@ -274,14 +292,14 @@ function statusChangeCallback(response) {
                 </div>
             </div>
         </a>
-        {% for posts in posts %}
+        {% for post in posts %}
         <div class="clear"></div>
         <div class="cont2">
             <img class="views" src="{% static 'img/about/1.jpg' %}">
             <img class="header" src="{% static 'img/about/3.jpg' %}">
             <div class="text">
-                <h3 class="title">{{ posts.post_title }}</h3>
-                <small><p class="sec">{{ posts.post_question }}</p></small>
+                <h3 class="title">{{ post.post_title }}</h3>
+                <small><p class="sec">{{ post.post_question }}</p></small>
             </div>            
         </div>
         {% endfor %}
@@ -618,7 +636,7 @@ function statusChangeCallback(response) {
     <!--script src="js/contact_me.js"></script-->
 
     <!-- Theme JavaScript -->
-    <script src="{% static 'js/agency.min.js' %}"></script>
+    <script src="{% static 'js/agency.js' %}"></script>
     <script src="{% static 'js/Xuan.js' %}"></script>
     
     <!-- Fixed the sidebar -->

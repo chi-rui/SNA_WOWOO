@@ -25,10 +25,40 @@ def getuserid(request) :
 
     return HttpResponse(get_id)     
 def home(request):
-    posts = Post.objects.all()
-    users = wowoo.objects.all()
+    post = Post.objects.all()
+    user = wowoo.objects.all()
     context = {
-        "posts" : posts,
-        "users" : users,
+        "posts" : post,
+        "users" : user,
     }
     return render(request, 'wowoo/index.html',context)
+    
+def test(request):
+    post = Post.objects.all()
+    user = wowoo.objects.all()
+    context = {
+        "posts" : post,
+        "users" : user,
+    }
+    return render(request, 'wowoo/test.html',context)
+
+def like_count_blog(request):
+    liked = False
+    if request.method == 'GET':
+        post_id = request.GET['post_id']
+        post = Post.objects.get(id=int(post_id))
+        if request.session.get('has_liked_'+post_id, liked):
+            print("unlike")
+            if post.likes > 0:
+                likes = post.likes - 1
+                try:
+                    del request.session['has_liked_'+post_id]
+                except KeyError:
+                    print("keyerror")
+        else:
+            print("like")
+            request.session['has_liked_'+post_id] = True
+            likes = post.likes + 1
+    post.likes = likes
+    post.save()
+    return HttpResponse(likes, liked)

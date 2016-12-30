@@ -17,6 +17,7 @@ class wowoo(models.Model):
 class Post(models.Model):
     post_title= models.CharField(max_length=50,null = True,blank = True )
     post_question = models.CharField(max_length=200,null = True,blank = True)
-    
+    likes = models.PositiveIntegerField(default=0)
+
     def post(self):
         return "post"

@@ -10,7 +10,7 @@ class Wowoo(admin.ModelAdmin) :
 admin.site.register(wowoo,Wowoo)
 
 class post(admin.ModelAdmin) :
-    list_display = ['post_title','post_question']
+    list_display = ['id','post_title','post_question','likes']
     class Meta : 
         model = Post
         
