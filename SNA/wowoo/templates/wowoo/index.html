@@ -271,12 +271,7 @@ function statusChangeCallback(response) {
                     </div>
                             <!--位置跑掉問題-->
                 </li>
-                	<div class="fb-like" 
-		data-href="https://sna-wenxuanlee.c9users.io/" 
-		data-layout="standard" 
-		data-action="like" 
-		data-show-faces="true">
-	</div>
+ 
             </ul>
         <!--/div-->
         
@@ -321,19 +316,25 @@ function statusChangeCallback(response) {
             <div class="modal-content">
                 <div class="modal-header" style="">
                     <button type="button" class="close" data-dismiss="modal">X</button>
-                    <input id="title" class="center" type="text" placeholder="Title" required>        
+                    
+                      
+                    
+               
+                          
                 </div>
 
                 <div class="modal-body">
+                <form id="dialog" action="/post/" method="POST"  role="form">
+                {% csrf_token %}  
 
+                <input id="title" name="post_title" class="center" type="text" placeholder="Title" required>  
                 <h3> 哪一句話最讓你捉摸不透呢 </h3>   
-                    <form id="dialog">
-
+               
                         <!-- one input text -->
                         <div class ="row">
                             <div class = "col-lg-2"></div>
                             <div class="radio col-lg-8 dialog">
-                                <input type="radio" name="optradio" id="0">
+                                <input type="radio" name="optradio" id="0" value="0">
                                 <label for = "0" class="btn btn-default btn-circle btn-lg active col-lg-1"><i class="fa fa-question questionmark"  checked></i>
                                 </label>
                                 <div class=" col-lg-1 " style="margin-left:-1%;margin-right:3%">
@@ -345,7 +346,7 @@ function statusChangeCallback(response) {
                                 </div>
 
                                            
-                                <input type="text" class="form-control col-lg-8" style="width:70%;height:40px;font-size:18px; " placeholder="他說..."   name="hostemail"  >
+                                <input type="text" class="form-control col-lg-8" style="width:70%;height:40px;font-size:18px; " placeholder="他說..."   name="content0"  >
                             </div>
                             <div class = "col-lg-2"></div>
                         </div>
@@ -354,7 +355,7 @@ function statusChangeCallback(response) {
                         <div class ="row">
                             <div class = "col-lg-2"></div>
                             <div class="radio col-lg-8 dialog">
-                                <input type="radio" name="optradio" id="1">
+                                <input type="radio" name="optradio" id="1" value="1">
                                 <label for = "1" class="btn btn-default btn-circle btn-lg active col-lg-1"><i class="fa fa-question questionmark"  checked></i>
                                 </label>
                                 <div class=" col-lg-1 " style="margin-left:-1%;margin-right:3%">
@@ -366,7 +367,7 @@ function statusChangeCallback(response) {
                                 </div>
 
                                            
-                                <input type="text" class="form-control col-lg-8" style="width:70%;height:40px;font-size:18px;" placeholder="他說 ..."   name="hostemail"  >
+                                <input type="text" class="form-control col-lg-8" style="width:70%;height:40px;font-size:18px;" placeholder="他說 ..."   name="content1"  >
                             </div>
                             <div class = "col-lg-2"></div>
                         </div>
@@ -391,7 +392,7 @@ function statusChangeCallback(response) {
                         <!-- send button -->
                         <div class="col-lg-7"></div>
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary btn-lg" style="color:white;background:#18aa8d;"> 
+                            <button type="submit" id="count" name="count" value="2" class="btn btn-primary btn-lg"  style="color:white;background:#18aa8d;"> 
                             Send</button>
                         </div>
                     </form>    
@@ -637,7 +638,7 @@ function statusChangeCallback(response) {
 
     <!-- Theme JavaScript -->
     <script src="{% static 'js/agency.js' %}"></script>
-    <script src="{% static 'js/Xuan.js' %}"></script>
+    <script src="{% static 'js/test.js' %}"></script>
     
     <!-- Fixed the sidebar -->
     <script src="{% static 'js/Ray.js' %}" type="text/JavaScript"></script>

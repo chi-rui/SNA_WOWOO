@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import wowoo
 from .models import Post
 # Create your views here.
@@ -62,3 +62,35 @@ def like_count_blog(request):
     post.likes = likes
     post.save()
     return HttpResponse(likes, liked)
+    
+def post(request):
+    if request.method == 'POST':
+        
+        # Get how many dialogs
+        local_count = request.POST['count']
+        
+        # Get specific question
+        local_option = request.POST['optradio']
+        
+        # Get title
+        local_title = request.POST['post_title']
+        
+        # Get question dialog
+        local_question = request.POST['content' + local_option]
+        
+        # conbine the dialog to a whole content
+        local_content = ""
+        i = 0;
+        count = int(local_count) - 1;
+        while i <= count:
+            global local_content  
+            local_content += request.POST['content' + str(i)] + "." 
+            i += 1
+        # Create new data 
+        Post.objects.create (
+            post_title = local_title,
+            post_question = local_question,
+            post_content = local_content,
+            )
+    return HttpResponseRedirect('https://snaproject-wenxuanlee.c9users.io/')
+        
