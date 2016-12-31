@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>WoWoo - Tell you more about words</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'css/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -19,7 +19,7 @@
     <!-- FontAwesome Css -->
     <script src="https://use.fontawesome.com/e07011ff1d.js"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"-->
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <!--link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'-->
@@ -38,7 +38,116 @@
 </head>
     
 <body id="page-top" class="index">
+    <div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 
+
+<script>
+function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+            FB.api('/me',{fields: 'name,email'},  function(response) {
+                user_Id = response.id;
+                user_name = response.name;
+                user_email = response.email;
+    
+                
+            });
+             
+            FB.api('/me/picture?width=240&height=240', function(response) {
+                userpicture = response.data.url;
+  
+                $.get('/getuserid/',{
+                    userId: user_Id,
+                    userName: user_name,
+                    userPicture : userpicture,
+                    userEmail : user_email,
+                }, function(data) {  ;});          
+            });
+            
+            console.log("welcome")
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+    
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+  
+    }
+  }
+
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+     
+      statusChangeCallback(response);
+       
+    });
+  }
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '910500799080831',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+   
+   function fb_login(){
+    FB.login(function(response) {
+
+        if (response.authResponse) {
+            
+            //console.log(response); // dump complete info
+            FB.api('/me',{fields: 'name,email'},  function(response) {
+                user_Id = response.id;
+                user_name = response.name;
+                user_email = response.email;
+    
+              
+            });
+             
+            FB.api('/me/picture?width=240&height=240', function(response) {
+                userpicture = response.data.url;
+             
+                    
+                $.get('/getuserid/',{
+                    userId: user_Id,
+                    userName: user_name,
+                    userPicture : userpicture,
+                    userEmail : user_email,
+                }, function(data) {  ;});          
+            });
+           
+        } 
+    }, {
+        scope: 'public_profile,email'
+    });
+   
+}
+
+</script>
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
@@ -54,7 +163,17 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul>
                     <li>
+<<<<<<< HEAD
                         <a id="login">登入</a>
+=======
+                        <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login">Login</a>
+                         <div id="status" class="hidden" ></div>
+	<!-- Your like button code -->
+
+                    </li>
+                    <li>
+                       
+>>>>>>> master
                         <a class="ring"><div><img class="ring_img" src="{% static 'img/tones.png' %}"></div></a>
                     </li>
                 </ul>
@@ -156,6 +275,7 @@
                     </div>
                             <!--位置跑掉問題-->
                 </li>
+ 
             </ul>
         <!--/div-->
         
@@ -171,7 +291,9 @@
                 </div>
             </div>
         </a>
+        {% for post in posts %}
         <div class="clear"></div>
+<<<<<<< HEAD
         {% for cont in posts %}
         <a class="block" href="post/{{ forloop.counter }}">
             <div class="cont1">
@@ -184,6 +306,16 @@
             </div>
         </a>
         <div class="clear"></div>
+=======
+        <div class="cont2">
+            <img class="views" src="{% static 'img/about/1.jpg' %}">
+            <img class="header" src="{% static 'img/about/3.jpg' %}">
+            <div class="text">
+                <h3 class="title">{{ post.post_title }}</h3>
+                <small><p class="sec">{{ post.post_question }}</p></small>
+            </div>            
+        </div>
+>>>>>>> master
         {% endfor %}
         
     </div>
@@ -203,31 +335,37 @@
             <div class="modal-content">
                 <div class="modal-header" style="">
                     <button type="button" class="close" data-dismiss="modal">X</button>
-                    <input id="title" class="center" type="text" placeholder="Title" required>        
+                    
+                      
+                    
+               
+                          
                 </div>
 
                 <div class="modal-body">
+                <form id="dialog" action="/post/" method="POST"  role="form">
+                {% csrf_token %}  
 
+                <input id="title" name="post_title" class="center" type="text" placeholder="Title" required>  
                 <h3> 哪一句話最讓你捉摸不透呢 </h3>   
-                    <form id="dialog">
-
+               
                         <!-- one input text -->
                         <div class ="row">
                             <div class = "col-lg-2"></div>
                             <div class="radio col-lg-8 dialog">
-                                <input type="radio" name="optradio" id="0">
+                                <input type="radio" name="optradio" id="0" value="0">
                                 <label for = "0" class="btn btn-default btn-circle btn-lg active col-lg-1"><i class="fa fa-question questionmark"  checked></i>
                                 </label>
                                 <div class=" col-lg-1 " style="margin-left:-1%;margin-right:3%">
-                                <select>
-                                      <option>&#xf183;</option>
-                                      <option>&#xf182;</option>
+                                <select title="gender0">
+                                      <option value = "male">&#xf183;</option>
+                                      <option value = "female">&#xf182;</option>
                                    
                                 </select>
                                 </div>
 
                                            
-                                <input type="text" class="form-control col-lg-8" style="width:70%;height:40px;font-size:18px; " placeholder="他說..."   name="hostemail"  >
+                                <input type="text" class="form-control col-lg-8" style="width:70%;height:40px;font-size:18px; " placeholder="他說..."   name="content0"  >
                             </div>
                             <div class = "col-lg-2"></div>
                         </div>
@@ -236,19 +374,19 @@
                         <div class ="row">
                             <div class = "col-lg-2"></div>
                             <div class="radio col-lg-8 dialog">
-                                <input type="radio" name="optradio" id="1">
+                                <input type="radio" name="optradio" id="1" value="1">
                                 <label for = "1" class="btn btn-default btn-circle btn-lg active col-lg-1"><i class="fa fa-question questionmark"  checked></i>
                                 </label>
                                 <div class=" col-lg-1 " style="margin-left:-1%;margin-right:3%">
-                                <select>
-                                      <option>&#xf182;</option>
-                                      <option>&#xf183;</option>
+                                <select title="gender1">
+                                      <option value = "male">&#xf183;</option>
+                                      <option value = "female">&#xf182;</option>
                                    
                                 </select>
                                 </div>
 
                                            
-                                <input type="text" class="form-control col-lg-8" style="width:70%;height:40px;font-size:18px;" placeholder="他說 ..."   name="hostemail"  >
+                                <input type="text" class="form-control col-lg-8" style="width:70%;height:40px;font-size:18px;" placeholder="他說 ..."   name="content1"  >
                             </div>
                             <div class = "col-lg-2"></div>
                         </div>
@@ -273,7 +411,7 @@
                         <!-- send button -->
                         <div class="col-lg-7"></div>
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-primary btn-lg" style="color:white;background:#18aa8d;"> 
+                            <button type="submit" id="count" name="count" value="2" class="btn btn-primary btn-lg"  style="color:white;background:#18aa8d;"> 
                             Send</button>
                         </div>
                     </form>    
@@ -435,8 +573,8 @@
     <!--script src="js/contact_me.js"></script-->
 
     <!-- Theme JavaScript -->
-    <script src="{% static 'js/agency.min.js' %}"></script>
-    <script src="{% static 'js/Xuan.js' %}"></script>
+    <script src="{% static 'js/agency.js' %}"></script>
+    <script src="{% static 'js/test.js' %}"></script>
     
     <!-- Fixed the sidebar -->
     <script src="{% static 'js/Ray.js' %}" type="text/JavaScript"></script>
