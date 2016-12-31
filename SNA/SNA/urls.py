@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from wowoo.views import post_detail
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', 'wowoo.views.home'),
+    url(r'^post/(?P<pk>\d+)/$', post_detail, name='post_detail'),
 ]

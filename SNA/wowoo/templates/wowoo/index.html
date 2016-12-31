@@ -54,7 +54,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul>
                     <li>
-                        <a id="login">Login</a>
+                        <a id="login">登入</a>
                         <a class="ring"><div><img class="ring_img" src="{% static 'img/tones.png' %}"></div></a>
                     </li>
                 </ul>
@@ -68,9 +68,9 @@
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">Tell You Something About Truth!</div>
-                <div class="intro-heading">She just doesn't like you!</div>
-                <a href="#content" class="page-scroll btn-xl">Go find the truth</a>
+                <div class="intro-lead-in">告訴你真相吧！</div>
+                <div class="intro-heading">她就是不喜歡你！</div>
+                <a href="#content" class="page-scroll btn-xl">前往了解</a>
             </div>
         </div>
     </header>
@@ -146,7 +146,7 @@
                     <a class="butt"><div class="buttons">熱門</div></a>
                     <a class="butt"><div class="buttons">最新</div></a>
                     <a class="butt"><div class="buttons">個人</div></a>
-                    <a class="post" data-toggle="modal" href="#theModal" >Post</a>
+                    <a class="post" data-toggle="modal" href="#theModal" >發布</a>
                             <!--位置跑掉問題-->
                     <div class="buttons_search">
                         <a class = "search">
@@ -166,92 +166,25 @@
                 <img class="views" src="{% static 'img/about/1.jpg' %}">
                 <img class="header" src="{% static 'img/about/3.jpg' %}">
                 <div class="text">
-                    <h3 class="title">Example</h3>
-                    <small><p class="sec">Go to see content example page.</p></small>
+                    <h3 class="title">我是不是做錯了什麼？</h3>
+                    <small><p class="sec">安安</p></small>
                 </div>
             </div>
         </a>
         <div class="clear"></div>
-        <div class="cont2">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
+        {% for cont in posts %}
+        <a class="block" href="post/{{ forloop.counter }}">
+            <div class="cont1">
+                <img class="views" src="{% static 'img/about/1.jpg' %}">
+                <img class="header" src="{% static 'img/about/3.jpg' %}">
+                <div class="text">
+                    <h3 class="title">{{cont.title}}</h3>
+                    <small><p class="sec">{{cont.content}}</p></small>
+                </div>            
+            </div>
+        </a>
         <div class="clear"></div>
-        <div class="cont1">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont2">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont1">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont2">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont1">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont2">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont1">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
-        <div class="clear"></div>
-        <div class="cont2">
-            <img class="views" src="{% static 'img/about/1.jpg' %}">
-            <img class="header" src="{% static 'img/about/3.jpg' %}">
-            <div class="text">
-                <h3 class="title">Title</h3>
-                <small><p class="sec">focus content</p></small>
-            </div>            
-        </div>
+        {% endfor %}
         
     </div>
     <div class = "col-md-2"></div>
@@ -350,224 +283,141 @@
     </div>
 
     <!-- contentModal -->
-    <div id="contentModal" class="modal fade" style="left: 25%; height:auto;">
-        <div class="col-lg-8 mid">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">X</button>       
-            </div>
-            <div class="poster-info">
-                <div class="poster-avatar float-left"><img width="40" height="40" src="{% static 'img/male.png'%}"></div>
-                <div class="postername float-left">師大林俊傑</div>
-                <div class="clear"></div>
-            </div>
-            <div class="post-title">我是不是做錯了什麼？</div>
-            <div class="post-content">
-                <div class="content">
-                    <div class="content-chat">
-                        <div class="message-border message_1">
-                            <div class="content-avatar-left float-left"><img width="70" height="70" src="{% static 'img/male.png'%}"></div>
-                            <div class="guess content-textdata-left float-left">安安</div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="message-border message_2">
-                            <div class="content-avatar-right float-right"><img width="70" height="70" src="{% static 'img/female.png'%}"></div>
-                            <div class="content-textdata-right float-right">安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安</div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="message-border message_3">
-                            <div class="content-avatar-left float-left"><img width="70" height="70" src="{% static 'img/male.png'%}"></div>
-                            <div class="content-textdata-left float-left">安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安</div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="message-border message_4">
-                            <div class="content-avatar-left float-left"><img width="70" height="70" src="{% static 'img/male.png'%}"></div>
-                            <div class="content-textdata-left float-left">安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安</div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="message-border message_5">
-                            <div class="content-avatar-right float-right"><img width="70" height="70" src="{% static 'img/female.png'%}"></div>
-                            <div class="content-textdata-right float-right">安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安</div>
-                            <div class="clear"></div>
-                        </div>
+    <div id="contentModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">X</button>       
+                </div>
+                <div class="mid">
+                    <div class="poster-info">
+                        <div class="poster-avatar float-left"><img width="40" height="40" src="{% static 'img/male.png'%}"></div>
+                        <div class="postername float-left">師大林俊傑</div>
+                        <div class="clear"></div>
                     </div>
-                    <div class="content-chat-footer">                   
-                        <div class="post-info float-left">
-                            <span class="post-like">
-                                <a href=""><i class="fa fa-heart-o fa-lg"></i></a>987 喜歡
-                            </span>
-                            <span class="facebook-share">
-                                    <a href=""><i class="fa fa-facebook-square fa-lg"></i>分享</a>
-                            </span>
-                        </div>
-                        <a class="Show-result-button float-right" data-toggle="collapse"  href="#resultBorder">顯示結果</a>
-                        <div style="height: 0;" class="clear"></div>
-                        <div id="resultBorder" class="collapse float-right">
-                            <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions1.jpg'%}" class="img-responsive img-circle" alt="emotion"></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100" style="width:11%">
+                    <div class="post-title">我是不是做錯了什麼？</div>
+                    <div class="post-content">
+                        <div class="content">
+                            <div class="content-chat">
+                                <div class="message-border message_1">
+                                    <div class="content-avatar-left float-left"><img width="70" height="70" src="{% static 'img/male.png'%}"></div>
+                                    <div class="guess content-textdata-left float-left">安安</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="message-border message_2">
+                                    <div class="content-avatar-right float-right"><img width="70" height="70" src="{% static 'img/female.png'%}"></div>
+                                    <div class="content-textdata-right float-right">安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="message-border message_3">
+                                    <div class="content-avatar-left float-left"><img width="70" height="70" src="{% static 'img/male.png'%}"></div>
+                                    <div class="content-textdata-left float-left">安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="message-border message_4">
+                                    <div class="content-avatar-left float-left"><img width="70" height="70" src="{% static 'img/male.png'%}"></div>
+                                    <div class="content-textdata-left float-left">安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安</div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="message-border message_5">
+                                    <div class="content-avatar-right float-right"><img width="70" height="70" src="{% static 'img/female.png'%}"></div>
+                                    <div class="content-textdata-right float-right">安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安</div>
+                                    <div class="clear"></div>
                                 </div>
                             </div>
+                            <div class="content-chat-footer">                   
+                                <div class="post-info float-left">
+                                    <span class="post-like">
+                                        <a href=""><i class="fa fa-heart-o fa-lg"></i></a>987 喜歡
+                                    </span>
+                                    <span class="facebook-share">
+                                            <a href=""><i class="fa fa-facebook-square fa-lg"></i>分享</a>
+                                    </span>
+                                </div>
+                                <a class="Show-result-button float-right" data-toggle="collapse"  href="#resultBorder">顯示結果</a>
+                                <div style="height: 0;" class="clear"></div>
+                                <div id="resultBorder" class="collapse float-right">
+                                    <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions1.jpg'%}" class="img-responsive img-circle" alt="emotion"></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100" style="width:11%">
+                                        </div>
+                                    </div>
 
-                            <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions2.jpg'%}" class="img-responsive img-circle" alt="emotion"></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="51" aria-valuemin="0" aria-valuemax="100" style="width:51%">
-                                </div>
-                            </div>
+                                    <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions2.jpg'%}" class="img-responsive img-circle" alt="emotion"></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="51" aria-valuemin="0" aria-valuemax="100" style="width:51%">
+                                        </div>
+                                    </div>
 
-                            <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions3.jpg'%}" class="img-responsive img-circle" alt=""></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width:2%">
-                                </div>
-                            </div>
+                                    <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions3.jpg'%}" class="img-responsive img-circle" alt=""></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width:2%">
+                                        </div>
+                                    </div>
 
-                            <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions4.jpg'%}" class="img-responsive img-circle" alt=""></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100" style="width:6%">
-                                </div>
-                            </div>
+                                    <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions4.jpg'%}" class="img-responsive img-circle" alt=""></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100" style="width:6%">
+                                        </div>
+                                    </div>
 
-                            <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions5.jpg'%}" class="img-responsive img-circle" alt=""></div>
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width:1%">
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    
-                    
-                    <div class="comments">
-                        <div class="comment-title"><h3>評論</h3></div>
-                        <div class="comment">
-                            <div class="comment-border comments_1">
-                                <div class="personalinfo float-left">
-                                    <div class="comment-avatar float-left">
-                                        <img width="70" height="70" src="{% static 'img/male.png'%}">
-                                    </div>
-                                    <div class="comment-emotion float-left">
-                                        <img width="25" height="25" src= "{% static 'img/emotion/emotions1.jpg'%}" class="emotion img-responsive img-circle" alt="">
-                                    </div>
-                                    <div class="clear"></div>
-                                    <div class="username">淡大霍建華</div>
-                                </div>
-                                <div class="comment-textdata float-left">
-                                    <div>我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄</div>
-                                </div>
-                                <div class="comment-menu float-right">
-                                    <a href="#commentMenu_1" data-toggle="collapse"><i class="fa fa-chevron-down fa-l" aria-hidden="true"></i></a>
-                                    <div id="commentMenu_1" class="collapse">
-                                        <a href="#">檢舉</a>
+                                    <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions5.jpg'%}" class="img-responsive img-circle" alt=""></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width:1%">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="comment-border comments_2">
-                                <div class="personalinfo float-left">
-                                    <div class="comment-avatar float-left">
-                                        <img width="70" height="70" src="{% static 'img/female.png'%}">
+                            </div> 
+                            
+                            
+                            <div class="comments">
+                                <div class="comment-title"><h3>評論</h3></div>
+                                <div class="comment">
+                                    {% for cmt in comments %}
+                                    <div class="comment-border">
+                                        <div class="personalinfo float-left">
+                                            <div class="comment-avatar float-left">
+                                                <img width="70" height="70" src="{% static 'img/male.png'%}">
+                                            </div>
+                                            <div class="comment-emotion float-left">
+                                                {{cmt.commentEmotion}}
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="username">{{cmt.commentName}}</div>
+                                        </div>
+                                        <div class="comment-textdata float-left">{{cmt.comment}}</div>
+                                        <div class="comment-menu float-right">
+                                            <a href="#commentMenu_{{ forloop.counter }}" data-toggle="collapse"><i class="fa fa-chevron-down fa-l" aria-hidden="true"></i></a>
+                                            <div id="commentMenu_{{ forloop.counter }}" class="collapse">
+                                                <a href="#">檢舉</a>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
                                     </div>
-                                    <div class="comment-emotion float-left">
-                                        <img width="25" height="25" src= "{% static 'img/emotion/emotions2.jpg'%}" class="emotion img-responsive img-circle" alt="">
-                                    </div>
-                                    <div class="clear"></div>
-                                    <div class="username">北護蔡依林</div>
-                                </div>
-                                <div class="comment-textdata float-left">
-                                    <div>我是評論欄我是評論欄</div>
-                                </div>
-                                <div class="comment-menu float-right">
-                                    <a href="#commentMenu_2" data-toggle="collapse"><i class="fa fa-chevron-down fa-l" aria-hidden="true"></i></a>
-                                    <div id="commentMenu_2" class="collapse">
-                                        <a href="#">檢舉</a>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="comment-border comments_3">
-                                <div class="personalinfo float-left">
-                                    <div class="comment-avatar float-left">
-                                        <img width="70" height="70" src="{% static 'img/male.png'%}">
-                                    </div>
-                                    <div class="comment-emotion float-left">
-                                        <img width="25" height="25" src= "{% static 'img/emotion/emotions1.jpg'%}" class="emotion img-responsive img-circle" alt="">
-                                    </div>
-                                    <div class="clear"></div>
-                                    <div class="username">金敢沖</div>
-                                </div>
-                                <div class="comment-textdata float-left">
-                                    <div>我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄</div>
-                                </div>
-                                <div class="comment-menu float-right">
-                                    <a href="#commentMenu_3" data-toggle="collapse"><i class="fa fa-chevron-down fa-l" aria-hidden="true"></i></a>
-                                    <div id="commentMenu_3" class="collapse">
-                                        <a href="#">檢舉</a>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="comment-border comments_4">
-                                <div class="personalinfo float-left">
-                                    <div class="comment-avatar float-left">
-                                        <img width="70" height="70" src="{% static 'img/female.png'%}">
-                                    </div>
-                                    <div class="comment-emotion float-left">
-                                        <img width="25" height="25" src= "{% static 'img/emotion/emotions2.jpg'%}" class="emotion img-responsive img-circle" alt="">
-                                    </div>
-                                    <div class="clear"></div>
-                                    <div class="username">桃園郭雪芙</div>
-                                </div>
-                                <div class="comment-textdata float-left">
-                                        <div>我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄</div>
-                                </div>
-                                <div class="comment-menu float-right">
-                                    <a href="#commentMenu_4" data-toggle="collapse"><i class="fa fa-chevron-down fa-l" aria-hidden="true"></i></a>
-                                    <div id="commentMenu_4" class="collapse">
-                                        <a href="#">檢舉</a>
+                                    {% endfor %}
+
+                                    <div class="comment-border myComment">
+                                        <div class="personalinfo float-left">
+                                            <div class="myEmotion float-left">
+                                                <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions1.jpg'%}" class="emotion img-responsive img-circle"></a>
+                                                <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions2.jpg'%}" class="emotion img-responsive img-circle"></a>
+                                                <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions3.jpg'%}" class="emotion img-responsive img-circle"></a>
+                                                <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions4.jpg'%}" class="emotion img-responsive img-circle"></a>
+                                                <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions5.jpg'%}" class="emotion img-responsive img-circle"></a>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                        <textarea class="comment-textarea" rows="8" cols="40" placeholder="選擇你認為的表情或是再留下評論..." required></textarea>
+                                        <a class="Submit-comment-button float-right" href="#">送出</a>
+                                        <div class="clear"></div>
                                     </div>
                                 </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="comment-border comments_5">
-                                <div class="personalinfo float-left">
-                                    <div class="comment-avatar float-left">
-                                        <img width="70" height="70" src="{% static 'img/female.png'%}">
-                                    </div>
-                                    <div class="comment-emotion float-left">
-                                        <img width="25" height="25" src= "{% static 'img/emotion/emotions2.jpg'%}" class="emotion img-responsive img-circle" alt="">
-                                    </div>
-                                    <div class="clear"></div>
-                                    <div class="username">雲林林志玲</div>
-                                </div>
-                                <div class="comment-textdata float-left">
-                                    <div>我是評論欄我是評論欄我是評論欄我是評論欄我是評論欄</div>
-                                </div>
-                                <div class="comment-menu float-right">
-                                    <a href="#commentMenu_5" data-toggle="collapse"><i class="fa fa-chevron-down fa-l" aria-hidden="true"></i></a>
-                                    <div id="commentMenu_5" class="collapse">
-                                        <a href="#">檢舉</a>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            <div class="comment-border myComment">
-                                <div class="personalinfo float-left">
-                                    <div class="myEmotion float-left">
-                                        <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions1.jpg'%}" class="emotion img-responsive img-circle"></a>
-                                        <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions2.jpg'%}" class="emotion img-responsive img-circle"></a>
-                                        <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions3.jpg'%}" class="emotion img-responsive img-circle"></a>
-                                        <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions4.jpg'%}" class="emotion img-responsive img-circle"></a>
-                                        <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions5.jpg'%}" class="emotion img-responsive img-circle"></a>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                                <textarea class="comment-textarea" rows="8" cols="40" placeholder="選擇你認為的表情或是再留下評論..." required></textarea>
-                                <a class="Submit-comment-button float-right" data-toggle="modal"  href="#" >送出</a>
-                                <div class="clear"></div>
                             </div>
                         </div>
                     </div>
+                    <div class="clear"></div>
                 </div>
             </div>
-            <div class="clear"></div>
         </div>
     </div>
     

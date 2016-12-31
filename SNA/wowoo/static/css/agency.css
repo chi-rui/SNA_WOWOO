@@ -16,7 +16,7 @@ body {
     background-color: #909090;
     height: 100%;
     overflow-x: hidden;
-    font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Microsoft JhengHei", "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding:0;
     margin:0;
 }
@@ -352,7 +352,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Microsoft JhengHei", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -369,7 +369,7 @@ h6 {
   color: white;
   background-color: #38caad;
   border-color: #18aa8d;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Microsoft JhengHei", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
 }
@@ -413,7 +413,7 @@ fieldset[disabled] .btn-primary.active {
   color: white;
   background-color: #18aa8d;
   //border-color: #18aa8d;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Microsoft JhengHei", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   border-radius: 3px;
@@ -553,14 +553,14 @@ header .intro-text {
   padding-bottom: 50px;
 }
 header .intro-text .intro-lead-in {
-  font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "MS Mincho", "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: italic;
   font-size: 22px;
   line-height: 22px;
   margin-bottom: 25px;
 }
 header .intro-text .intro-heading {
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "MS Mincho", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 50px;
@@ -1382,7 +1382,7 @@ body {
     background-color: #00A480;
     border: none;
     position: absolute;
-    right: 13.5%;
+    right: 11.5%;
     bottom: 1.5%;
     padding: 10px 15px;
     color: #FFFFFF;
