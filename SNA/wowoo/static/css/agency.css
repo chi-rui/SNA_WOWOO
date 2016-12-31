@@ -3,10 +3,13 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+<<<<<<< HEAD
 @font-face {
     font-family: test;
     src: url(https://www.dropbox.com/s/hqkzsy34qyur7sv/%E8%8F%AF%E5%BA%B7%E5%85%92%E9%A2%A8%E9%AB%94w4.ttf?dl=0);
 }
+=======
+>>>>>>> 57bbbceb601fbd9f49b48fa3a40d396093f809f2
 html{
     height: 100%;
     padding:0;

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import wowoo
 from .models import Post
+
 # Create your views here.
 def getuserid(request) : 
     if request.method == 'GET':
@@ -14,7 +15,6 @@ def getuserid(request) :
             
             print "exists" 
         
-
         else: 
             wowoo.objects.create(
                 user_id = get_id,
@@ -24,6 +24,7 @@ def getuserid(request) :
             )
 
     return HttpResponse(get_id)     
+
 def home(request):
     post = Post.objects.all()
     user = wowoo.objects.all()
@@ -100,4 +101,4 @@ def post(request):
             post_content = local_content,
             )
     return HttpResponseRedirect('http://localhost:8000/')
-        
+

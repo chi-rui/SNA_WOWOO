@@ -25,3 +25,4 @@ class Post(models.Model):
     
     def post(self):
         return "post"
+
