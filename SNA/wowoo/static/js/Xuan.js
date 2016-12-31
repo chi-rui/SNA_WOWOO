@@ -37,13 +37,12 @@
 
             new_male.innerHTML = "&#xf183;";
             new_female.innerHTML = "&#xf182;";
+            new_select.appendChild(new_male);
             new_female.setAttribute('value', "female");
             new_select.appendChild(new_female);
             new_male.setAttribute('value', "male");
-            new_select.appendChild(new_male);
-            new_select.setAttribute('title', "gender"+count);
+            new_select.setAttribute('name', "gender"+count);
             new_div_select.appendChild(new_select);
-            
 
             new_textarea.setAttribute('type', 'text');
             new_textarea.setAttribute('class', 'form-control col-lg-8');
@@ -56,7 +55,6 @@
             new_div.appendChild(new_input);
             new_div.appendChild(new_label);
             new_div.appendChild(new_div_select);
-            new_input.setAttribute('name', 'optradio');
             new_div.appendChild(new_textarea);
 
 
@@ -105,11 +103,11 @@
 
             new_male.innerHTML = "&#xf183;";
             new_female.innerHTML = "&#xf182;";
+            new_select.appendChild(new_male);
             new_female.setAttribute('value', "female");
             new_select.appendChild(new_female);
             new_male.setAttribute('value', "male");
-            new_select.appendChild(new_male);
-            new_select.setAttribute('title', "gender"+count);
+            new_select.setAttribute('name', "gender"+count);
             new_div_select.appendChild(new_select);
 
             new_textarea.setAttribute('type', 'text');
