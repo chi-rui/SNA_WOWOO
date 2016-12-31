@@ -87,6 +87,12 @@ def post(request):
             local_content += request.POST['gender' + str(i)] + "###"
             local_content += request.POST['content' + str(i)] + "###" 
             i += 1
+        n = 2*int(local_count)
+        while n > 0:
+            str_part = local_content.rsplit('###',n)[0]
+            print str_part + "\n"
+            n -= 1
+
         # Create new data 
         Post.objects.create (
             post_title = local_title,
