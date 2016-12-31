@@ -83,8 +83,9 @@ def post(request):
         i = 0;
         count = int(local_count) - 1;
         while i <= count:
-            global local_content  
-            local_content += request.POST['content' + str(i)] + "." 
+            global local_content 
+            local_content += request.POST['gender' + str(i)] + "###"
+            local_content += request.POST['content' + str(i)] + "###" 
             i += 1
         # Create new data 
         Post.objects.create (
@@ -92,5 +93,5 @@ def post(request):
             post_question = local_question,
             post_content = local_content,
             )
-    return HttpResponseRedirect('https://snaproject-wenxuanlee.c9users.io/')
+    return HttpResponseRedirect('http://localhost:8000/')
         
