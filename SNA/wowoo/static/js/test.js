@@ -38,7 +38,10 @@
             new_male.innerHTML = "&#xf183;";
             new_female.innerHTML = "&#xf182;";
             new_select.appendChild(new_male);
+            new_female.setAttribute('value', "female");
             new_select.appendChild(new_female);
+            new_male.setAttribute('value', "male");
+            new_select.setAttribute('name', "gender"+count);
             new_div_select.appendChild(new_select);
 
             new_textarea.setAttribute('type', 'text');
@@ -100,8 +103,11 @@
 
             new_male.innerHTML = "&#xf183;";
             new_female.innerHTML = "&#xf182;";
-            new_select.appendChild(new_female);
             new_select.appendChild(new_male);
+            new_female.setAttribute('value', "female");
+            new_select.appendChild(new_female);
+            new_male.setAttribute('value', "male");
+            new_select.setAttribute('name', "gender"+count);
             new_div_select.appendChild(new_select);
 
             new_textarea.setAttribute('type', 'text');

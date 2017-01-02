@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
+from django.utils.encoding import smart_text
 from .models import wowoo
 from django.template import Context
 from .models import Post, Comment
+
 # Create your views here.
 def getuserid(request) : 
     if request.method == 'GET':
@@ -15,7 +17,6 @@ def getuserid(request) :
             
             print "exists" 
         
-
         else: 
             wowoo.objects.create(
                 user_id = get_id,
@@ -25,12 +26,36 @@ def getuserid(request) :
             )
 
     return HttpResponse(get_id)     
+
+def logined(request):
+	user = wowoo.objects.all()
+	context={
+		"users" : user,
+	}
+
+	return render(request, 'wowoo/wowoo_login.html',context)
+
 def home(request):
     post = Post.objects.all()
     user = wowoo.objects.all()
+
+    obj = Post.objects.get(pk=17)
+    # print obj
+    # print obj.post_content
+    str_part = obj.post_content.split('###')
+    # n = 0
+    sub_num = len(str_part)-1
+    # while n < len(str_part)-1:
+    #     print str_part[n]
+    #     n += 1
+    loop_times = range(0,int(sub_num)-1)
+    print str_part
+    print sub_num
     context = {
         "posts" : post,
         "users" : user,
+        "str_part" : str_part,
+        "loop_times" : loop_times,
     }
     return render(request, 'wowoo/index.html',context)
     
@@ -88,6 +113,16 @@ def post(request):
             local_content += request.POST['gender' + str(i)] + "###"
             local_content += request.POST['content' + str(i)] + "###" 
             i += 1
+
+        # cut string and get every part of it 
+        str_part = local_content.split('###')
+        n = 0
+        sub_num = len(str_part)-1
+        while n < len(str_part)-1:
+            print str_part[n]
+            n += 1
+        # cut end here
+
         # Create new data 
         Post.objects.create (
             post_title = local_title,
@@ -104,3 +139,4 @@ def post_detail(request, pk):
         'post':post
     })
     return render(request, 'wowoo/content.html', context)
+

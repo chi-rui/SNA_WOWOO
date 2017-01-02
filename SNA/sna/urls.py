@@ -22,6 +22,7 @@ from wowoo import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home),
+    url(r'^logined/', views.logined),
     url(r'^test$', views.test),
     url(r'^like-blog/$', views.like_count_blog, name='like_count_blog'),
     url(r'^getuserid/$', views.getuserid),

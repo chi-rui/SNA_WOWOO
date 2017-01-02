@@ -17,5 +17,5 @@ class post(admin.ModelAdmin) :
         model = Post
         
 admin.site.register(Post,post)
-
 admin.site.register(Comment)
+
