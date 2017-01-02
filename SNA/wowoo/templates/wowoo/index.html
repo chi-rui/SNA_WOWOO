@@ -291,32 +291,17 @@ function statusChangeCallback(response) {
                 </div>
             </div>
         </a>
-        {% for post in posts %}
+        <!-- {% for post in posts %} -->
         <div class="clear"></div>
-<<<<<<< HEAD
-        {% for cont in posts %}
-        <a class="block" href="post/{{ forloop.counter }}">
-            <div class="cont1">
-                <img class="views" src="{% static 'img/about/1.jpg' %}">
-                <img class="header" src="{% static 'img/about/3.jpg' %}">
-                <div class="text">
-                    <h3 class="title">{{cont.title}}</h3>
-                    <small><p class="sec">{{cont.content}}</p></small>
-                </div>            
-            </div>
-        </a>
-        <div class="clear"></div>
-=======
         <div class="cont2">
             <img class="views" src="{% static 'img/about/1.jpg' %}">
             <img class="header" src="{% static 'img/about/3.jpg' %}">
             <div class="text">
-                <h3 class="title">{{ post.post_title }}</h3>
-                <small><p class="sec">{{ post.post_question }}</p></small>
+                <!-- <h3 class="title">{{ post.post_title }}</h3> -->
+                <!-- <small><p class="sec">{{ post.post_question }}</p></small> -->
             </div>            
         </div>
->>>>>>> master
-        {% endfor %}
+        <!-- {% endfor %} -->
         
     </div>
     <div class = "col-md-2"></div>

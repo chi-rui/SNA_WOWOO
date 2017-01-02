@@ -3,7 +3,6 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import wowoo
 from django.template import Context
 from .models import Post, Comment
->>>>>>> master
 # Create your views here.
 def getuserid(request) : 
     if request.method == 'GET':

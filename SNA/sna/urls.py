@@ -27,6 +27,6 @@ urlpatterns = [
     url(r'^getuserid/$', views.getuserid),
     url(r'^post/$', views.post),
     url(r'^post/(?P<pk>\d+)/$', post_detail, name='post_detail'),
->>>>>>> master:SNA/sna/urls.py
+
 ]
 

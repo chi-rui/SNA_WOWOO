@@ -5,14 +5,14 @@ from .models import Comment
 
 # Register your models here.
 class Wowoo(admin.ModelAdmin) :
-    list_display = ['user_id','user_name','user_picture','user_email','user_nickname','user_achievement']
+    list_display = ['id']
     class Meta : 
         model = wowoo
         
 admin.site.register(wowoo,Wowoo)
 
 class post(admin.ModelAdmin) :
-    list_display = ['id','post_title','post_question','post_content','post_date','post_emotions','likes']
+    list_display = ['id']
     class Meta : 
         model = Post
         
