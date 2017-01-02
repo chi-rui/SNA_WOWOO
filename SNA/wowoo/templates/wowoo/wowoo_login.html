@@ -39,7 +39,6 @@
 </head>
     
 <body id="page-top" class="index">
-
     <div id="fb-root"></div>
 	<script>(function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
@@ -165,7 +164,11 @@ function statusChangeCallback(response) {
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul>
                     <li>
-                        <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login" href="/logined/">Login</a>
+<!--                         <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login">Login</a> -->
+                         <div>
+                             <img src="{{user.user_picture}}" class="user_head"/>
+                             <p class="user_name">{{user.user_name}}</p>
+                         </div>
                          <div id="status" class="hidden" ></div>
 	<!-- Your like button code -->
 
@@ -419,15 +422,31 @@ function statusChangeCallback(response) {
             <div class="post-content">
                 <div class="content">
                     <div class="content-chat">
-                    {% for item in str_part %}
-                        {% if forloop.counter|divisibleby:2 %}
                         <div class="message-border message_1">
                             <div class="content-avatar-left float-left"><img width="70" height="70" src="{% static 'img/male.png'%}"></div>
-                            <div class="guess content-textdata-left float-left">{{item}}</div>
+                            <div class="guess content-textdata-left float-left">安安</div>
                             <div class="clear"></div>
                         </div>
-                        {% endif %}
-                    {% endfor %}
+                        <div class="message-border message_2">
+                            <div class="content-avatar-right float-right"><img width="70" height="70" src="{% static 'img/female.png'%}"></div>
+                            <div class="content-textdata-right float-right">安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安</div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="message-border message_3">
+                            <div class="content-avatar-left float-left"><img width="70" height="70" src="{% static 'img/male.png'%}"></div>
+                            <div class="content-textdata-left float-left">安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安</div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="message-border message_4">
+                            <div class="content-avatar-left float-left"><img width="70" height="70" src="{% static 'img/male.png'%}"></div>
+                            <div class="content-textdata-left float-left">安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安</div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="message-border message_5">
+                            <div class="content-avatar-right float-right"><img width="70" height="70" src="{% static 'img/female.png'%}"></div>
+                            <div class="content-textdata-right float-right">安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安安</div>
+                            <div class="clear"></div>
+                        </div>
                     </div>
                     <div class="content-chat-footer">                   
                         <div class="post-info float-left">
