@@ -39,7 +39,7 @@ def home(request):
     post = Post.objects.all()
     user = wowoo.objects.all()
 
-    obj = Post.objects.get(pk=17)
+    obj = Post.objects.get(pk=1)
     # print obj
     # print obj.post_content
     str_part = obj.post_content.split('###')
