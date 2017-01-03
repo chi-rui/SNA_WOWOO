@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import wowoo
 from .models import Post
+from .models import Comment
+
 # Register your models here.
 class Wowoo(admin.ModelAdmin) :
     list_display = ['user_id','user_name','user_picture','user_email','user_nickname','user_achievement']
@@ -15,3 +17,10 @@ class post(admin.ModelAdmin) :
         model = Post
         
 admin.site.register(Post,post)
+
+class comment(admin.ModelAdmin) :
+    list_display = ['id','comment_emotion','comment_name','comment_content','comment_wows','comment_date']
+    class Meta : 
+        model = Comment
+        
+admin.site.register(Comment,comment)

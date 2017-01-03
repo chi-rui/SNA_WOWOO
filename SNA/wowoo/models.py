@@ -10,7 +10,7 @@ class wowoo(models.Model):
     user_email = models.EmailField(null = True,blank = True)
     user_nickname = models.CharField(max_length=200,null=True,blank=True)
     user_achievement = models.IntegerField(default=0)
-	 
+     
     def key(self):
         return "wowoo"
 
@@ -25,3 +25,14 @@ class Post(models.Model):
     
     def post(self):
         return "post"
+
+# Comment data table.
+class Comment(models.Model):
+    comment_emotion = models.CharField(max_length=5, null = True, blank = True)
+    comment_name = models.CharField(max_length=50, null = True, blank = True)
+    comment_content = models.TextField(null = True, blank=True)
+    comment_wows = models.IntegerField(default=0)
+    comment_date = models.DateTimeField(auto_now_add=True)
+
+    def comment(self):
+        return "comment"

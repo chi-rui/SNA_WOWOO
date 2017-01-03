@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^like-blog/$', views.like_count_blog, name='like_count_blog'),
     url(r'^getuserid/$', views.getuserid),
     url(r'^post/$', views.post),
+    url(r'^post/(?P<pk>\d+)/$', views.post_detail, name='post_detail'),
 ]
 
