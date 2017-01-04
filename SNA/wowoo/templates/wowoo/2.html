@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>WoWoo-發現文字的真諦</title>
+    <title>WoWoo - tell you everything about the texts.</title>
 
 
     <!-- Bootstrap Core CSS -->
@@ -158,30 +158,21 @@ function statusChangeCallback(response) {
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll">WoWoo</a>
+                <a class="navbar-brand page-scroll" href="#page-top">WoWoo</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul>
                     <li>
-                        <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login" href="/logined/"><b>登入</b></a>
-                         <div id="status" class="hidden" ></div><!-- Your like button code -->
+                        <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login" href="/logined/">Login</a>
+                         <div id="status" class="hidden" ></div>
+    <!-- Your like button code -->
+
                     </li>
                     <li>
-                        <a class="ring">
-                            <div>
-                                <img class="ring_img" src="{% static 'img/tones.png' %}">
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="buttons_search">
-                            <a class = "search">
-                                <img class="search_img" src="{% static 'img/search.png' %}">
-                                <input class="find" type="text" placeholder="對某句話有疑惑嘛?">
-                            </a>
-                        </div>    
+                       
+                        <a class="ring"><div><img class="ring_img" src="{% static 'img/tones.png' %}"></div></a>
                     </li>
                 </ul>
             </div>
@@ -191,20 +182,20 @@ function statusChangeCallback(response) {
     </nav>
 
     <!-- Header -->
-<!--     <header> -->
-        <div class="height_title">
-<!--             <div class="intro-text">
+    <header>
+        <div class="container">
+            <div class="intro-text">
                 <div class="intro-lead-in">Tell You Something About Truth!</div>
                 <div class="intro-heading">She just doesn't like you!</div>
                 <a href="#content" class="page-scroll btn-xl">Go find the truth</a>
-            </div> -->
+            </div>
         </div>
-    <!-- </header> -->
+    </header>
     <div class = "col-md-1"></div>
     
     <!--side bar-->
     <div id="sidebar" class = "col-md-3">
-        <div id="left" class="fixed_sidebar">
+        <div id="left">
             
             <div id="info_profile">
                 
@@ -227,6 +218,13 @@ function statusChangeCallback(response) {
                 <div class ="switch2">個人檔案</div>
                 <div class="clear"></div>
                 <div class="achieve">
+<!--
+                    <ul>
+                        <li>
+                            <p class="achievename">total posts : 01</p>
+                        </li>
+                    </ul>
+-->
                     <ul>
                         <li>
                             <p class="achievename">achievement_1</p>
@@ -265,28 +263,42 @@ function statusChangeCallback(response) {
                     <a class="butt"><div class="buttons">熱門</div></a>
                     <a class="butt"><div class="buttons">最新</div></a>
                     <a class="butt"><div class="buttons">個人</div></a>
-                    <a class="post" data-toggle="modal" href="#theModal" >我要發問</a>
-                    
+                    <a class="post" data-toggle="modal" href="#theModal" >Post</a>
+                            <!--位置跑掉問題-->
+                    <div class="buttons_search">
+                        <a class = "search">
+                            <img class="search_img" src="{% static 'img/search.png' %}">
+                            <input class="find" type="text" placeholder="對某句話有疑惑嘛?">
+                        </a>
+                    </div>
+                            <!--位置跑掉問題-->
                 </li>
  
             </ul>
         <!--/div-->
         
         <div class="clear"></div>
-        <hr>
-
-        {% for post in posts %}
-        <a class="block" data-toggle="modal" href="#contentModal">  
-            <div class="clear"></div>
-            <div class="cont2">
+        
+        <a class="block" data-toggle="modal" href="#contentModal">
+            <div class="cont1">
                 <img class="views" src="{% static 'img/about/1.jpg' %}">
                 <img class="header" src="{% static 'img/about/3.jpg' %}">
                 <div class="text">
-                    <h3 class="title">{{ post.post_title }}</h3>
-                    <small><p class="sec">{{ post.post_question }}</p></small>
-                </div>            
+                    <h3 class="title">Example</h3>
+                    <small><p class="sec">Go to see content example page.</p></small>
+                </div>
             </div>
         </a>
+        {% for post in posts %}
+        <div class="clear"></div>
+        <div class="cont2">
+            <img class="views" src="{% static 'img/about/1.jpg' %}">
+            <img class="header" src="{% static 'img/about/3.jpg' %}">
+            <div class="text">
+                <h3 class="title">{{ post.post_title }}</h3>
+                <small><p class="sec">{{ post.post_question }}</p></small>
+            </div>            
+        </div>
         {% endfor %}
         
     </div>
