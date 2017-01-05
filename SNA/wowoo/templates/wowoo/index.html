@@ -28,7 +28,7 @@
     <!--link rel="stylesheet" href="css/skillbar.css"-->
     <!-- Theme CSS -->
     <link href="{% static 'css/agency.css' %}" rel="stylesheet">
-    <link href="{% static 'css/Xuan.css' %}" rel="stylesheet">
+    <link href="{% static 'css/cont.css' %}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -185,37 +185,27 @@ function statusChangeCallback(response) {
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
     </nav>
 
-    <!-- Header -->
-<!--     <header> -->
-        <div class="height_title">
-<!--             <div class="intro-text">
-                <div class="intro-lead-in">Tell You Something About Truth!</div>
-                <div class="intro-heading">She just doesn't like you!</div>
-                <a href="#content" class="page-scroll btn-xl">Go find the truth</a>
-            </div> -->
-        </div>
-    <!-- </header> -->
-    <div class = "col-md-1"></div>
-    
-    <!--side bar-->
-    <div id="sidebar" class = "col-md-3">
+    <div class="height_title"></div>
+
+    <section style="padding-top:45px">
+    <div  class="col-lg-1 col-md-1 col-sm-1" ></div>
+    <div  class="col-lg-3 col-md-3 col-sm-3" >
         <div id="left" class="fixed_sidebar">
-            
+            <!--profile-->
             <div id="info_profile">
                 
                 <div class="frame">
-                    <div class ="switch1">成就列表</div>
                     <img class="headshot" src="{% static 'img/head.gif' %}">
+                    <div class ="switch1"><font class="now_left">個人資訊</font></div>
                 </div>
                 
                 <div class="clear"></div>
                 <div></div>
             </div>
+            <!--achievement-->
             <div id="info_achievement" class="hidden">
                 <div class="achievement">
                     <div id = "box" class="box">
@@ -224,7 +214,7 @@ function statusChangeCallback(response) {
                         </div>
                     </div>
                 </div>
-                <div class ="switch2">個人檔案</div>
+                <div class ="switch2">成就列表</div>
                 <div class="clear"></div>
                 <div class="achieve">
                     <ul>
@@ -255,48 +245,48 @@ function statusChangeCallback(response) {
             </div>
         </div>
     </div>
-    
-    <!--main content-->
-    <div id="content" class="col-md-6">
-
-        <!--div class="buttons"-->
+       
+    <div id = "xuan" class="col-lg-6 col-md-6 col-sm-6">
             <ul>
                 <li>
-                    <a class="butt"><div class="buttons">熱門</div></a>
-                    <a class="butt"><div class="buttons">最新</div></a>
-                    <a class="butt"><div class="buttons">個人</div></a>
-                    <a class="post" data-toggle="modal" href="#theModal" >我要發問</a>
-                    
+                    <div id="butt1" class="butt buttons">熱門</div>
+                    <div id="butt2" class="butt buttons">最新</div>
+                    <div id="butt3" class="butt buttons">個人</div>
+                    <a class="post" data-toggle="modal" href="#theModal">我要發問</a>
                 </li>
- 
             </ul>
-        <!--/div-->
-        
-        <div class="clear"></div>
-        <hr>
+            <hr>
+        <!--  each post column -->
         {% for post in posts %}
-        <div class="clear"></div>
-        <a href="{% url 'post_detail' pk=post.pk %}" data-id="{{ post.pk }}" class="showModal">
-            <div class="cont2">
-                <img class="views" src="{% static 'img/about/1.jpg' %}">
-                <img class="header" src="{% static 'img/about/3.jpg' %}">
-                <div class="text">
-                    <h3 class="title">{{ post.post_title }}</h3>
-                    <small><p class="sec">{{ post.post_question }}</p></small>
-                </div>            
-            </div>
-        </a>
+        <a>
+            <div class="col-lg-12 col-md-12 col-sm-12 content" >
+
+                <div class="col-lg-2 col-md-2 col-sm-2" >
+                    <div class="badge">1234</div>
+                </div>
+            
+                <div class="col-lg-10 col-md-10 col-sm-10 " style="padding-top: 2%;">
+                    <p style="color:black;font-size:24px;letter-spacing: 2px;line-height:24px;padding-top: 14px;font-weight:600;opacity: 0.8;" >{{ post.post_title }}</p>
+
+                    <h5 style="color:#7d7d7d;letter-spacing:1px;font-size:18px;margin-bottom: 0px;margin-top: 15px;">
+                    {{ post.post_question }}
+                    </h5>
+
+                    <div style="float:right;margin-right:3%"">
+                        <i class="fa fa-commenting-o" style="color:#56A690;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
+                    </div>
+                    <div style="float:right;margin-right:3%"">
+                        <i class="fa fa-thumbs-up " style="color:#56A690;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
+                    </div>           
+                </div>
+            </div> 
+            <hr>
+        </a>   
         {% endfor %}
-        
     </div>
-    <div class = "col-md-2"></div>
-    <!--div class="col-md-3 achievement">
-        <div id = "box" class="box">
-            <div class="box_inside" >
-                <img class="medal" src="img/medal.png">
-            </div>
-        </div>
-    </div-->
+    <div  class="col-lg-1 col-md-1 col-sm-1" >
+
+    </section>
     <div class="clear"></div>
 
     <!-- Post -->
