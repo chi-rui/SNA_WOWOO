@@ -30,11 +30,19 @@ $(document).ready(function(){
 //hover on profile/achievement
 $(".headshot").hover(function(){
     // console.log("hover!");
-    $(".headshot").css("box-shadow","0px 0px 15px 5px #D64541");
-    $(".switch1").css("box-shadow","0px 0px 15px 5px #D64541");
+    $(".headshot").css("box-shadow","0px 0px 15px 5px #ffffff");
+    $(".switch1").css("box-shadow","0px 0px 15px 5px #ffffff");
 },function(){
     $(".headshot").css("box-shadow","none");
     $(".switch1").css("box-shadow","none");
+});
+$(".box").hover(function(){
+    // console.log("hover!");
+    $(".achievement").css("box-shadow","0px 0px 15px 5px #ffffff");
+    $(".switch2").css("box-shadow","0px 0px 15px 5px #ffffff");
+},function(){
+    $(".achievement").css("box-shadow","none");
+    $(".switch2").css("box-shadow","none");
 });
 
 //click on profile/achievement
@@ -43,7 +51,7 @@ $(".headshot").click(function(){
     $("#info_profile").hide("medium");
     $("#info_achievement").show("medium");
 });
-$(".switch2").click(function(){
+$(".box").click(function(){
     $("#info_profile").show("medium");
     $("#info_achievement").hide("medium");
 });

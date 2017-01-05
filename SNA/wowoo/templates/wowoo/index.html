@@ -207,14 +207,16 @@ function statusChangeCallback(response) {
             </div>
             <!--achievement-->
             <div id="info_achievement" class="hidden">
-                <div class="achievement">
-                    <div id = "box" class="box">
-                        <div class="box_inside" >
-                            <img class="medal" src="{% static 'img/medal.png' %}">
+                <div class="achi">
+                    <div class="achievement">
+                        <div id = "box" class="box">
+                            <div class="box_inside" >
+                                <img class="medal" src="{% static 'img/medal.png' %}">
+                            </div>
                         </div>
                     </div>
+                    <div class ="switch2">成就列表</div>
                 </div>
-                <div class ="switch2">成就列表</div>
                 <div class="clear"></div>
                 <div class="achieve">
                     <ul>
@@ -255,10 +257,10 @@ function statusChangeCallback(response) {
                     <a class="post" data-toggle="modal" href="#theModal">我要發問</a>
                 </li>
             </ul>
-            <hr>
+            <!-- <hr class="block"> -->
         <!--  each post column -->
         {% for post in posts %}
-        <a>
+        <a href="{% url 'post_detail' pk=post.pk %}" data-id="{{ post.pk }}" class="showModal">
             <div class="col-lg-12 col-md-12 col-sm-12 content" >
 
                 <div class="col-lg-2 col-md-2 col-sm-2" >
@@ -279,6 +281,7 @@ function statusChangeCallback(response) {
                         <i class="fa fa-thumbs-up " style="color:#56A690;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
                     </div>           
                 </div>
+
             </div> 
             <hr>
         </a>   
