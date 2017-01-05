@@ -1375,7 +1375,7 @@ body {
 }
 
 .myEmotion{
-  margin-left: 70px;
+
 }
 
 .myEmotion img{
@@ -1384,7 +1384,8 @@ body {
 
 .comment-textarea{
   position: relative;
-  left: 14%;
+  left: 10.5%;
+  min-width: 50%;
   max-width: 50%;
 }
 

@@ -133,11 +133,15 @@ def post(request):
     return HttpResponseRedirect('http://localhost:8000/')
 
 def post_detail(request, pk):
-    cmt = Comment.objects.filter(post_num = pk)
+    cmt = Comment.objects.filter(pk = pk)
     post = Post.objects.get(pk = pk)
+
+    str_part = post.post_content.split('###')
+
     context = {
         "comments" : cmt,
         "post" : post,
+        "str_part" : str_part,
     }
-    return render(request, 'wowoo/content.html', context)
+    return render(request, 'wowoo/content.html',context)
 
