@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>WoWoo-發現文字的真諦</title>
+    <title>WoWoo - tell you everything about the texts.</title>
 
 
     <!-- Bootstrap Core CSS -->
@@ -28,7 +28,7 @@
     <!--link rel="stylesheet" href="css/skillbar.css"-->
     <!-- Theme CSS -->
     <link href="{% static 'css/agency.css' %}" rel="stylesheet">
-    <link href="{% static 'css/cont.css' %}" rel="stylesheet">
+    <link href="{% static 'css/Xuan.css' %}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -158,67 +158,73 @@ function statusChangeCallback(response) {
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll">WoWoo</a>
+                <a class="navbar-brand page-scroll" href="#page-top">WoWoo</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul>
                     <li>
-                        <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login" href="/logined/"><b>登入</b></a>
-                         <div id="status" class="hidden" ></div><!-- Your like button code -->
+                        <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login" href="/logined/">Login</a>
+                         <div id="status" class="hidden" ></div>
+    <!-- Your like button code -->
+
                     </li>
                     <li>
-                        <a class="ring">
-                            <div>
-                                <img class="ring_img" src="{% static 'img/tones.png' %}">
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="buttons_search">
-                            <a class = "search">
-                                <img class="search_img" src="{% static 'img/search.png' %}">
-                                <input class="find" type="text" placeholder="對某句話有疑惑嘛?">
-                            </a>
-                        </div>    
+                       
+                        <a class="ring"><div><img class="ring_img" src="{% static 'img/tones.png' %}"></div></a>
                     </li>
                 </ul>
             </div>
+            <!-- /.navbar-collapse -->
         </div>
+        <!-- /.container-fluid -->
     </nav>
 
-    <div class="height_title"></div>
-
-    <section style="padding-top:45px">
-    <div  class="col-lg-1 col-md-1 col-sm-1" ></div>
-    <div  class="col-lg-3 col-md-3 col-sm-3" >
-        <div id="left" class="fixed_sidebar">
-            <!--profile-->
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Tell You Something About Truth!</div>
+                <div class="intro-heading">She just doesn't like you!</div>
+                <a href="#content" class="page-scroll btn-xl">Go find the truth</a>
+            </div>
+        </div>
+    </header>
+    <div class = "col-md-1"></div>
+    
+    <!--side bar-->
+    <div id="sidebar" class = "col-md-3">
+        <div id="left">
+            
             <div id="info_profile">
                 
                 <div class="frame">
+                    <div class ="switch1">成就列表</div>
                     <img class="headshot" src="{% static 'img/head.gif' %}">
-                    <div class ="switch1"><font class="now_left">個人資訊</font></div>
                 </div>
                 
                 <div class="clear"></div>
                 <div></div>
             </div>
-            <!--achievement-->
             <div id="info_achievement" class="hidden">
-                <div class="achi">
-                    <div class="achievement">
-                        <div id = "box" class="box">
-                            <div class="box_inside" >
-                                <img class="medal" src="{% static 'img/medal.png' %}">
-                            </div>
+                <div class="achievement">
+                    <div id = "box" class="box">
+                        <div class="box_inside" >
+                            <img class="medal" src="{% static 'img/medal.png' %}">
                         </div>
                     </div>
-                    <div class ="switch2">成就列表</div>
                 </div>
+                <div class ="switch2">個人檔案</div>
                 <div class="clear"></div>
                 <div class="achieve">
+<!--
+                    <ul>
+                        <li>
+                            <p class="achievename">total posts : 01</p>
+                        </li>
+                    </ul>
+-->
                     <ul>
                         <li>
                             <p class="achievename">achievement_1</p>
@@ -247,48 +253,63 @@ function statusChangeCallback(response) {
             </div>
         </div>
     </div>
-       
-    <div id = "xuan" class="col-lg-6 col-md-6 col-sm-6">
+    
+    <!--main content-->
+    <div id="content" class="col-md-6">
+
+        <!--div class="buttons"-->
             <ul>
                 <li>
-                    <div id="butt1" class="butt buttons">熱門</div>
-                    <div id="butt2" class="butt buttons">最新</div>
-                    <div id="butt3" class="butt buttons">個人</div>
-                    <a class="post" data-toggle="modal" href="#theModal">我要發問</a>
-                </li>
-            </ul>
-        <div class="clear"></div>
-        {% for post in posts %}
-        <a href="{% url 'post_detail' pk=post.pk %}" data-id="{{ post.pk }}" class="showModal">
-            <div class="col-lg-12 col-md-12 col-sm-12 content" >
-
-                <div class="col-lg-2 col-md-2 col-sm-2" >
-                    <div class="badge">1234</div>
-                </div>
-            
-                <div class="col-lg-10 col-md-10 col-sm-10 " style="padding-top: 2%;">
-                    <p style="color:black;font-size:24px;letter-spacing: 2px;line-height:24px;padding-top: 14px;font-weight:600;opacity: 0.8;" >{{ post.post_title }}</p>
-
-                    <h5 style="color:#7d7d7d;letter-spacing:1px;font-size:18px;margin-bottom: 0px;margin-top: 15px;">
-                    {{ post.post_question }}
-                    </h5>
-
-                    <div style="float:right;margin-right:3%"">
-                        <i class="fa fa-commenting-o" style="color:#56A690;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
+                    <a class="butt"><div class="buttons">熱門</div></a>
+                    <a class="butt"><div class="buttons">最新</div></a>
+                    <a class="butt"><div class="buttons">個人</div></a>
+                    <a class="post" data-toggle="modal" href="#theModal" >Post</a>
+                            <!--位置跑掉問題-->
+                    <div class="buttons_search">
+                        <a class = "search">
+                            <img class="search_img" src="{% static 'img/search.png' %}">
+                            <input class="find" type="text" placeholder="對某句話有疑惑嘛?">
+                        </a>
                     </div>
-                    <div style="float:right;margin-right:3%"">
-                        <i class="fa fa-thumbs-up " style="color:#56A690;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
-                    </div>           
+                            <!--位置跑掉問題-->
+                </li>
+ 
+            </ul>
+        <!--/div-->
+        
+        <div class="clear"></div>
+        
+        <a class="block" data-toggle="modal" href="#contentModal">
+            <div class="cont1">
+                <img class="views" src="{% static 'img/about/1.jpg' %}">
+                <img class="header" src="{% static 'img/about/3.jpg' %}">
+                <div class="text">
+                    <h3 class="title">Example</h3>
+                    <small><p class="sec">Go to see content example page.</p></small>
                 </div>
-
-            </div> 
-            <hr>
-        </a>   
+            </div>
+        </a>
+        {% for post in posts %}
+        <div class="clear"></div>
+        <div class="cont2">
+            <img class="views" src="{% static 'img/about/1.jpg' %}">
+            <img class="header" src="{% static 'img/about/3.jpg' %}">
+            <div class="text">
+                <h3 class="title">{{ post.post_title }}</h3>
+                <small><p class="sec">{{ post.post_question }}</p></small>
+            </div>            
+        </div>
         {% endfor %}
+        
     </div>
-    <div  class="col-lg-1 col-md-1 col-sm-1" >
-
-    </section>
+    <div class = "col-md-2"></div>
+    <!--div class="col-md-3 achievement">
+        <div id = "box" class="box">
+            <div class="box_inside" >
+                <img class="medal" src="img/medal.png">
+            </div>
+        </div>
+    </div-->
     <div class="clear"></div>
 
     <!-- Post -->
@@ -296,7 +317,12 @@ function statusChangeCallback(response) {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header" style="">
-                    <button type="button" class="close" data-dismiss="modal">X</button>         
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                    
+                      
+                    
+               
+                          
                 </div>
 
                 <div class="modal-body">
@@ -322,7 +348,7 @@ function statusChangeCallback(response) {
                                 </select>
                                 </div>
 
-                                      
+                                           
                                 <input type="text" class="form-control col-lg-8" style="width:70%;height:40px;font-size:18px; " placeholder="他說..."   name="content0"  >
                             </div>
                             <div class = "col-lg-2"></div>
@@ -380,125 +406,122 @@ function statusChangeCallback(response) {
 
     <!-- contentModal -->
     <div id="contentModal" class="modal fade">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">X</button>       
                 </div>
-                <div class="modal-body">
-                    <!-- <div class="midmid">
-                        <div class="poster-info">
-                            <div class="poster-avatar float-left"><img width="40" height="40" src="{% static 'img/male.png'%}"></div>
-                            <div class="postername float-left">師大林俊傑</div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="post-title">我是不是做錯了什麼？</div>
-                        <div class="post-content">
-                            <div class="dialog">
-                                <div class="content-chat">
-                                    {% for item in str_part %}
-                                        {% if forloop.counter|divisibleby:2 %}
-                                        <div class="message-border message_1">
-                                            <div class="content-avatar-left float-left"><img width="70" height="70" src="{% static 'img/male.png'%}"></div>
-                                            <div class="guess content-textdata-left float-left">{{item}}</div>
-                                            <div class="clear"></div>
-                                        </div>
-                                        {% endif %}
-                                    {% endfor %}
+                <div class="mid">
+                    <div class="poster-info">
+                        <div class="poster-avatar float-left"><img width="40" height="40" src="{% static 'img/male.png'%}"></div>
+                        <div class="postername float-left">師大林俊傑</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="post-title">我是不是做錯了什麼？</div>
+                    <div class="post-content">
+                        <div class="content">
+                            <div class="content-chat">
+                                {% for item in str_part %}
+                                    {% if forloop.counter|divisibleby:2 %}
+                                    <div class="message-border message_1">
+                                        <div class="content-avatar-left float-left"><img width="70" height="70" src="{% static 'img/male.png'%}"></div>
+                                        <div class="guess content-textdata-left float-left">{{item}}</div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="content-chat-footer">                   
+                                <div class="post-info float-left">
+                                    <span class="post-like">
+                                        <a href=""><i class="fa fa-heart-o fa-lg"></i></a>987 喜歡
+                                    </span>
+                                    <span class="facebook-share">
+                                            <a href=""><i class="fa fa-facebook-square fa-lg"></i>分享</a>
+                                    </span>
                                 </div>
-                                <div class="content-chat-footer">                   
-                                    <div class="post-info float-left">
-                                        <span class="post-like">
-                                            <a href=""><i class="fa fa-heart-o fa-lg"></i></a>987 喜歡
-                                        </span>
-                                        <span class="facebook-share">
-                                                <a href=""><i class="fa fa-facebook-square fa-lg"></i>分享</a>
-                                        </span>
-                                    </div>
-                                    <a class="Show-result-button float-right" data-toggle="collapse"  href="#resultBorder">顯示結果</a>
-                                    <div style="height: 0;" class="clear"></div>
-                                    <div id="resultBorder" class="collapse float-right">
-                                        <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions1.jpg'%}" class="img-responsive img-circle" alt="emotion"></div>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100" style="width:11%">
-                                            </div>
-                                        </div>
-
-                                        <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions2.jpg'%}" class="img-responsive img-circle" alt="emotion"></div>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="51" aria-valuemin="0" aria-valuemax="100" style="width:51%">
-                                            </div>
-                                        </div>
-
-                                        <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions3.jpg'%}" class="img-responsive img-circle" alt=""></div>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width:2%">
-                                            </div>
-                                        </div>
-
-                                        <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions4.jpg'%}" class="img-responsive img-circle" alt=""></div>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100" style="width:6%">
-                                            </div>
-                                        </div>
-
-                                        <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions5.jpg'%}" class="img-responsive img-circle" alt=""></div>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width:1%">
-                                            </div>
+                                <a class="Show-result-button float-right" data-toggle="collapse"  href="#resultBorder">顯示結果</a>
+                                <div style="height: 0;" class="clear"></div>
+                                <div id="resultBorder" class="collapse float-right">
+                                    <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions1.jpg'%}" class="img-responsive img-circle" alt="emotion"></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100" style="width:11%">
                                         </div>
                                     </div>
-                                </div> 
-                                
-                                
-                                <div class="comments">
-                                    <div class="comment-title"><h3>評論</h3></div>
-                                    <div class="comment">
-                                        {% for cmt in comments %}
-                                        <div class="comment-border">
-                                            <div class="personalinfo float-left">
-                                                <div class="comment-avatar float-left">
-                                                    <img width="70" height="70" src="{% static 'img/male.png'%}">
-                                                </div>
-                                                <div class="comment-emotion float-left">
-                                                    {{cmt.comment_emotion}}
-                                                </div>
-                                                <div class="clear"></div>
-                                                <div class="username">WoWoo使用者</div>
+
+                                    <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions2.jpg'%}" class="img-responsive img-circle" alt="emotion"></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="51" aria-valuemin="0" aria-valuemax="100" style="width:51%">
+                                        </div>
+                                    </div>
+
+                                    <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions3.jpg'%}" class="img-responsive img-circle" alt=""></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width:2%">
+                                        </div>
+                                    </div>
+
+                                    <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions4.jpg'%}" class="img-responsive img-circle" alt=""></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100" style="width:6%">
+                                        </div>
+                                    </div>
+
+                                    <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions5.jpg'%}" class="img-responsive img-circle" alt=""></div>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width:1%">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                            
+                            
+                            <div class="comments">
+                                <div class="comment-title"><h3>評論</h3></div>
+                                <div class="comment">
+                                    {% for cmt in comments %}
+                                    <div class="comment-border">
+                                        <div class="personalinfo float-left">
+                                            <div class="comment-avatar float-left">
+                                                <img width="70" height="70" src="{% static 'img/male.png'%}">
                                             </div>
-                                            <div class="comment-textdata float-left">{{cmt.comment_content}}</div>
-                                            <div class="comment-menu float-right">
-                                                <a href="#commentMenu_{{ forloop.counter }}" data-toggle="collapse"><i class="fa fa-chevron-down fa-l"  aria-hidden="true"></i></a>
-                                                <div id="commentMenu_{{ forloop.counter }}" class="collapse">
-                                                    <a href="#">檢舉</a>
-                                                </div>
+                                            <div class="comment-emotion float-left">
+                                                {{cmt.comment_emotion}}
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="username">{{cmt.comment_name}}</div>
+                                        </div>
+                                        <div class="comment-textdata float-left">{{cmt.comment_content}}</div>
+                                        <div class="comment-menu float-right">
+                                            <a href="#commentMenu_{{ forloop.counter }}" data-toggle="collapse"><i class="fa fa-chevron-down fa-l" aria-hidden="true"></i></a>
+                                            <div id="commentMenu_{{ forloop.counter }}" class="collapse">
+                                                <a href="#">檢舉</a>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    {% endfor %}
+
+                                    <div class="comment-border myComment">
+                                        <div class="personalinfo float-left">
+                                            <div class="myEmotion float-left">
+                                                <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions1.jpg'%}" class="emotion img-responsive img-circle"></a>
+                                                <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions2.jpg'%}" class="emotion img-responsive img-circle"></a>
+                                                <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions3.jpg'%}" class="emotion img-responsive img-circle"></a>
+                                                <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions4.jpg'%}" class="emotion img-responsive img-circle"></a>
+                                                <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions5.jpg'%}" class="emotion img-responsive img-circle"></a>
                                             </div>
                                             <div class="clear"></div>
                                         </div>
-                                        {% endfor %}
-
-                                        <form class="comment-border myComment" action="/comment/" method="COMMENT"  role="form">
-                                            {% csrf_token %}
-                                            <div class="personalinfo float-left">
-                                                <div class="myEmotion float-left">
-                                                    <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions3.jpg'%}" class="emotion img-responsive img-circle float-left"></a>
-                                                    <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions7.jpg'%}" class="emotion img-responsive img-circle float-left"></a>
-                                                    <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions9.jpg'%}" class="emotion img-responsive img-circle float-left"></a>
-                                                    <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions10.jpg'%}" class="emotion img-responsive img-circle float-left"></a>
-                                                    <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions11.jpg'%}" class="emotion img-responsive img-circle float-left"></a>
-                                                </div>
-                                                <div class="clear"></div>
-                                            </div>
-                                            <textarea class="comment-textarea" rows="10" placeholder="寫些評論吧！..." required></textarea> 
-                                            <button type="submit" class="Submit-comment-button float-right">送出</button>
-                                            <div class="clear"></div>
-                                        </form>
+                                        <textarea class="comment-textarea" rows="8" cols="40" placeholder="選擇你認為的表情或是再留下評論..." required></textarea>
+                                        <a class="Submit-comment-button float-right" href="#">送出</a>
+                                        <div class="clear"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="clear"></div>
-                    </div> -->
+                    </div>
+                    <div class="clear"></div>
                 </div>
             </div>
         </div>
@@ -523,9 +546,6 @@ function statusChangeCallback(response) {
     
     <!-- Fixed the sidebar -->
     <script src="{% static 'js/Ray.js' %}" type="text/JavaScript"></script>
-
-    <!-- Dynamic modal-->
-    <script src="{% static 'js/Sewen.js' %}" type="text/JavaScript"></script>
     
 </body>
 
