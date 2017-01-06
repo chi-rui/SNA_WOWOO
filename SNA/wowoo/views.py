@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.encoding import smart_text
 from .models import wowoo
-from .models import Post
+from .models import Post, Comment
 
 # Create your views here.
 def getuserid(request) : 
@@ -27,16 +27,17 @@ def getuserid(request) :
     return HttpResponse(get_id)     
 
 def logined(request):
-	user = wowoo.objects.all()
-	context={
-		"users" : user,
-	}
+    user = wowoo.objects.all()
+    context={
+        "users" : user,
+    }
 
-	return render(request, 'wowoo/wowoo_login.html',context)
+    return render(request, 'wowoo/wowoo_login.html',context)
 
 def home(request):
     post = Post.objects.all()
     user = wowoo.objects.all()
+    cmt = Comment.objects.all()
 
     obj = Post.objects.get(pk=17)
     # print obj
@@ -53,6 +54,7 @@ def home(request):
     context = {
         "posts" : post,
         "users" : user,
+        "comments" : cmt ,
         "str_part" : str_part,
         "loop_times" : loop_times,
     }
@@ -129,4 +131,17 @@ def post(request):
             post_content = local_content,
             )
     return HttpResponseRedirect('http://localhost:8000/')
+
+def post_detail(request, pk):
+    cmt = Comment.objects.filter(pk = pk)
+    post = Post.objects.get(pk = pk)
+
+    str_part = post.post_content.split('###')
+
+    context = {
+        "comments" : cmt,
+        "post" : post,
+        "str_part" : str_part,
+    }
+    return render(request, 'wowoo/content.html',context)
 
