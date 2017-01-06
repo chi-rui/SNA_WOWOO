@@ -35,7 +35,7 @@ def logined(request):
     return render(request, 'wowoo/wowoo_login.html',context)
 
 def home(request):
-    post = Post.objects.all()
+    post = Post.objects.all().order_by("-post_date")
     user = wowoo.objects.all()
     cmt = Comment.objects.all()
 
@@ -133,13 +133,13 @@ def post(request):
     return HttpResponseRedirect('http://localhost:8000/')
 
 def post_detail(request, pk):
-    cmt = Comment.objects.filter(pk = pk)
+    # cmt = Comment.objects.filter(pk = pk)
     post = Post.objects.get(pk = pk)
 
     str_part = post.post_content.split('###')
 
     context = {
-        "comments" : cmt,
+        # "comments" : cmt,
         "post" : post,
         "str_part" : str_part,
     }
