@@ -279,16 +279,6 @@ function statusChangeCallback(response) {
         
         <div class="clear"></div>
         
-        <a class="block" data-toggle="modal" href="#contentModal">
-            <div class="cont1">
-                <img class="views" src="{% static 'img/about/1.jpg' %}">
-                <img class="header" src="{% static 'img/about/3.jpg' %}">
-                <div class="text">
-                    <h3 class="title">Example</h3>
-                    <small><p class="sec">Go to see content example page.</p></small>
-                </div>
-            </div>
-        </a>
         {% for post in posts %}
         <div class="clear"></div>
         <a href="{% url 'post_detail' pk=post.pk %}" data-id="{{ post.pk }}" class="showModal">
@@ -345,7 +335,7 @@ function statusChangeCallback(response) {
                                 </select>
                                 </div>
 
-                                           
+                                      
                                 <input type="text" class="form-control col-lg-8" style="width:70%;height:40px;font-size:18px; " placeholder="他說..."   name="content0"  >
                             </div>
                             <div class = "col-lg-2"></div>
@@ -409,7 +399,7 @@ function statusChangeCallback(response) {
                     <button type="button" class="close" data-dismiss="modal">X</button>       
                 </div>
                 <div class="modal-body">
-                    <div class="midmid">
+                    <!-- <div class="midmid">
                         <div class="poster-info">
                             <div class="poster-avatar float-left"><img width="40" height="40" src="{% static 'img/male.png'%}"></div>
                             <div class="postername float-left">師大林俊傑</div>
@@ -487,11 +477,11 @@ function statusChangeCallback(response) {
                                                     {{cmt.comment_emotion}}
                                                 </div>
                                                 <div class="clear"></div>
-                                                <div class="username">{{cmt.comment_name}}</div>
+                                                <div class="username">WoWoo使用者</div>
                                             </div>
                                             <div class="comment-textdata float-left">{{cmt.comment_content}}</div>
                                             <div class="comment-menu float-right">
-                                                <a href="#commentMenu_{{ forloop.counter }}" data-toggle="collapse"><i class="fa fa-chevron-down fa-l" aria-hidden="true"></i></a>
+                                                <a href="#commentMenu_{{ forloop.counter }}" data-toggle="collapse"><i class="fa fa-chevron-down fa-l"  aria-hidden="true"></i></a>
                                                 <div id="commentMenu_{{ forloop.counter }}" class="collapse">
                                                     <a href="#">檢舉</a>
                                                 </div>
@@ -512,8 +502,8 @@ function statusChangeCallback(response) {
                                                 </div>
                                                 <div class="clear"></div>
                                             </div>
-                                            <textarea class="comment-textarea" placeholder="選擇你認為的表情或是再留下評論..." required></textarea> 
-                                            <a class="Submit-comment-button float-right" href="#">送出</a>
+                                            <textarea class="comment-textarea" rows="10" placeholder="寫些評論吧！..." required></textarea> 
+                                            <button type="submit" class="Submit-comment-button float-right">送出</button>
                                             <div class="clear"></div>
                                         </form>
                                     </div>
@@ -521,7 +511,7 @@ function statusChangeCallback(response) {
                             </div>
                         </div>
                         <div class="clear"></div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
