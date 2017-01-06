@@ -19,7 +19,13 @@ class post(admin.ModelAdmin) :
 admin.site.register(Post,post)
 
 class comment(admin.ModelAdmin) :
-    list_display = ['id','comment_emotion','comment_name','comment_content','comment_wows','comment_date']
+    list_display = ['id','comment_emotion','comment_name','comment_content','comment_wows','comment_date','get_postpk']
+    
+    def get_postpk(self, obj):
+    	return obj.post.pk
+    get_postpk.admin_order_field = 'post' #Allows column order sorting
+    get_postpk.short_description = 'post' #Renames column head
+
     class Meta : 
         model = Comment
         

@@ -37,26 +37,24 @@ def logined(request):
 def home(request):
     post = Post.objects.all().order_by("-post_date")
     user = wowoo.objects.all()
-    cmt = Comment.objects.all()
 
-    obj = Post.objects.get(pk=17)
+    # obj = Post.objects.get(pk)
     # print obj
     # print obj.post_content
-    str_part = obj.post_content.split('###')
+    # str_part = obj.post_content.split('###')
     # n = 0
-    sub_num = len(str_part)-1
+    # sub_num = len(str_part)-1
     # while n < len(str_part)-1:
     #     print str_part[n]
     #     n += 1
-    loop_times = range(0,int(sub_num)-1)
-    print str_part
-    print sub_num
+    # loop_times = range(0,int(sub_num)-1)
+    # print str_part
+    # print sub_num
     context = {
         "posts" : post,
         "users" : user,
-        "comments" : cmt ,
-        "str_part" : str_part,
-        "loop_times" : loop_times,
+        # "str_part" : str_part,
+        # "loop_times" : loop_times,
     }
     return render(request, 'wowoo/index.html',context)
     
@@ -137,7 +135,7 @@ def post_detail(request, pk):
     
     str_part = post.post_content.split('###')
 
-    cmt = Comment.objects.filter(pk = post.pk)
+    cmt = Comment.objects.filter(post = pk)
     
     context = {
         "post" : post,
@@ -147,7 +145,17 @@ def post_detail(request, pk):
     return render(request, 'wowoo/content.html',context)
 
 def comment(request):
-    if request.method == 'COMMENT':
+    if request.method == 'POST':
+
+        local_postPk = request.POST['postPk']
 
         local_comment_content = request.POST['comment-textarea']
+
+        Comment.objects.create(
+
+            comment_content = local_comment_content,
+            post = Post.objects.get(pk = local_postPk),
+
+            )
+    return HttpResponseRedirect('http://localhost:8000/')
     

@@ -33,6 +33,7 @@ class Comment(models.Model):
     comment_content = models.TextField(null = True, blank=True)
     comment_wows = models.IntegerField(default=0)
     comment_date = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
     def comment(self):
         return "comment"

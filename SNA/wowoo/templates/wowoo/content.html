@@ -152,7 +152,7 @@
                             </div>
                             {% endfor %}
 
-                            <form class="comment-border myComment" action="/comment/" method="COMMENT"  role="form">
+                            <form class="comment-border myComment" action="/comment/" method="POST"  role="form">
                                 {% csrf_token %}
                                 <div class="personalinfo float-left">
                                     <div class="myEmotion float-left">
@@ -164,8 +164,8 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                <textarea class="comment-textarea" rows="10" placeholder="寫些評論吧！..." required></textarea> 
-                                <button type="submit" class="Submit-comment-button float-right">送出</button>
+                                <textarea class="comment-textarea" name="comment-textarea" rows="10" placeholder="寫些評論吧！..." required></textarea> 
+                                <button type="submit" name="postPk" class="Submit-comment-button float-right" value="{{ post.pk }}">送出</button>
                                 <div class="clear"></div>
                             </form>
                         </div>
