@@ -12,7 +12,7 @@ body {
     background-color: #a9dbdb;
     height: 100%;
     overflow-x: hidden;
-    font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Microsoft JhengHei", "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
     padding:0;
     margin:0;
     font-family:Microsoft JhengHei;
@@ -1085,6 +1085,10 @@ body {
   webkit-tap-highlight-color: #18aa8d;
 }
 
+a:focus, a:hover{
+  color: #fff;
+}
+
 .mid {
   margin-top: 75px;
   border-radius: 7.5px;
@@ -1286,9 +1290,9 @@ body {
     font-size: 20px;
 }
 
-.Show-result-button:hover, .Show-result-button:active, .Show-result-button:visited , .{
-  background-color: #66A1D2;
+.Show-result-button:hover{
   color: #FFFFFF;
+  background-color: #5ED2B8;
 }
 
 #resultBorder{
@@ -1311,6 +1315,7 @@ body {
 }
 
 .comment-title h3{
+  font-family: "Microsoft JhengHei", "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0 0 20px 0;
   background-color: #fff;
   border-bottom: 1px solid hsl(0, 0%, 92.5%);
@@ -1408,6 +1413,12 @@ body {
   max-width: 50%;
 }
 
+.comment-textarea textarea{
+  white-space: nowrap;
+  overflow: hidden;
+  resize: none;
+}
+
 .Submit-comment-button{
     background-color: #00A480;
     border: none;
@@ -1420,7 +1431,7 @@ body {
     font-size: 20px;
 }
 
-.Submit-comment-button::hover{
-  background-color: #5ED2B8;
+.Submit-comment-button:hover{
   color: #FFFFFF;
+  background-color: #5ED2B8;
 }  

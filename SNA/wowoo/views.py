@@ -133,15 +133,29 @@ def post(request):
     return HttpResponseRedirect('http://localhost:8000/')
 
 def post_detail(request, pk):
+<<<<<<< HEAD
     # cmt = Comment.objects.filter(pk = pk)
+=======
+>>>>>>> master
     post = Post.objects.get(pk = pk)
-
+    
     str_part = post.post_content.split('###')
 
+    cmt = Comment.objects.filter(pk = post.pk)
+    
     context = {
+<<<<<<< HEAD
         # "comments" : cmt,
+=======
+>>>>>>> master
         "post" : post,
         "str_part" : str_part,
+        "comments" : cmt,
     }
     return render(request, 'wowoo/content.html',context)
 
+def comment(request):
+    if request.method == 'COMMENT':
+
+        local_comment_content = request.POST['comment-textarea']
+    
