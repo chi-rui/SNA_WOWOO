@@ -1,9 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.encoding import smart_text
 from .models import wowoo
 from .models import Post, Comment
-
 # Create your views here.
 def getuserid(request) : 
     if request.method == 'GET':
@@ -35,28 +34,28 @@ def logined(request):
     return render(request, 'wowoo/wowoo_login.html',context)
 
 def home(request):
-    post = Post.objects.all().order_by("-post_date")
+    post = Post.objects.all().order_by("post_date")
     user = wowoo.objects.all()
     cmt = Comment.objects.all()
 
-    obj = Post.objects.get(pk=17)
+    # obj = Post.objects.get(pk=17)
     # print obj
     # print obj.post_content
-    str_part = obj.post_content.split('###')
+    # str_part = obj.post_content.split('###')
     # n = 0
-    sub_num = len(str_part)-1
+    # sub_num = len(str_part)-1
     # while n < len(str_part)-1:
     #     print str_part[n]
     #     n += 1
-    loop_times = range(0,int(sub_num)-1)
-    print str_part
-    print sub_num
+    # loop_times = range(0,int(sub_num)-1)
+    # print str_part
+    # print sub_num
     context = {
         "posts" : post,
         "users" : user,
         "comments" : cmt ,
-        "str_part" : str_part,
-        "loop_times" : loop_times,
+        # "str_part" : str_part,
+        # "loop_times" : loop_times,
     }
     return render(request, 'wowoo/index.html',context)
     
@@ -98,7 +97,7 @@ def post(request):
         
         # Get specific question
         local_option = request.POST['optradio']
-        
+
         # Get title
         local_title = request.POST['post_title']
         
@@ -151,3 +150,25 @@ def comment(request):
 
         local_comment_content = request.POST['comment-textarea']
     
+def sort_post(request): 
+    if request.method == "POST" and request.is_ajax():
+        field = request.POST['field']      
+        if field == 'new':
+            post = Post.objects.all().order_by("-post_date")
+        elif field == 'hot':
+            post = Post.objects.all().order_by("-likes")
+        else:
+            post = Post.objects.all().order_by("post_date")
+        print "field: " + field
+        print "OOOOOOOO in !"
+    else:
+        print "XXXXXXXX no in"
+
+    user = wowoo.objects.all()
+    cmt = Comment.objects.all()
+    context = {
+        "posts" : post,
+        "users" : user,
+        "comments" : cmt,
+    }
+    return render_to_response('wowoo/index.html', context)

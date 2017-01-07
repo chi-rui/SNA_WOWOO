@@ -249,42 +249,47 @@ function statusChangeCallback(response) {
     </div>
        
     <div id = "xuan" class="col-lg-6 col-md-6 col-sm-6">
+        <form id="title_dialog">
             <ul>
                 <li>
-                    <div id="butt1" class="butt buttons">熱門</div>
-                    <div id="butt2" class="butt buttons">最新</div>
-                    <div id="butt3" class="butt buttons">個人</div>
+                    <a id="butt1" name="butt" value="new" class="butt buttons">熱門</a>
+                    <a id="butt2" name="butt" value="own" class="butt buttons">最新</a>
+                    <a id="butt3" name="butt" value="hot" class="butt buttons">個人</a>
                     <a class="post" data-toggle="modal" href="#theModal">我要發問</a>
                 </li>
             </ul>
-        <div class="clear"></div>
-        {% for post in posts %}
-        <a href="{% url 'post_detail' pk=post.pk %}" data-id="{{ post.pk }}" class="showModal">
-            <div class="col-lg-12 col-md-12 col-sm-12 content" >
+            <div class="clear"></div>
+            <div id="content_block">
+                {% csrf_token %}  
+                {% for post in posts %}
+                <a href="{% url 'post_detail' pk=post.pk %}" data-id="{{ post.pk }}" class="showModal">
+                    <div class="col-lg-12 col-md-12 col-sm-12 content" >
 
-                <div class="col-lg-2 col-md-2 col-sm-2" >
-                    <div class="badge">1234</div>
-                </div>
-            
-                <div class="col-lg-10 col-md-10 col-sm-10 " style="padding-top: 2%;">
-                    <p style="color:black;font-size:24px;letter-spacing: 2px;line-height:24px;padding-top: 14px;font-weight:600;opacity: 0.8;" >{{ post.post_title }}</p>
+                        <div class="col-lg-2 col-md-2 col-sm-2" >
+                            <div class="badge">1234</div>
+                        </div>
+                    
+                        <div class="col-lg-10 col-md-10 col-sm-10 " style="padding-top: 2%;">
+                            <p style="color:black;font-size:24px;letter-spacing: 2px;line-height:24px;padding-top: 14px;font-weight:600;opacity: 0.8;" >{{ post.post_title }}</p>
 
-                    <h5 style="color:#7d7d7d;letter-spacing:1px;font-size:18px;margin-bottom: 0px;margin-top: 15px;">
-                    {{ post.post_question }}
-                    </h5>
+                            <h5 style="color:#7d7d7d;letter-spacing:1px;font-size:18px;margin-bottom: 0px;margin-top: 15px;">
+                            {{ post.post_question }}
+                            </h5>
 
-                    <div style="float:right;margin-right:3%"">
-                        <i class="fa fa-commenting-o" style="color:#56A690;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
-                    </div>
-                    <div style="float:right;margin-right:3%"">
-                        <i class="fa fa-thumbs-up " style="color:#56A690;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
-                    </div>           
-                </div>
+                            <div style="float:right;margin-right:3%"">
+                                <i class="fa fa-commenting-o" style="color:#56A690;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
+                            </div>
+                            <div style="float:right;margin-right:3%"">
+                                <i class="fa fa-thumbs-up " style="color:#56A690;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
+                            </div>           
+                        </div>
 
-            </div> 
-            <hr>
-        </a>   
-        {% endfor %}
+                    </div> 
+                    <hr>
+                </a>   
+                {% endfor %}
+            </div>
+        </form>
     </div>
     <div  class="col-lg-1 col-md-1 col-sm-1" >
 
