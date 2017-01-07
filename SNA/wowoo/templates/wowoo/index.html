@@ -133,7 +133,7 @@ function statusChangeCallback(response) {
             FB.api('/me/picture?width=240&height=240', function(response) {
                 userpicture = response.data.url;
              
-                    
+                console.log("in")
                 $.get('/getuserid/',{
                     userId: user_Id,
                     userName: user_name,
@@ -165,7 +165,7 @@ function statusChangeCallback(response) {
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul>
                     <li>
-                        <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login" href="/logined/"><b>登入</b></a>
+                        <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login"><b>登入</b></a>
                          <div id="status" class="hidden" ></div><!-- Your like button code -->
                     </li>
                     <li>
@@ -390,7 +390,7 @@ function statusChangeCallback(response) {
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">X</button>
                 </div>
-                <div class="modal-body"></div>
+                <div class="modal-body" data-postURL=""></div>
             </div>
         </div>
     </div>

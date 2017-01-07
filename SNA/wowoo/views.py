@@ -1,7 +1,7 @@
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.encoding import smart_text
-from .models import wowoo
+from .models import Wowoo
 from .models import Post, Comment
 # Create your views here.
 def getuserid(request) : 
@@ -11,12 +11,12 @@ def getuserid(request) :
         get_picture = request.GET['userPicture']
         get_email = request.GET['userEmail']
         
-        if wowoo.objects.filter(user_id = get_id).exists():
+        if Wowoo.objects.filter(user_id = get_id).exists():
             
             print "exists" 
         
         else: 
-            wowoo.objects.create(
+            Wowoo.objects.create(
                 user_id = get_id,
                 user_name = get_name,
                 user_picture = get_picture,
@@ -26,19 +26,19 @@ def getuserid(request) :
     return HttpResponse(get_id)     
 
 def logined(request):
-    user = wowoo.objects.all()
+    user = Wowoo.objects.all()
     context={
         "users" : user,
     }
-
+    print user
     return render(request, 'wowoo/wowoo_login.html',context)
 
 def home(request):
     post = Post.objects.all().order_by("-likes")
-    user = wowoo.objects.all()
-    cmt = Comment.objects.all()
+    user = Wowoo.objects.all()
 
-    # obj = Post.objects.get(pk=17)
+
+    # obj = Post.objects.get(pk)
     # print obj
     # print obj.post_content
     # str_part = obj.post_content.split('###')
@@ -53,7 +53,6 @@ def home(request):
     context = {
         "posts" : post,
         "users" : user,
-        "comments" : cmt ,
         # "str_part" : str_part,
         # "loop_times" : loop_times,
     }
@@ -61,7 +60,7 @@ def home(request):
     
 def test(request):
     post = Post.objects.all()
-    user = wowoo.objects.all()
+    user = Wowoo.objects.all()
     context = {
         "posts" : post,
         "users" : user,
@@ -136,7 +135,7 @@ def post_detail(request, pk):
     
     str_part = post.post_content.split('###')
 
-    cmt = Comment.objects.filter(pk = post.pk)
+    cmt = Comment.objects.filter(post = pk)
     
     context = {
         "post" : post,
@@ -146,9 +145,17 @@ def post_detail(request, pk):
     return render(request, 'wowoo/content.html',context)
 
 def comment(request):
-    if request.method == 'COMMENT':
+    if request.method == 'POST':
+
+        local_postPk = request.POST['postPk']
 
         local_comment_content = request.POST['comment-textarea']
+
+        Comment.objects.create(
+            comment_content = local_comment_content,
+            post = Post.objects.get(pk = local_postPk),
+        )
+        return HttpResponseRedirect('http://localhost:8000/')
     
 def sort_post(request): 
     if request.method == "POST" and request.is_ajax():
@@ -164,7 +171,7 @@ def sort_post(request):
     else:
         print "XXXXXXXX no in"
 
-    user = wowoo.objects.all()
+    user = Wowoo.objects.all()
     cmt = Comment.objects.all()
     context = {
         "posts" : post,
@@ -172,3 +179,4 @@ def sort_post(request):
         "comments" : cmt,
     }
     return render_to_response('wowoo/index.html', context)
+

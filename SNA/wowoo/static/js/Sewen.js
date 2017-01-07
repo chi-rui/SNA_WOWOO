@@ -11,10 +11,13 @@ jQuery(function($){
         $.get('/post/' + postPk, function(html){
             var post_detail = $(html).find("#post");
             $('#contentModal .modal-body').html(post_detail);
+            $('div.modal-body').attr('data-postURL', '/post/' + postPk);
             $('#contentModal').modal('show', {backdrop: 'static'});
         });
     });
 });
+
+
 
 /*	Press Enter in textarea
 	
