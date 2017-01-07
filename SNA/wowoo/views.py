@@ -34,7 +34,7 @@ def logined(request):
     return render(request, 'wowoo/wowoo_login.html',context)
 
 def home(request):
-    post = Post.objects.all().order_by("post_date")
+    post = Post.objects.all().order_by("-likes")
     user = wowoo.objects.all()
     cmt = Comment.objects.all()
 
