@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 # User data table.
-class wowoo(models.Model):
+class Wowoo(models.Model):
     user_id = models.CharField(max_length=200,null = True,blank = True )
     user_name = models.CharField(max_length=200,null=True,blank=True)
     user_picture = models.URLField(max_length=200,null = True,blank = True)
@@ -12,7 +12,7 @@ class wowoo(models.Model):
     user_achievement = models.IntegerField(default=0)
      
     def key(self):
-        return "wowoo"
+        return "Wowoo"
 
 # Post data table        
 class Post(models.Model):
@@ -22,7 +22,7 @@ class Post(models.Model):
     post_date = models.DateTimeField(auto_now_add = True,auto_now = False)
     post_emotions = models.PositiveIntegerField(default=0)
     likes = models.PositiveIntegerField(default=0)
-    
+    wowoo = models.ForeignKey(Wowoo, on_delete=models.CASCADE, null=True)
     def post(self):
         return "post"
 
