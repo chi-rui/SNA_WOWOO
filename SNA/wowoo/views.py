@@ -168,7 +168,7 @@ def sort_post(request):
             post = Post.objects.all().order_by("post_date")
         # print "field: " + field
         # print "OOOOOOOO in !"
-    else:
+    # else:
         # print "XXXXXXXX no in"
 
     user = Wowoo.objects.all()
@@ -179,10 +179,3 @@ def sort_post(request):
         "comments" : cmt,
     }
     return render_to_response('wowoo/index.html', context)
-
-<<<<<<< HEAD
-            )
-    return HttpResponse(status=204)
-    
-=======
->>>>>>> 695c581b69e46738dc880a9f00c7e8361bf81e0e
