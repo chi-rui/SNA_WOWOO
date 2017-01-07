@@ -167,6 +167,8 @@ ul{
     float: right;
     text-align: center;
     border-radius: 10%;
+    text-decoration: none;
+    cursor: default;
 }
 .butt:hover{
     background-color: #38caad;

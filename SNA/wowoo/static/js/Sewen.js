@@ -11,10 +11,28 @@ jQuery(function($){
         $.get('/post/' + postPk, function(html){
             var post_detail = $(html).find("#post");
             $('#contentModal .modal-body').html(post_detail);
+            $('div.modal-body').attr('data-postURL', '/post/' + postPk);
             $('#contentModal').modal('show', {backdrop: 'static'});
         });
     });
 });
+
+
+
+jQuery(function($){
+    $('form.myComment').submit(function(ev){
+        ev.preventDefault();
+        alert('test');
+        $.ajax({
+            type: 'POST',
+            url: '/comment/',
+            data: $(this).serialize(),
+
+        });
+    });
+});
+
+
 
 /*	Press Enter in textarea
 	
