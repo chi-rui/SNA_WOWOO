@@ -130,7 +130,7 @@
                         <div class="comment-title"><h3>評論</h3></div>
                         <div class="comment">
                             {% for cmt in comments %}
-                            <div class="comment-border">
+                            <div class="comment-border" id="{{ cmt.pk }}">
                                 <div class="personalinfo float-left">
                                     <div class="comment-avatar float-left">
                                         <img width="70" height="70" src="{% static 'img/male.png'%}">
@@ -152,7 +152,7 @@
                             </div>
                             {% endfor %}
 
-                            <form class="comment-border myComment" action="/comment/" method="POST"  role="form">
+                            <form class="comment-border myComment" action="" method="POST"  role="form">
                                 {% csrf_token %}
                                 <div class="personalinfo float-left">
                                     <div class="myEmotion float-left">

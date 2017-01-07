@@ -19,6 +19,21 @@ jQuery(function($){
 
 
 
+jQuery(function($){
+    $('form.myComment').submit(function(ev){
+        ev.preventDefault();
+        alert('test');
+        $.ajax({
+            type: 'POST',
+            url: '/comment/',
+            data: $(this).serialize(),
+
+        });
+    });
+});
+
+
+
 /*	Press Enter in textarea
 	
 	Reference:http://stackoverflow.com/questions/2099661/enter-key-in-textarea

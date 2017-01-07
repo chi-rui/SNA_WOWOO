@@ -157,5 +157,5 @@ def comment(request):
             post = Post.objects.get(pk = local_postPk),
 
             )
-    return HttpResponseRedirect('http://localhost:8000/')
+    return HttpResponse(status=204)
     
