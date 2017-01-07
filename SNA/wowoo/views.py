@@ -1,9 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.encoding import smart_text
-from .models import wowoo
+from .models import Wowoo
 from .models import Post, Comment
-
 # Create your views here.
 def getuserid(request) : 
     if request.method == 'GET':
@@ -12,12 +11,12 @@ def getuserid(request) :
         get_picture = request.GET['userPicture']
         get_email = request.GET['userEmail']
         
-        if wowoo.objects.filter(user_id = get_id).exists():
+        if Wowoo.objects.filter(user_id = get_id).exists():
             
             print "exists" 
         
         else: 
-            wowoo.objects.create(
+            Wowoo.objects.create(
                 user_id = get_id,
                 user_name = get_name,
                 user_picture = get_picture,
@@ -27,16 +26,17 @@ def getuserid(request) :
     return HttpResponse(get_id)     
 
 def logined(request):
-    user = wowoo.objects.all()
+    user = Wowoo.objects.all()
     context={
         "users" : user,
     }
-
+    print user
     return render(request, 'wowoo/wowoo_login.html',context)
 
 def home(request):
-    post = Post.objects.all().order_by("-post_date")
-    user = wowoo.objects.all()
+    post = Post.objects.all().order_by("-likes")
+    user = Wowoo.objects.all()
+
 
     # obj = Post.objects.get(pk)
     # print obj
@@ -60,7 +60,7 @@ def home(request):
     
 def test(request):
     post = Post.objects.all()
-    user = wowoo.objects.all()
+    user = Wowoo.objects.all()
     context = {
         "posts" : post,
         "users" : user,
@@ -96,7 +96,7 @@ def post(request):
         
         # Get specific question
         local_option = request.POST['optradio']
-        
+
         # Get title
         local_title = request.POST['post_title']
         
@@ -152,10 +152,31 @@ def comment(request):
         local_comment_content = request.POST['comment-textarea']
 
         Comment.objects.create(
-
             comment_content = local_comment_content,
             post = Post.objects.get(pk = local_postPk),
-
-            )
-    return HttpResponseRedirect('http://localhost:8000/')
+        )
+        return HttpResponseRedirect('http://localhost:8000/')
     
+def sort_post(request): 
+    if request.method == "POST" and request.is_ajax():
+        field = request.POST['field']      
+        if field == 'new':
+            post = Post.objects.all().order_by("-post_date")
+        elif field == 'hot':
+            post = Post.objects.all().order_by("-likes")
+        else:
+            post = Post.objects.all().order_by("post_date")
+        # print "field: " + field
+        # print "OOOOOOOO in !"
+    else:
+        # print "XXXXXXXX no in"
+
+    user = Wowoo.objects.all()
+    cmt = Comment.objects.all()
+    context = {
+        "posts" : post,
+        "users" : user,
+        "comments" : cmt,
+    }
+    return render_to_response('wowoo/index.html', context)
+

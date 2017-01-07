@@ -57,20 +57,57 @@ $(".box").click(function(){
 });
 
 //change hot/new/own sort
+var token = $('input[name="csrfmiddlewaretoken"]').prop('value');
 $("#butt1").click(function(){
+    //hot
+    $.ajax({
+        type:'POST',
+        url:'/sort/',
+        data: { 
+            'csrfmiddlewaretoken': token,
+            'field': "new", 
+        },
+        success:function(data){
+            var refreshParts = $(data).find('#content_block');
+            $('#content_block').html(refreshParts);
+        }
+    });
     $("#butt1").hide("medium");
-    // $("#butt1").addClass("hidden");
-    // $("#butt2").removeClass("hidden");
     $("#butt2").show("medium");
-    console.log("YA");
 });
 $("#butt2").click(function(){
+    //new
+    $.ajax({
+        type:'POST',
+        url:'/sort/',
+        data: { 
+            'csrfmiddlewaretoken': token,
+            'field': "own", 
+        },
+        success:function(data){
+            var refreshParts = $(data).find('#content_block');
+            $('#content_block').html(refreshParts);
+        }
+    });
     $("#butt2").hide("medium");
     // $("#butt2").addClass("hidden");
     // $("#butt3").removeClass("hidden");
     $("#butt3").show("medium");
 });
 $("#butt3").click(function(){
+    //own
+    $.ajax({
+        type:'POST',
+        url:'/sort/',
+        data: { 
+            'csrfmiddlewaretoken': token,
+            'field': "hot", 
+        },
+        success:function(data){
+            var refreshParts = $(data).find('#content_block');
+            $('#content_block').html(refreshParts);
+        }
+    });
     $("#butt3").hide("medium");
     // $("#butt3").addClass("hidden");
     // $("#butt1").removeClass("hidden");
