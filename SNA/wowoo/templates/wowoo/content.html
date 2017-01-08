@@ -79,9 +79,9 @@
                     <div class="content-chat">
                         {% for item in str_part %}
                             {% if forloop.counter|divisibleby:2 %}
-                                <div class="message-border message_1">
+                                <div class="message-border message_{% widthratio forloop.counter 2 1 %}">
                                     <div class="content-avatar-left float-left"><img width="70" height="70" src="{% static 'img/male.png'%}"></div>
-                                    <div class="guess content-textdata-left float-left">{{item}}</div>
+                                    <div class="content-textdata-left float-left">{{item}}</div>
                                     <div class="clear"></div>
                                 </div>
                             {% endif %}
@@ -129,30 +129,32 @@
                     <div class="comments">
                         <div class="comment-title"><h3>評論</h3></div>
                         <div class="comment">
-                            {% for cmt in comments %}
-                            <div class="comment-border" id="{{ cmt.pk }}">
-                                <div class="personalinfo float-left">
-                                    <div class="comment-avatar float-left">
-                                        <img width="70" height="70" src="{% static 'img/male.png'%}">
+                            <div id="__comments__">
+                                {% for cmt in comments %}
+                                <div class="comment-border" id="comment-{{ cmt.pk }}">
+                                    <div class="personalinfo float-left">
+                                        <div class="comment-avatar float-left">
+                                            <img width="70" height="70" src="{% static 'img/male.png'%}">
+                                        </div>
+                                        <div class="comment-emotion float-left">
+                                            {{cmt.comment_emotion}}
+                                        </div>
+                                        <div class="clear"></div>
+                                        <div class="username">WoWoo使用者</div>
                                     </div>
-                                    <div class="comment-emotion float-left">
-                                        {{cmt.comment_emotion}}
+                                    <div class="comment-textdata float-left">{{cmt.comment_content}}</div>
+                                    <div class="comment-menu float-right">
+                                        <a href="#commentMenu_{{ forloop.counter }}" data-toggle="collapse"><i class="fa fa-chevron-down fa-l" aria-hidden="true"></i></a>
+                                        <div id="commentMenu_{{ forloop.counter }}" class="collapse">
+                                            <a href="#">檢舉</a>
+                                        </div>
                                     </div>
                                     <div class="clear"></div>
-                                    <div class="username">WoWoo使用者</div>
                                 </div>
-                                <div class="comment-textdata float-left">{{cmt.comment_content}}</div>
-                                <div class="comment-menu float-right">
-                                    <a href="#commentMenu_{{ forloop.counter }}" data-toggle="collapse"><i class="fa fa-chevron-down fa-l" aria-hidden="true"></i></a>
-                                    <div id="commentMenu_{{ forloop.counter }}" class="collapse">
-                                        <a href="#">檢舉</a>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
+                                {% endfor %}
                             </div>
-                            {% endfor %}
 
-                            <form class="comment-border myComment" action="" method="POST"  role="form">
+                            <div class="comment-border myComment" id="commentForm">
                                 {% csrf_token %}
                                 <div class="personalinfo float-left">
                                     <div class="myEmotion float-left">
@@ -164,10 +166,10 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                <textarea class="comment-textarea" name="comment-textarea" rows="10" placeholder="寫些評論吧！..." required></textarea> 
-                                <button type="submit" name="postPk" class="Submit-comment-button float-right" value="{{ post.pk }}">送出</button>
+                                <textarea id="comment-textarea" class="comment-textarea" rows="10" placeholder="寫些評論吧！..." required></textarea> 
+                                <button type="submit" id="postPK" name="postPk" class="Submit-comment-button float-right" value="{{post.pk}}">送出</button>
                                 <div class="clear"></div>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -196,6 +198,8 @@
     
     <!-- Fixed the sidebar -->
     <script src="{% static 'js/Ray.js' %}" type="text/JavaScript"></script>
+    
+    <script src="{% static 'js/Sewen.js' %}" type="text/JavaScript"></script>
 
 </body>
 

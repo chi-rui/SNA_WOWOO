@@ -70,6 +70,16 @@ $("#butt1").click(function(){
         success:function(data){
             var refreshParts = $(data).find('#content_block');
             $('#content_block').html(refreshParts);
+            $('a.showModal').click(function(ev){
+                ev.preventDefault();
+                var postPk = $(this).data('id');
+                $.get('/post/' + postPk, function(html){
+                    var post_detail = $(html).find("#post");
+                    $('#contentModal .modal-body').html(post_detail);
+                    $('div.modal-body').attr('data-postURL', '/post/' + postPk);
+                    $('#contentModal').modal('show', {backdrop: 'static'});
+                });
+            });
         }
     });
     $("#butt1").hide("medium");
@@ -87,6 +97,16 @@ $("#butt2").click(function(){
         success:function(data){
             var refreshParts = $(data).find('#content_block');
             $('#content_block').html(refreshParts);
+            $('a.showModal').click(function(ev){
+                ev.preventDefault();
+                var postPk = $(this).data('id');
+                $.get('/post/' + postPk, function(html){
+                    var post_detail = $(html).find("#post");
+                    $('#contentModal .modal-body').html(post_detail);
+                    $('div.modal-body').attr('data-postURL', '/post/' + postPk);
+                    $('#contentModal').modal('show', {backdrop: 'static'});
+                });
+            });
         }
     });
     $("#butt2").hide("medium");
@@ -106,6 +126,18 @@ $("#butt3").click(function(){
         success:function(data){
             var refreshParts = $(data).find('#content_block');
             $('#content_block').html(refreshParts);
+
+            $('a.showModal').click(function(ev){
+                ev.preventDefault();
+                var postPk = $(this).data('id');
+                $.get('/post/' + postPk, function(html){
+                    var post_detail = $(html).find("#post");
+                    $('#contentModal .modal-body').html(post_detail);
+                    $('div.modal-body').attr('data-postURL', '/post/' + postPk);
+                    $('#contentModal').modal('show', {backdrop: 'static'});
+                });
+            });
+
         }
     });
     $("#butt3").hide("medium");
@@ -113,3 +145,5 @@ $("#butt3").click(function(){
     // $("#butt1").removeClass("hidden");
     $("#butt1").show("medium");
 });
+
+
