@@ -10,7 +10,9 @@ def getuserid(request) :
         get_name=request.GET['userName']
         get_picture = request.GET['userPicture']
         get_email = request.GET['userEmail']
-        
+        # login set session state
+        request.session['uName'] = get_name;
+
         if Wowoo.objects.filter(user_id = get_id).exists():
             
             print "exists" 
@@ -131,6 +133,7 @@ def post(request):
     return HttpResponseRedirect('http://localhost:8000/')
 
 def post_detail(request, pk):
+
     post = Post.objects.get(pk = pk)
     
     str_part = post.post_content.split('###')
@@ -138,24 +141,42 @@ def post_detail(request, pk):
     cmt = Comment.objects.filter(post = pk)
     
     context = {
+
         "post" : post,
         "str_part" : str_part,
         "comments" : cmt,
     }
     return render(request, 'wowoo/content.html',context)
 
-def comment(request):
-    if request.method == 'POST':
-
-        local_postPk = request.POST['postPk']
-
-        local_comment_content = request.POST['comment-textarea']
-
+def comment(request, pk):
+    if request.method == 'POST' and request.is_ajax():
+        localURL = '/post/' + pk
+        
+        local_comment_content = request.POST['textData']
+        U = request.session.get('uName') 
+        print U
         Comment.objects.create(
+            comment_name = U,
             comment_content = local_comment_content,
-            post = Post.objects.get(pk = local_postPk),
+            post = Post.objects.get(pk = pk),
         )
-        return HttpResponseRedirect('http://localhost:8000/')
+
+        user = Wowoo.objects.all()
+        post = Post.objects.get(pk = pk)   
+        str_part = post.post_content.split('###')
+        cmt = Comment.objects.filter(post = pk)
+
+        context = {
+        "users" : user,
+        "post" : post,
+        "str_part" : str_part,
+        "comments" : cmt,
+        }
+
+        # #currentURL = post/pk/
+        # request.path = request.path.rsplit('/', 2)[0]
+
+        return render_to_response("wowoo/content.html", context)
     
 def sort_post(request): 
     if request.method == "POST" and request.is_ajax():
@@ -165,11 +186,14 @@ def sort_post(request):
         elif field == 'hot':
             post = Post.objects.all().order_by("-likes")
         else:
-            post = Post.objects.all().order_by("post_date")
-        print "field: " + field
-        print "OOOOOOOO in !"
-    else:
-        print "XXXXXXXX no in"
+            postss = Post.objects.all()
+            U = request.session.get('uName') 
+            print U
+            post = postss.filter(wowoo__user_name=U)
+        # print "field: " + field
+        # print "OOOOOOOO in !"
+    # else:
+        # print "XXXXXXXX no in"
 
     user = Wowoo.objects.all()
     cmt = Comment.objects.all()
@@ -179,4 +203,5 @@ def sort_post(request):
         "comments" : cmt,
     }
     return render_to_response('wowoo/index.html', context)
+
 

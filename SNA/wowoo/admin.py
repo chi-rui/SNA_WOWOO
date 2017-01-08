@@ -5,7 +5,7 @@ from .models import Comment
 
 # Register your models here.
 class wowoo(admin.ModelAdmin) :
-    list_display = ['user_id','user_name','user_picture','user_email','user_nickname','user_achievement']
+    list_display = ['id','user_id','user_name','user_picture','user_email','user_nickname','user_achievement']
     class Meta : 
         model = Wowoo
         

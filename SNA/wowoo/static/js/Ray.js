@@ -27,6 +27,42 @@ $(document).ready(function(){
     
 // });
 
+//rebuild openmodel click eventlistener
+function model_fix(){
+    $('a.showModal').click(function(ev){
+        ev.preventDefault();
+        var postPk = $(this).data('id');
+        $.get('/post/' + postPk, function(html){
+            var post_detail = $(html).find("#post");
+            $('#contentModal .modal-body').html(post_detail);
+            $('div.modal-body').attr('data-postURL', '/post/' + postPk);
+            $('#contentModal').modal('show', {backdrop: 'static'});
+            button_fix();
+        });
+    });
+}
+
+//rebuild button click eventlistener
+function button_fix(){
+    $('#postPK').click(function(ev){
+        ev.preventDefault();
+        var textInput = $('#comment-textarea').val();
+        $.ajax({
+            type: 'POST',
+            url: '/post/' + $('#postPK').attr('value') + '/comment/',
+            data: {
+                'csrfmiddlewaretoken'  : token,
+                'textData'             : textInput,
+            },
+            success: function(data){
+                var reloadComments = $(data).find('#__comments__');
+                $('#__comments__').html(reloadComments);
+                $('#comment-textarea').val("")
+            }
+        });
+    });
+}
+
 //hover on profile/achievement
 $(".headshot").hover(function(){
     // console.log("hover!");
@@ -70,6 +106,7 @@ $("#butt1").click(function(){
         success:function(data){
             var refreshParts = $(data).find('#content_block');
             $('#content_block').html(refreshParts);
+            model_fix()
         }
     });
     $("#butt1").hide("medium");
@@ -83,10 +120,12 @@ $("#butt2").click(function(){
         data: { 
             'csrfmiddlewaretoken': token,
             'field': "own", 
+            // 'userLogined': userLogined,
         },
         success:function(data){
             var refreshParts = $(data).find('#content_block');
             $('#content_block').html(refreshParts);
+            model_fix()
         }
     });
     $("#butt2").hide("medium");
@@ -106,6 +145,7 @@ $("#butt3").click(function(){
         success:function(data){
             var refreshParts = $(data).find('#content_block');
             $('#content_block').html(refreshParts);
+            model_fix()
         }
     });
     $("#butt3").hide("medium");
