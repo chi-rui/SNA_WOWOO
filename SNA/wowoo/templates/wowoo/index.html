@@ -295,15 +295,15 @@ function statusChangeCallback(response) {
     <div id="theModal" class="modal fade text-center" >
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="">
-                    <button type="button" class="close" data-dismiss="modal">X</button>         
-                </div>
-
                 <div class="modal-body">
                 <form id="dialog" action="/post/" method="POST"  role="form">
                 {% csrf_token %}  
-
-                <input id="title" name="post_title" class="center" type="text" placeholder="Title" required>  
+                
+                 <div class="modal-header" style="">
+                    <button type="button" class="close" data-dismiss="modal">X</button>    
+                     <input id="title" name="post_title" class="center" type="text" placeholder="Title" required>  
+                </div>
+              
                 <h3> 哪一句話最讓你捉摸不透呢 </h3>   
                
                         <!-- one input text -->
@@ -352,17 +352,17 @@ function statusChangeCallback(response) {
                         <!-- add button -->
                         <div class ="row">
                             <div class="btn-group">
-                                <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
+                                <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" id="plus" href="#">
                                     <i class="fa fa-plus fa-2x" style = "color:#18aa8d"></i>
                                 </a>
-                                <ul class="dropdown-menu ">
-                                    <li>
-                                        <div class="btn-group">
-                                            <button type="button" id="btnAddmale"> <i class="fa fa-male questionmark"  ></i> </button>
-                                            <button type="button" id="btnAddfemale"> <i class="fa fa-female questionmark"  ></i></button>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <!--<ul class="dropdown-menu ">-->
+                                <!--    <li>-->
+                                <!--        <div class="btn-group">-->
+                                <!--            <button type="button" id="btnAddmale"> <i class="fa fa-male questionmark"  ></i> </button>-->
+                                <!--            <button type="button" id="btnAddfemale"> <i class="fa fa-female questionmark"  ></i></button>-->
+                                <!--        </div>-->
+                                <!--    </li>-->
+                                <!--</ul>-->
                             </div>
                         </div>
 
