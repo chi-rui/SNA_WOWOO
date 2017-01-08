@@ -184,3 +184,106 @@ select {
   padding:20px 20px;
   border-radius: 2%;
 }
+.btn-xuan {
+  font-size:16px;
+  color: white;
+  background-color:#5fac9a;
+  border-color: #18aa8d;
+  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+h2.page-header {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid #eee;
+}
+
+#chat {
+  margin-bottom:5%;
+}
+.chat {
+  margin: 0 auto;
+  padding-left:5%;
+  padding-right:5%;
+  
+}
+.chat div {
+  margin-top:2%;
+}
+.chat p {
+  font-size:20px;
+  margin-left:1%;
+  margin-right:1%;
+  border-radius: 1em;
+  padding: 0.5em 1em;
+  background: #e5e5ea;
+  max-width: 75%;
+  
+  position: relative;
+
+}
+i.me {
+   float:right;
+}
+i.them {
+  float:left;
+}
+.chatman {
+ 
+  font-size:40px;
+  color:#6666ff;
+}
+.chatwoman {
+  
+  font-size:40px;
+  color:#ff4c4c;
+}
+p.them {
+  float: left;
+}
+
+p.me {
+  float: right;
+  background-color: #56a690;
+  color: white;
+}
+
+img.emotion{
+    position: relative;
+    width:40px;height:40px;
+    float: right;
+    display: inline;
+    margin-top:-30%;
+    margin-right:5%;
+    border:1px solid white;
+}
+img.smallemotion{
+    position: relative;
+    width:40px;height:40px;
+    float: right;
+    display: inline;
+    margin-top:-30%;
+    margin-right:5%;
+    border:1px solid white;
+}
+#commentemotion label > input{ /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
+}
+#commentemotion label > input + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border:2px solid transparent;
+}
+#commentemotion label > input:checked + img{ /* (RADIO CHECKED) IMAGE STYLES */
+  border:2px solid #f00;
+  border-radius:50%;
+}
+#commentemotion img {
+   width:60px;height:60px;
+   border:1px solid white;
+   position: relative;
+}
