@@ -153,8 +153,10 @@ def comment(request, pk):
         localURL = '/post/' + pk
         
         local_comment_content = request.POST['textData']
+        U = request.session.get('uName') 
 
         Comment.objects.create(
+            comment_name = U,
             comment_content = local_comment_content,
             post = Post.objects.get(pk = pk),
         )
