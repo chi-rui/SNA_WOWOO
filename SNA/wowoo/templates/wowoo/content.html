@@ -10,60 +10,22 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>WoWoo - tell you everything about the texts.</title>
-
-
+    <title>WoWoo-{{post.post_title}}</title>
+    
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'css/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <!-- FontAwesome Css -->
     <script src="{% static 'js/e07011ff1d.js' %}"></script>
 
     <link href="{% static 'css/Montserrat.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'css/Kaushan.css' %}" rel='stylesheet' type='text/css'>
-    <!--link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'-->
-    <!--achievement-->
-    <!--link rel="stylesheet" href="css/skillbar.css"-->
-    <!-- Theme CSS -->
     <link href="{% static 'css/agency.css' %}" rel="stylesheet">
     <link href="{% static 'css/Xuan.css' %}" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
 <body id="page-top" class="index">
-
-    <!-- Navigation -->
-    <!--<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">-->
-    <!--    <div class="container">-->
-            <!-- Brand and toggle get grouped for better mobile display -->
-    <!--        <div class="navbar-header page-scroll">-->
-    <!--            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
-    <!--                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>-->
-    <!--            </button>-->
-    <!--            <a class="navbar-brand page-scroll" href="#page-top">WoWoo</a>-->
-    <!--        </div>-->
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-    <!--        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
-    <!--            <ul>-->
-    <!--                <li>-->
-    <!--                    <a id="login">登入</a>-->
-    <!--                    <a class="ring"><div><img class="ring_img" src="{% static 'img/tones.png' %}"></div></a>-->
-    <!--                </li>-->
-    <!--            </ul>-->
-    <!--        </div>-->
-            <!-- /.navbar-collapse -->
-    <!--    </div>-->
-        <!-- /.container-fluid -->
-    <!--</nav>-->
 
     <div class="col-lg-2 leftinfo"></div>
     <div class="col-lg-8 mid">
@@ -71,9 +33,9 @@
             <div class="container">
             <!-- Post Header  -->
                 <div class="col-lg-8 col-md-8 col-sm-8 " style="margin-left:5%;">
-                    <h1 class="page-header" >我媽怎麼了
+                    <h1 class="page-header" >{{post.post_title}}
                     
-                       <span style="font: bold 12px/12px Helvetica, Verdana, Tahoma;font-size:18px;color:#7d7d7d;opacity: 0.8">2016&nbsp;年&nbsp;7月1號&nbsp;&nbsp;11:11</span>                   
+                       <span style="font: bold 12px/12px Helvetica, Verdana, Tahoma;font-size:18px;color:#7d7d7d;opacity: 0.8">{{post.post_date}}</span>                   
                      
                     </h1>
 
@@ -87,99 +49,24 @@
                 <!-- post contention  -->
                 <div class="col-lg-10 col-md-10 col-sm-10 " id="chat">
                     <div  class="chat">
-
+                    {% for item in str_part %}
+                        {% if forloop.counter|divisibleby:2 %}
                         <!-- left chat -->
                         <div class="col-lg-12 col-md-12 ol-sm-12 "  >
                             <i class="fa fa-male chatman them" ></i> 
                             <p class="them">
-                            說真的，我真的覺得台北的食物很難吃
+                            {{item}}
                             </p>
                         </div>
-
                         <!-- rightchat -->
-                        <div class="col-lg-12 col-md-12 ol-sm-12 "  >
+<!--                         <div class="col-lg-12 col-md-12 ol-sm-12 "  >
                             <i class="fa fa-female chatwoman me" ></i> 
                             <p class="me">
                            欸你不要這樣說阿，這樣對我在台北長大的聽起來很尷尬
                             </p>
                         </div>
-<!-- <<<<<<< HEAD
-                    </div> 
-                            
-                    <div class="comments">
-                        <div class="comment-title"><h3>評論</h3></div>
-                        <div class="comment">
-                            {% for cmt in comments %}
-                            <div class="comment-border" id="{{ cmt.pk }}">
-                                <div class="personalinfo float-left">
-                                    <div class="comment-avatar float-left">
-                                        <img width="70" height="70" src="{% static 'img/male.png'%}">
-                                    </div>
-                                    <div class="comment-emotion float-left">
-                                        {{cmt.comment_emotion}}
-                                    </div>
-                                    <div class="clear"></div>
-                                    <div class="username">WoWoo使用者</div>
-                                </div>
-                                <div class="comment-textdata float-left">{{cmt.comment_content}}</div>
-                                <div class="comment-menu float-right">
-                                    <a href="#commentMenu_{{ forloop.counter }}" data-toggle="collapse"><i class="fa fa-chevron-down fa-l" aria-hidden="true"></i></a>
-                                    <div id="commentMenu_{{ forloop.counter }}" class="collapse">
-                                        <a href="#">檢舉</a>
-                                    </div>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
-                            {% endfor %}
-
-                            <form class="comment-border myComment" action="" method="POST"  role="form">
-                                {% csrf_token %}
-                                <div class="personalinfo float-left">
-                                    <div class="myEmotion float-left">
-                                        <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions3.jpg'%}" class="emotion img-responsive img-circle float-left"></a>
-                                        <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions7.jpg'%}" class="emotion img-responsive img-circle float-left"></a>
-                                        <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions9.jpg'%}" class="emotion img-responsive img-circle float-left"></a>
-                                        <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions10.jpg'%}" class="emotion img-responsive img-circle float-left"></a>
-                                        <a href="#"><img width="25" height="25" src= "{% static 'img/emotion/emotions11.jpg'%}" class="emotion img-responsive img-circle float-left"></a>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                                <textarea class="comment-textarea" name="comment-textarea" rows="10" placeholder="寫些評論吧！..." required></textarea> 
-                                <button type="submit" name="postPk" class="Submit-comment-button float-right" value="{{ post.pk }}">送出</button>
-                                <div class="clear"></div>
-                            </form>
-======= -->
-                        <!-- left chat -->
-                        <div class="col-lg-12 col-md-12 ol-sm-12 "  >
-                            <i class="fa fa-male chatman them" ></i> 
-                            <p class="them">
-                             乾我屁事
-                            </p>
-                        </div>
-                        
-                        <!-- right chat -->
-                        <div class="col-lg-12 col-md-12 ol-sm-12 "  >
-                            <i class="fa fa-female chatwoman me" ></i> 
-                            <p class="me">
-                            隨便你 ...
-                            </p>
-                        </div>
-
-                        <!-- right chat -->
-                        <div class="col-lg-12 col-md-12 ol-sm-12 "  >
-                            <i class="fa fa-female chatwoman me" ></i> 
-                            <p class="me">
-                            隨便你 ...
-                            </p>
-                        </div>
-
-                        <!-- left chat -->
-                        <div class="col-lg-12 col-md-12 ol-sm-12 "  >
-                            <i class="fa fa-male chatman them" ></i> 
-                            <p class="them">
-                             乾我屁事
-                            </p>
-                        </div>
+ -->                    {% endif %}
+                    {% endfor %}
                     </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
             </div>
@@ -188,7 +75,7 @@
             <div class="container">
                 <div class="col-lg-8 col-md-8 col-sm-8 " style="margin-left:12%">
                     
-                    <button type="button" class="btn-xuan" role="tab" ><i class="fa fa-thumbs-up " aria-hidden="true">&nbsp;1234</i></button>
+                    <button type="button" class="btn-xuan" role="tab" ><i class="fa fa-thumbs-up " aria-hidden="true">&nbsp;{{post.likes}}</i></button>
                     <button type="button" class="btn-xuan" role="tab" ><i class="fa fa-comment "  aria-hidden="true">&nbsp;1234</i></button>
                     <button type="button" class="btn-xuan" role="tab" ><i class=" fa fa-facebook-square" aria-hidden="true">&nbsp;分享</i></button>
                     <button type="button" class="btn-xuan" role="tab" ><i class="fa fa-search" aria-hidden="true">&nbsp;查看結果</i></button>             
@@ -207,7 +94,8 @@
             </div>  
             
             <!--each comment-->
-            <div class="col-lg-12 col-md-12 col-sm-12   " >
+            {% for cmt in comments %}
+            <div class="col-lg-12 col-md-12 col-sm-12" id="{{ cmt.pk }}">
                 <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
                 <div class="col-lg-2 col-md-2 col-sm-2 " >
                     <div class="team-member ">
@@ -220,7 +108,7 @@
                 </div>
                 
                 <div class="col-lg-8 col-md-8 col-sm-8 " style="padding-top: 2%;">
-                    <p style="color:black;letter-spacing: 2px;padding-bottom: 24px;font: bold 16px/28px Helvetica, Verdana, Tahoma;opacity: 0.8" >鄉貌真的是很棒的HOST，推薦大家一起來體驗瘋狂鄉貌換宿之旅鄉貌真的是很棒的HOST，推薦大家一起來體驗瘋狂鄉貌換宿之旅</p>
+                    <p style="color:black;letter-spacing: 2px;padding-bottom: 24px;font: bold 16px/28px Helvetica, Verdana, Tahoma;opacity: 0.8" >{{cmt.comment_content}}</p>
                     <div style="float:left;" >
                         <i class="fa fa-calendar" style="color:#56A690;font-size:20px" aria-hidden="true"></i>
                        <span style="font: bold 12px/12px Helvetica, Verdana, Tahoma;font-size:15px;color:#7d7d7d">2016&nbsp;年&nbsp;7月1號&nbsp;&nbsp;11:11</span>
@@ -236,37 +124,7 @@
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
             </div>  
-            
-            <!--each comment-->
-            <div class="col-lg-12 col-md-12 col-sm-12   " >
-                <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
-                <div class="col-lg-2 col-md-2 col-sm-2 " >
-                    <div class="team-member ">
-                    
-                        <img src="static/img/profilephoto.JPG" class="img-responsive img-circle " style="width:100px;height:100px;margin-bottom: 0px;" alt="">
-                        <img class="img-responsive img-circle emotion"  src="static/img/emotion/emotions1.jpg" alt="" >
-                        <p style="color:#8E8E8E;font-size:14px;font-weight:600;">WenXuan Lee</p>
-                
-                    </div>
-                </div>
-                
-                <div class="col-lg-8 col-md-8 col-sm-8 " style="padding-top: 2%;">
-                    <p style="color:black;letter-spacing: 2px;padding-bottom: 24px;font: bold 16px/28px Helvetica, Verdana, Tahoma;opacity: 0.8" >鄉貌真的是很棒的HOST，推薦大家一起來體驗瘋狂鄉貌換宿之旅鄉貌真的是很棒的HOST，推薦大家一起來體驗瘋狂鄉貌換宿之旅</p>
-                    <div style="float:left;" >
-                        <i class="fa fa-calendar" style="color:#56A690;font-size:20px" aria-hidden="true"></i>
-                       <span style="font: bold 12px/12px Helvetica, Verdana, Tahoma;font-size:15px;color:#7d7d7d">2016&nbsp;年&nbsp;7月1號&nbsp;&nbsp;11:11</span>
-    
-                    </div> 
-                    <div style="float:right;">
-                        <i class="fa fa-flag" style="color:#ff4c4c;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#ff4c4c">檢舉</span>
-                    </div>
-                    <div style="float:right;;margin-right:1%">
-                        <i class="fa fa-thumbs-up " style="color:#56A690;font-size:20px;" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
-                    </div> 
-                    <hr>
-                </div>
-            </div>
-
+            {% endfor %}
             <!-- leave comment -->
             <div class="col-lg-12 col-md-12 col-sm-12  " >
                 <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
@@ -274,43 +132,45 @@
                     <div class="team-member ">
                     
                         <img src="static/img/profilephoto.JPG" class="img-responsive img-circle " style="width:100px;height:100px;margin-bottom: 0px;" alt="">
-                        <img class="img-responsive img-circle emotion"  src="static/img/emotion/question.png" alt="" >
+                        <img class="img-responsive img-circle emotion"  src="static/img/emotion/question.png" alt="" ><!-- {{cmt.comment_emotion}} -->
                         <p style="color:#8E8E8E;font-size:14px;font-weight:600;">WenXuan Lee</p>
                 
                     </div>
                 </div>
             
+        <form action="/comment/" method="POST"  role="form">
+        {% csrf_token %}
                 <div class="col-lg-8 col-md-8 col-sm-8 " id = "commentemotion" >
-
-                    <textarea rows="7" class="form-control" id="brief_intro" name="brief_intro" placeholder="Intro" tabindex="4" required data-validation-required-message="Please enter a message."></textarea>
+                    <textarea rows="7" class="form-control" placeholder="Intro" tabindex="4" required data-validation-required-message="Please enter a message." name="comment-textarea"></textarea>
                     <p class="help-block text-danger" style="color:red;"></p>
-                                        <label>
+                    <label>
                         <input type="radio" name="emotion" value="happy" />
-                        <img src="static/img/emotion/emotions1.jpg">
+                        <img src="{% static 'img/emotion/emotions3.jpg'%}">
                     </label>
                   
                     <label>
                         <input type="radio" name="emotion" value="anger"/>
-                        <img src="static/img/emotion/emotions2.jpg">
+                        <img src="{% static 'img/emotion/emotions7.jpg'%}">
                     </label>
                   
                     <label>
                         <input id="fb3" type="radio" name="emotion" value="sad" />
-                        <img src="static/img/emotion/emotions3.jpg">
+                        <img src="{% static 'img/emotion/emotions9.jpg'%}">
                     </label>
                   
                     <label>
                         <input id="fb4" type="radio" name="emotion" value="cry" />
-                        <img src="static/img/emotion/emotions4.jpg">
+                        <img src="{% static 'img/emotion/emotions10.jpg'%}">
                     </label>
                     <label>
                         <input id="fb4" type="radio" name="emotion" value="joy" />
-                        <img src="static/img/emotion/emotions5.jpg">
+                        <img src="{% static 'img/emotion/emotions11.jpg'%}">
                     </label>
                     <div class="" style="float:right">
-                        <button type="submit" class="btn btn-primary btn-lg" value="UserStore">Send</button>
+                        <button type="submit" class="btn btn-primary btn-lg" value="{{ post.pk }}">送出</button>
                     </div>
                 </div> 
+        </form>
             </div>
 
                 <div class="col-lg-1 col-md-1 col-sm-1 " ></div>

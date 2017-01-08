@@ -167,7 +167,8 @@ def sort_post(request):
         elif field == 'hot':
             post = Post.objects.all().order_by("-likes")
         else:
-            post = Post.objects.all().order_by("post_date")
+            postss = Post.objects.all()
+            post = postss.filter(wowoo__id = 3)
         # print "field: " + field
         # print "OOOOOOOO in !"
     # else:
