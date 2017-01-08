@@ -101,11 +101,13 @@ function statusChangeCallback(response) {
     });
   }
   window.fbAsyncInit = function() {
+    fbid = '910500799080831'
     FB.init({
-      appId      : '910500799080831',
+      appId      : fbid,
       xfbml      : true,
       version    : 'v2.8'
     });
+    console.log("testing");
   };
 
   (function(d, s, id){
