@@ -4,34 +4,35 @@
 	dymanic modal.
 	Reference: http://stackoverflow.com/questions/26517605/pass-dynamic-content-to-bootstrap-modal-3-2
 	 				   				*/
-jQuery(function($){
-    $('a.showModal').click(function(ev){
-        ev.preventDefault();
-        var postPk = $(this).data('id');
-        $.get('/post/' + postPk, function(html){
-            var post_detail = $(html).find("#post");
-            $('#contentModal .modal-body').html(post_detail);
-            $('div.modal-body').attr('data-postURL', '/post/' + postPk);
-            $('#contentModal').modal('show', {backdrop: 'static'});
-        });
+
+$('a.showModal').click(function(ev){
+    ev.preventDefault();
+    var postPk = $(this).data('id');
+    $.get('/post/' + postPk, function(html){
+        var post_detail = $(html).find("#post");
+        $('#contentModal .modal-body').html(post_detail);
+        $('div.modal-body').attr('data-postURL', '/post/' + postPk);
+        $('#contentModal').modal('show', {backdrop: 'static'});
     });
 });
 
-
-
-jQuery(function($){
-    $('form.myComment').submit(function(ev){
-        ev.preventDefault();
-        alert('test');
-        $.ajax({
-            type: 'POST',
-            url: '/comment/',
-            data: $(this).serialize(),
-
-        });
+$('#postPK').click(function(ev){
+    ev.preventDefault();
+    var textInput = $('#comment-textarea').val();
+    $.ajax({
+        type: 'POST',
+        url: '/post/' + $('#postPK').attr('value') + '/comment/',
+        data: {
+            'csrfmiddlewaretoken'  : token,
+            'textData'             : textInput,
+        },
+        success: function(data){
+            var reloadComments = $(data).find('#__comments__');
+            $('#__comments__').html(reloadComments);
+            $('#comment-textarea').val("")
+        }
     });
 });
-
 
 
 /*	Press Enter in textarea

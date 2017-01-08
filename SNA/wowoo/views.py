@@ -148,18 +148,33 @@ def post_detail(request, pk):
     }
     return render(request, 'wowoo/content.html',context)
 
-def comment(request):
-    if request.method == 'POST':
-
-        local_postPk = request.POST['postPk']
-
-        local_comment_content = request.POST['comment-textarea']
+def comment(request, pk):
+    if request.method == 'POST' and request.is_ajax():
+        localURL = '/post/' + pk
+        
+        local_comment_content = request.POST['textData']
 
         Comment.objects.create(
             comment_content = local_comment_content,
-            post = Post.objects.get(pk = local_postPk),
+            post = Post.objects.get(pk = pk),
         )
-        return HttpResponseRedirect('http://localhost:8000/')
+
+        user = Wowoo.objects.all()
+        post = Post.objects.get(pk = pk)   
+        str_part = post.post_content.split('###')
+        cmt = Comment.objects.filter(post = pk)
+
+        context = {
+        "users" : user,
+        "post" : post,
+        "str_part" : str_part,
+        "comments" : cmt,
+        }
+
+        # #currentURL = post/pk/
+        # request.path = request.path.rsplit('/', 2)[0]
+
+        return render_to_response("wowoo/content.html", context)
     
 def sort_post(request): 
     if request.method == "POST" and request.is_ajax():

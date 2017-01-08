@@ -11,7 +11,7 @@
     <meta name="author" content="">
 
     <title>WoWoo-{{post.post_title}}</title>
-    
+
     <!-- Bootstrap Core CSS -->
     <link href="{% static 'css/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <!-- Custom Fonts -->
@@ -94,83 +94,85 @@
             </div>  
             
             <!--each comment-->
-            {% for cmt in comments %}
-            <div class="col-lg-12 col-md-12 col-sm-12" id="{{ cmt.pk }}">
-                <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
-                <div class="col-lg-2 col-md-2 col-sm-2 " >
-                    <div class="team-member ">
+            <div id="__comments__">
+                {% for cmt in comments %}
+                <div class="col-lg-12 col-md-12 col-sm-12" id="{{ cmt.pk }}">
+                    <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 " >
+                        <div class="team-member ">
+                        
+                            <img src="{% static 'img/emotion/emotions3.jpg'%}" class="img-responsive img-circle " style="width:100px;height:100px;margin-bottom: 0px;" alt="">
+                           <img class="img-responsive img-circle emotion"  src="static/img/emotion/emotions1.jpg" alt="" >
+                            <p style="color:#8E8E8E;font-size:14px;font-weight:600;">WenXuan Lee</p>
                     
-                        <img src="static/img/profilephoto.JPG" class="img-responsive img-circle " style="width:100px;height:100px;margin-bottom: 0px;" alt="">
-                       <img class="img-responsive img-circle emotion"  src="static/img/emotion/emotions1.jpg" alt="" >
-                        <p style="color:#8E8E8E;font-size:14px;font-weight:600;">WenXuan Lee</p>
-                
+                        </div>
                     </div>
-                </div>
-                
-                <div class="col-lg-8 col-md-8 col-sm-8 " style="padding-top: 2%;">
-                    <p style="color:black;letter-spacing: 2px;padding-bottom: 24px;font: bold 16px/28px Helvetica, Verdana, Tahoma;opacity: 0.8" >{{cmt.comment_content}}</p>
-                    <div style="float:left;" >
-                        <i class="fa fa-calendar" style="color:#56A690;font-size:20px" aria-hidden="true"></i>
-                       <span style="font: bold 12px/12px Helvetica, Verdana, Tahoma;font-size:15px;color:#7d7d7d">2016&nbsp;年&nbsp;7月1號&nbsp;&nbsp;11:11</span>
-    
-                    </div> 
-                    <div style="float:right;">
-                        <i class="fa fa-flag" style="color:#ff4c4c;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#ff4c4c">檢舉</span>
+                    
+                    <div class="col-lg-8 col-md-8 col-sm-8 " style="padding-top: 2%;">
+                        <p style="color:black;letter-spacing: 2px;padding-bottom: 24px;font: bold 16px/28px Helvetica, Verdana, Tahoma;opacity: 0.8" >{{cmt.comment_content}}</p>
+                        <div style="float:left;" >
+                            <i class="fa fa-calendar" style="color:#56A690;font-size:20px" aria-hidden="true"></i>
+                           <span style="font: bold 12px/12px Helvetica, Verdana, Tahoma;font-size:15px;color:#7d7d7d">2016&nbsp;年&nbsp;7月1號&nbsp;&nbsp;11:11</span>
+        
+                        </div> 
+                        <div style="float:right;">
+                            <i class="fa fa-flag" style="color:#ff4c4c;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#ff4c4c">檢舉</span>
+                        </div>
+                        <div style="float:right;;margin-right:1%">
+                            <i class="fa fa-thumbs-up " style="color:#56A690;font-size:20px;" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
+                        </div> 
+                        <hr>
                     </div>
-                    <div style="float:right;;margin-right:1%">
-                        <i class="fa fa-thumbs-up " style="color:#56A690;font-size:20px;" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
-                    </div> 
-                    <hr>
-                </div>
-                <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
-            </div>  
-            {% endfor %}
+                    <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
+                </div>  
+                {% endfor %}
+            </div>
             <!-- leave comment -->
             <div class="col-lg-12 col-md-12 col-sm-12  " >
                 <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
                 <div class="col-lg-2 col-md-2 col-sm-2 " >
                     <div class="team-member ">
                     
-                        <img src="static/img/profilephoto.JPG" class="img-responsive img-circle " style="width:100px;height:100px;margin-bottom: 0px;" alt="">
-                        <img class="img-responsive img-circle emotion"  src="static/img/emotion/question.png" alt="" ><!-- {{cmt.comment_emotion}} -->
+                        <img src="{% static 'img/emotion/emotions3.jpg'%}" class="img-responsive img-circle " style="width:100px;height:100px;margin-bottom: 0px;" alt="">
+                        <img class="img-responsive img-circle emotion"  src="{% static 'img/emotion/emotions3.jpg'%}" alt="" ><!-- {{cmt.comment_emotion}} -->
                         <p style="color:#8E8E8E;font-size:14px;font-weight:600;">WenXuan Lee</p>
                 
                     </div>
                 </div>
             
-        <form action="/comment/" method="POST"  role="form">
-        {% csrf_token %}
-                <div class="col-lg-8 col-md-8 col-sm-8 " id = "commentemotion" >
-                    <textarea rows="7" class="form-control" placeholder="Intro" tabindex="4" required data-validation-required-message="Please enter a message." name="comment-textarea"></textarea>
-                    <p class="help-block text-danger" style="color:red;"></p>
-                    <label>
-                        <input type="radio" name="emotion" value="happy" />
-                        <img src="{% static 'img/emotion/emotions3.jpg'%}">
-                    </label>
-                  
-                    <label>
-                        <input type="radio" name="emotion" value="anger"/>
-                        <img src="{% static 'img/emotion/emotions7.jpg'%}">
-                    </label>
-                  
-                    <label>
-                        <input id="fb3" type="radio" name="emotion" value="sad" />
-                        <img src="{% static 'img/emotion/emotions9.jpg'%}">
-                    </label>
-                  
-                    <label>
-                        <input id="fb4" type="radio" name="emotion" value="cry" />
-                        <img src="{% static 'img/emotion/emotions10.jpg'%}">
-                    </label>
-                    <label>
-                        <input id="fb4" type="radio" name="emotion" value="joy" />
-                        <img src="{% static 'img/emotion/emotions11.jpg'%}">
-                    </label>
-                    <div class="" style="float:right">
-                        <button type="submit" class="btn btn-primary btn-lg" value="{{ post.pk }}">送出</button>
-                    </div>
-                </div> 
-        </form>
+                <div>
+                    {% csrf_token %}
+                    <div class="col-lg-8 col-md-8 col-sm-8 " id = "commentemotion" >
+                        <textarea rows="7" class="form-control" placeholder="Intro" tabindex="4" required data-validation-required-message="Please enter a message." id="comment-textarea" ></textarea>
+                        <p class="help-block text-danger" style="color:red;"></p>
+                        <label>
+                            <input type="radio" name="emotion" value="happy" />
+                            <img src="{% static 'img/emotion/emotions3.jpg'%}">
+                        </label>
+                      
+                        <label>
+                            <input type="radio" name="emotion" value="anger"/>
+                            <img src="{% static 'img/emotion/emotions7.jpg'%}">
+                        </label>
+                      
+                        <label>
+                            <input id="fb3" type="radio" name="emotion" value="sad" />
+                            <img src="{% static 'img/emotion/emotions9.jpg'%}">
+                        </label>
+                      
+                        <label>
+                            <input id="fb4" type="radio" name="emotion" value="cry" />
+                            <img src="{% static 'img/emotion/emotions10.jpg'%}">
+                        </label>
+                        <label>
+                            <input id="fb4" type="radio" name="emotion" value="joy" />
+                            <img src="{% static 'img/emotion/emotions11.jpg'%}">
+                        </label>
+                        <div class="" style="float:right">
+                            <button type="submit" class="btn btn-primary btn-lg" id="postPK" value="{{ post.pk }}">送出</button>
+                        </div>
+                    </div> 
+                </div>
             </div>
 
                 <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
@@ -196,7 +198,7 @@
     <!-- Theme JavaScript -->
     <script src="{% static 'js/agency.js' %}"></script>
     <script src="{% static 'js/Xuan.js' %}"></script>
-    
+    <script src="{% static 'js/Sewen.js' %}"></script>
     <!-- Fixed the sidebar -->
     <script src="{% static 'js/Ray.js' %}" type="text/JavaScript"></script>
 
