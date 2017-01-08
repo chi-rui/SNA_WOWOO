@@ -83,6 +83,7 @@ $("#butt2").click(function(){
         data: { 
             'csrfmiddlewaretoken': token,
             'field': "own", 
+            // 'userLogined': userLogined,
         },
         success:function(data){
             var refreshParts = $(data).find('#content_block');

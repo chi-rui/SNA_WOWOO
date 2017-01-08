@@ -42,8 +42,6 @@ function statusChangeCallback(response) {
                 user_Id = response.id;
                 user_name = response.name;
                 user_email = response.email;
-                console.log("test")
-                
             });
              
             FB.api('/me/picture?width=240&height=240', function(response) {
@@ -56,7 +54,6 @@ function statusChangeCallback(response) {
                     userEmail : user_email,
                 }, function(data) {  ;});          
             });
-            
             console.log("welcome")
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.

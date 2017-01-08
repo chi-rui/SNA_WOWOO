@@ -10,7 +10,9 @@ def getuserid(request) :
         get_name=request.GET['userName']
         get_picture = request.GET['userPicture']
         get_email = request.GET['userEmail']
-        
+        # login set session state
+        request.session['uName'] = get_name;
+
         if Wowoo.objects.filter(user_id = get_id).exists():
             
             print "exists" 
@@ -168,7 +170,9 @@ def sort_post(request):
             post = Post.objects.all().order_by("-likes")
         else:
             postss = Post.objects.all()
-            post = postss.filter(wowoo__id = 3)
+            U = request.session.get('uName') 
+            print U
+            post = postss.filter(wowoo__user_name=U)
         # print "field: " + field
         # print "OOOOOOOO in !"
     # else:
