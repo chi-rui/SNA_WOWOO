@@ -131,6 +131,7 @@ def post(request):
     return HttpResponseRedirect('http://localhost:8000/')
 
 def post_detail(request, pk):
+
     post = Post.objects.get(pk = pk)
     
     str_part = post.post_content.split('###')
@@ -138,6 +139,7 @@ def post_detail(request, pk):
     cmt = Comment.objects.filter(post = pk)
     
     context = {
+
         "post" : post,
         "str_part" : str_part,
         "comments" : cmt,
