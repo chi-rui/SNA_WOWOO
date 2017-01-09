@@ -2,8 +2,8 @@
 {% load staticfiles %}
 {% block profile %}
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-         <ul class="nav navbar-nav navbar-right">
-              <li>
+         <ul class="nav navbar-nav navbar-right" >
+             <li>
                 <div class="buttons_search">
                     <a class = "search">
                         <img class="search_img" src="{% static 'img/search.png' %}">
@@ -12,15 +12,13 @@
                 </div>    
             </li>
             <li>
-               <a class="ring" >
+                <div>
+                <a class="ring" >
                   <div>
-                     <img  class="ring_img" src="{% static 'img/tones.png' %}">-
+                     <img  class="ring_img" src="{% static 'img/tones.png' %}">
                   </div>
                 </a>
-             </li>
-            <li>
-
-
+                </div>
             </li>
 			<li><img class="responsive img-circle "  src="{{ get.user_picture }}" style="width:40px;height:40px;display:inline;margin-top:20%" ></img></li>
             <li class="dropdown ">
@@ -36,7 +34,7 @@
             <div id="info_profile">
                 
                 <div class="frame">
-                    <img class="headshot" src="{% static 'img/head.gif' %}">
+                    <img class="headshot" src="{{ get.user_picture }}">
                     <div class ="switch1"><font class="now_left">個人資訊</font></div>
                 </div>
                 
@@ -85,3 +83,7 @@
             </div>
         </div>
 {% endblock achievement %}
+
+{% block personal %}
+    <a id="butt3" name="butt" value="hot" class="butt buttons">個人</a>
+{% endblock personal %}

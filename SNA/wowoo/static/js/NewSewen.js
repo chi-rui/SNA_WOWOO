@@ -47,10 +47,8 @@ $('#postPK').click(function(ev){
         },
         success: function(data){
             // var reloadResults = $(data).find('#resultBorder');
-            // console.log("reloadResultsB");
             var reloadComments = $(data).find('#__comments__');
             // $('#resultBorder').html(reloadResults);
-            // console.log("reloadResults");
             $('#__comments__').html(reloadComments);
             $('#comment-textarea').val("");
             $('.post-likes').click(function() {

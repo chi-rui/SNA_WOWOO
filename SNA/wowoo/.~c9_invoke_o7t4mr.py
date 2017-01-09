@@ -43,9 +43,8 @@ def logined(request):
 def home(request):
     post = Post.objects.all().order_by("-likes")
     user = Wowoo.objects.all()
-    # get_one = Post.objects.get(pk = 1)
-    # tt =  get_one.comment_set.count()
-   
+    p
+
     # obj = Post.objects.get(pk)
     # print obj
     # print obj.post_content
@@ -144,49 +143,25 @@ def post_detail(request, pk):
     post = Post.objects.get(pk = pk)
     
     str_part = post.post_content.split('###')
-    n = 0
-    sex = ""
-    talk = ""
-    while n < len(str_part)-1:
-        if str_part[n] == "male" or str_part[n] == "female":
-            sex += str_part[n] + "###"
-            n+=1
-        else:
-            talk += str_part[n] + "###"
-            n+=1
-
-    sex_list = sex.split('###')
-    talk_list = talk.split('###')
 
     cmt = Comment.objects.filter(post = pk)
     
-    happys = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "happy").count()) / (float)(cmt.count()))
-    wows = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "wow").count()) / (float)(cmt.count()))
-    sads = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "sad").count()) / (float)(cmt.count()))
-    angrys = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "angry").count()) / (float)(cmt.count()))
-    confus = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "confu").count()) / (float)(cmt.count()))
-    
-    emotions_list = [happys, wows, sads, angrys, confus]
-    
-    itemlist = zip(sex_list,talk_list)
     context = {
-        "dialog_count" : len(sex_list),
-        "itemList" : itemlist,
+        "count" : count,
         "post" : post,
+        "str_part" : str_part,
         "comments" : cmt,
-        "emotions" :emotions_list,
     }
     return render(request, 'wowoo/content.html',context)
 
 def comment(request, pk):
     if request.method == 'POST' and request.is_ajax():
         localURL = '/post/' + pk
-        local_emotion = request.POST['emoData']
+        
         local_comment_content = request.POST['textData']
         U = request.session.get('uName') 
 
         Comment.objects.create(
-            comment_emotion = local_emotion,
             comment_name = U,
             comment_content = local_comment_content,
             post = Post.objects.get(pk = pk),

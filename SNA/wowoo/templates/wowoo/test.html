@@ -1,7 +1,6 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
 
 <head>
 
@@ -240,13 +239,7 @@ function statusChangeCallback(response) {
                 <h3 class="title">{{ post.post_title }}</h3>
                 <small><p class="sec">{{ post.post_question }}</p></small>
                     <button type="button" data-post-id="{{ post.id }}" class="btn btn-default btn-md likes post-likes" style="float:right;color:black;font-size:16px;letter-spacing: 2px;opacity: 0.8">
-                           <!-- {% if liked %}-->
-                           <!--<i class="heart-shaped fa fa-heart" style="display: line-block"></i>-->
-                           <!--<i class="heart-shaped fa fa-heart-o" style="display: none"></i>-->
-                           <!--{% else %}-->
-                           <!--<i class="heart-shaped fa fa-heart" style="display: none"></i>-->
-                           <!--<i class="heart-shaped fa fa-heart-o" style="display: line-block"></i>-->
-                           <!--{% endif %}-->
+      
                             <i class="fa fa-thumbs-up " style="color:#56A690;font-size:20px" aria-hidden="true"></i>&nbsp;<div  id="test{{ post.id }}">{{ post.likes }}</div>
                     </button>
                        
@@ -295,12 +288,5 @@ function statusChangeCallback(response) {
     
 </body>
 
-=======
-	<head>
-		<title>test data page</title>
-	</head>
-	<body>
-		
-	</body>
->>>>>>> 57bbbceb601fbd9f49b48fa3a40d396093f809f2
 </html>
+

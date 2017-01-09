@@ -26,7 +26,41 @@
 </head>
 
 <body id="page-top" class="index">
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '910500799080831',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+  };
 
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+   
+    var sharing = function(){
+       
+        var bannerImage = new Image();
+        bannerImage.src = "{% static 'images/fish.png' %}";
+        '{{post.post_title}}';
+        var id = $('.sharebtn').attr('data-post-id');
+        FB.ui({
+            method: 'share',
+            href:'https://sna-wowoo-wenxuanlee.c9users.io/post/'+ id,
+            // href:'https://test-eva19950630.c9users.io/sentence/'+id,//test
+            //href:'localhost:8000'
+            title: 'Wowoo',  // The same than name in feed method
+            picture: bannerImage.src,  
+            caption: 'by Team Wowoo',  
+            description: '{{post.post_title}}',
+        });
+    }
+</script>
     <div class="col-lg-2 leftinfo"></div>
     <div class="col-lg-8 mid">
         <div id="post">
@@ -49,23 +83,37 @@
                 <!-- post contention  -->
                 <div class="col-lg-10 col-md-10 col-sm-10 " id="chat">
                     <div  class="chat">
-                    {% for item in str_part %}
-                        {% if forloop.counter|divisibleby:2 %}
+                    {% for sex,talk in itemList %}
+                        {% ifequal sex "male" %}
                         <!-- left chat -->
                         <div class="col-lg-12 col-md-12 ol-sm-12 "  >
                             <i class="fa fa-male chatman them" ></i> 
-                            <p class="them">
-                            {{item}}
-                            </p>
+                            {% ifequal talk post.post_question %}
+                                <p class="them focus">
+                                    {{talk}}
+                                </p>
+                            {% else %}
+                                <p class="them">
+                                    {{talk}}
+                                </p>
+                            {% endifequal %}
                         </div>
+                        {% endifequal %}
+                        {% ifequal sex "female" %}
                         <!-- rightchat -->
-<!--                         <div class="col-lg-12 col-md-12 ol-sm-12 "  >
+                        <div class="col-lg-12 col-md-12 ol-sm-12 "  >
                             <i class="fa fa-female chatwoman me" ></i> 
-                            <p class="me">
-                           欸你不要這樣說阿，這樣對我在台北長大的聽起來很尷尬
-                            </p>
+                            {% ifequal talk post.post_question %}
+                                <p class="me focus">
+                                    {{talk}}
+                                </p>
+                            {% else %}
+                                <p class="me">
+                                    {{talk}}
+                                </p>
+                            {% endifequal %}
                         </div>
- -->                    {% endif %}
+                        {% endifequal %}
                     {% endfor %}
                     </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
@@ -75,10 +123,41 @@
             <div class="container">
                 <div class="col-lg-8 col-md-8 col-sm-8 " style="margin-left:12%">
                     
-                    <button type="button" class="btn-xuan" role="tab" ><i class="fa fa-thumbs-up " aria-hidden="true">&nbsp;{{post.likes}}</i></button>
-                    <button type="button" class="btn-xuan" role="tab" ><i class="fa fa-comment "  aria-hidden="true">&nbsp;1234</i></button>
-                    <button type="button" class="btn-xuan" role="tab" ><i class=" fa fa-facebook-square" aria-hidden="true">&nbsp;分享</i></button>
-                    <button type="button" class="btn-xuan" role="tab" ><i class="fa fa-search" aria-hidden="true">&nbsp;查看結果</i></button>             
+               
+                    <button type="button" data-post-id="{{ post.id }}" class="btn-xuan likes post-likes" >
+                            <i class="fa fa-thumbs-up " aria-hidden="true">
+                        &nbsp;<span id="test{{ post.id }}">{{post.likes}}</span></i>
+                          
+                    </button>
+                    <button type="button" class="btn-xuan" role="tab" ><i class="fa fa-comment "  aria-hidden="true">&nbsp;{{ count }}</i></button>
+                    <button type="button" onclick="sharing();"class="btn-xuan sharebtn" data-post-id = "{{ post.id }}" class="btn-xuan" role="tab" ><i class=" fa fa-facebook-square" aria-hidden="true">&nbsp;分享</i></button>
+                    <button type="button" class="btn-xuan" role="tab" data-target="#resultBorder" data-toggle="collapse"><i class="fa fa-search" aria-hidden="true">&nbsp;查看結果</i></button>
+                    <div id="resultBorder" class="collapse float-right">
+                        <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions3.jpg'%}" class="img-responsive img-circle" alt="emotion"></div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="11" aria-valuemin="0" aria-valuemax="100" style="width:{{ emotions.0 }}"></div>
+                        </div>
+
+                        <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions7.jpg'%}" class="img-responsive img-circle" alt="emotion"></div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="51" aria-valuemin="0" aria-valuemax="100" style="width:{{ emotions.1 }}"></div>
+                        </div>
+
+                        <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions9.jpg'%}" class="img-responsive img-circle" alt=""></div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100" style="width:{{ emotions.2 }}"></div>
+                        </div>
+
+                        <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions10.jpg'%}" class="img-responsive img-circle" alt=""></div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="6" aria-valuemin="0" aria-valuemax="100" style="width:{{ emotions.3 }}"></div>
+                        </div>
+
+                        <div class="result-emotion float-left"><img width="25" height="25" src= "{% static 'img/emotion/emotions11.jpg'%}" class="img-responsive img-circle" alt=""></div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width:{{ emotions.4 }}"></div>
+                        </div>
+                    </div>             
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
             </div>
@@ -87,7 +166,7 @@
             <div class="container">
                 <div class="col-lg-8 col-md-8 col-sm-8 " style="margin-left:5%;">
                     <h2 class="page-header">回應
-                        <small style="color:#8E8E8E;font-size:16px;font-weight:600;letter-spacing: 3px">共有3則回應</small>
+                        <small style="color:#8E8E8E;font-size:16px;font-weight:600;letter-spacing: 3px">共有{{ count }}則回應</small>
                     </h2>
                 </div>
                 <div class="col-lg-1 col-md-1 col-sm-1 " ></div>
@@ -102,7 +181,7 @@
                         <div class="team-member ">
                         
                             <img src="{% static 'img/emotion/emotions3.jpg'%}" class="img-responsive img-circle " style="width:100px;height:100px;margin-bottom: 0px;" alt="">
-                           <img class="img-responsive img-circle emotion"  src="static/img/emotion/emotions1.jpg" alt="" >
+                     
                             <p style="color:#8E8E8E;font-size:14px;font-weight:600;">{{cmt.comment_name}}</p>
                     
                         </div>
@@ -112,7 +191,7 @@
                         <p style="color:black;letter-spacing: 2px;padding-bottom: 24px;font: bold 16px/28px Helvetica, Verdana, Tahoma;opacity: 0.8" >{{cmt.comment_content}}</p>
                         <div style="float:left;" >
                             <i class="fa fa-calendar" style="color:#56A690;font-size:20px" aria-hidden="true"></i>
-                           <span style="font: bold 12px/12px Helvetica, Verdana, Tahoma;font-size:15px;color:#7d7d7d">2016&nbsp;年&nbsp;7月1號&nbsp;&nbsp;11:11</span>
+                           <span style="font: bold 12px/12px Helvetica, Verdana, Tahoma;font-size:15px;color:#7d7d7d">{{cmt.comment_date}}</span>
         
                         </div> 
                         <div style="float:right;">
@@ -134,7 +213,7 @@
                     <div class="team-member ">
                     
                         <img src="{% static 'img/emotion/emotions3.jpg'%}" class="img-responsive img-circle " style="width:100px;height:100px;margin-bottom: 0px;" alt="">
-                        <img class="img-responsive img-circle emotion"  src="{% static 'img/emotion/emotions3.jpg'%}" alt="" ><!-- {{cmt.comment_emotion}} -->
+                        
                         <p style="color:#8E8E8E;font-size:14px;font-weight:600;">{{cmt.comment_name}}</p>
                 
                     </div>
@@ -151,7 +230,7 @@
                         </label>
                       
                         <label>
-                            <input type="radio" name="emotion" value="anger"/>
+                            <input type="radio" name="emotion" value="wow"/>
                             <img src="{% static 'img/emotion/emotions7.jpg'%}">
                         </label>
                       
@@ -161,11 +240,11 @@
                         </label>
                       
                         <label>
-                            <input id="fb4" type="radio" name="emotion" value="cry" />
+                            <input id="fb4" type="radio" name="emotion" value="angry" />
                             <img src="{% static 'img/emotion/emotions10.jpg'%}">
                         </label>
                         <label>
-                            <input id="fb4" type="radio" name="emotion" value="joy" />
+                            <input id="fb4" type="radio" name="emotion" value="confu" />
                             <img src="{% static 'img/emotion/emotions11.jpg'%}">
                         </label>
                         <div class="" style="float:right">
@@ -200,8 +279,8 @@
     <script src="{% static 'js/Xuan.js' %}"></script>
     <script src="{% static 'js/Sewen.js' %}"></script>
     <!-- Fixed the sidebar -->
+  
     <script src="{% static 'js/Ray.js' %}" type="text/JavaScript"></script>
-
 </body>
 
 </html>

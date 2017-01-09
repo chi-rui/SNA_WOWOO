@@ -248,10 +248,11 @@ p.them {
 
 p.me {
   float: right;
-  background-color: #56a690;
+}
+p.focus{
+  background-color: #FFA500;
   color: white;
 }
-
 img.emotion{
     position: relative;
     width:40px;height:40px;

@@ -32,6 +32,7 @@ div.height_title{
     height: 40px;
     line-height: 40px;
     text-align: center;
+    padding:0 0 0 0;
 }
 .ring:hover{
     background-color: #38caad;
@@ -54,6 +55,8 @@ div.height_title{
     line-height: 50px;
     text-align: center;
     font-size: 23px;
+    padding: 0 0 0 0;
+    font-family:Microsoft JhengHei;
 }
 #login:hover{
     color : #ffffff;
@@ -1298,8 +1301,8 @@ a:focus, a:hover{
 }
 
 #resultBorder{
-  position: relative;
-  right: 7.5%;
+  position: absolute;
+  left: 32%;
   background-color: #fff;
   border-radius: 7.5px;
   padding: 10px 10px 0;
@@ -1437,3 +1440,8 @@ a:focus, a:hover{
   color: #FFFFFF;
   background-color: #5ED2B8;
 }  
+.teach{
+    margin-top: 50px;
+    max-width: 300px;
+    max-height: auto;
+}
