@@ -15,13 +15,8 @@ def getuserid(request) :
         request.session['uId'] = get_id;
 
         if Wowoo.objects.filter(user_id = get_id).exists():
-            get_user = Wowoo.objects.get(user_id = request.session['uId'])
-            context={
-                "user" : get_user,
-            }
-            print("exists")
-            return HttpResponse('wowoo/content.html',context)
-        
+            print ("exits")
+            return HttpResponseRedirect("https://sna-wowoo-wenxuanlee.c9users.io/logined")
         else: 
             Wowoo.objects.create(
                 user_id = get_id,
@@ -35,9 +30,12 @@ def getuserid(request) :
 def logined(request):
     get_user = Wowoo.objects.get( user_id = request.session['uId'])
     user = Wowoo.objects.all()
+    post = Post.objects.all().order_by("-likes")
     context={
         "users" : user,
         "get" : get_user,
+        "posts" : post,
+      
     }
     print user
     return render(request, 'wowoo/wowoo_login.html',context)
