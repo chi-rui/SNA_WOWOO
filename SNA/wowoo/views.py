@@ -12,10 +12,15 @@ def getuserid(request) :
         get_email = request.GET['userEmail']
         # login set session state
         request.session['uName'] = get_name;
+        request.session['uId'] = get_id;
 
         if Wowoo.objects.filter(user_id = get_id).exists():
-            
-            print "exists" 
+            get_user = Wowoo.objects.get(user_id = request.session['uId'])
+            context={
+                "user" : get_user,
+            }
+            print("exists")
+            return HttpResponse('wowoo/content.html',context)
         
         else: 
             Wowoo.objects.create(
@@ -28,9 +33,11 @@ def getuserid(request) :
     return HttpResponse(get_id)     
 
 def logined(request):
+    get_user = Wowoo.objects.get( user_id = request.session['uId'])
     user = Wowoo.objects.all()
     context={
         "users" : user,
+        "get" : get_user,
     }
     print user
     return render(request, 'wowoo/wowoo_login.html',context)

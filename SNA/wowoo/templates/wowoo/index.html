@@ -38,33 +38,41 @@ function statusChangeCallback(response) {
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-            FB.api('/me',{fields: 'name,email'},  function(response) {
-                user_Id = response.id;
-                user_name = response.name;
-                user_email = response.email;
-            });
+            // FB.api('/me', function(response) {
+            //     user_Id = response.id;
+            //     user_name = response.name;
+            //     $('#fbId1').val(user_Id);
+            //     $('#id_field').val(user_Id);
+            //     $('#profileName').html(user_name);
+            //     $('#user').removeAttr('class','hidden');
+            //     $('#host').removeAttr('class','hidden');
+            //     $('#services').attr('class','hidden');
+            //     $('#login').attr('class','hidden');
+            //     $('#login1').attr('class','hidden');
+               
+            // });
              
-            FB.api('/me/picture?width=240&height=240', function(response) {
-                userpicture = response.data.url;
-  
-                $.get('/getuserid/',{
-                    userId: user_Id,
-                    userName: user_name,
-                    userPicture : userpicture,
-                    userEmail : user_email,
-                }, function(data) {  ;});          
-            });
-            console.log("welcome")
+            // FB.api('/me/picture?width=240&height=240', function(response) {
+            //     userpicture = response.data.url;
+                
+            //     $('#profilephoto').attr('src',userpicture);
+            //     $('#profilephoto').removeAttr('class','hidden');
+            //     $.get('/getuserid/',{
+            //         userId: user_Id,
+            //         userName: user_name,
+            //         userPicture : userpicture,
+            //     }, function(data) {;}); 
+            // });
+
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-             console.log("test")
+    
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-            console.log("test")
+  
     }
   }
-
   // This function is called when someone finishes with the Login
   // Button.  See the onlogin handler attached to it in the sample
   // code below.
@@ -77,7 +85,7 @@ function statusChangeCallback(response) {
   }
   window.fbAsyncInit = function() {
     FB.init({
-      appId      : '1792622177659445',
+      appId      : '910500799080831',
       xfbml      : true,
       version    : 'v2.8'
     });
@@ -101,20 +109,27 @@ function statusChangeCallback(response) {
                 user_Id = response.id;
                 user_name = response.name;
                 user_email = response.email;
-    
+                $('#id_field').val(user_Id);
+                $('#profileName').html(user_name);
+                $('#user').removeAttr('class','hidden');
+                $('#profileName1').html(user_name);
+                $('#user1').removeAttr('class','hidden');
+          
               
             });
              
             FB.api('/me/picture?width=240&height=240', function(response) {
                 userpicture = response.data.url;
-             
-                console.log("in")
+                $('#profilephoto').attr('src',userpicture);
+                $('#profilephoto').removeAttr('class','hidden');
+                $('#profilephoto1').attr('src',userpicture);
+                $('#profilephoto1').removeAttr('class','hidden');
                 $.get('/getuserid/',{
                     userId: user_Id,
                     userName: user_name,
                     userPicture : userpicture,
                     userEmail : user_email,
-                }, function(data) {  ;});          
+                }, function(data) {'https://sna-wowoo-wenxuanlee.c9users.io/logined/'});          
             });
            
         } 
@@ -137,29 +152,49 @@ function statusChangeCallback(response) {
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul>
-                    <li>
-                        <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login">登入</a>
-                         <div id="status" class="hidden" ></div><!-- Your like button code -->
+            <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+            <!--    <ul>-->
+            <!--        <li>-->
+            <!--            <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login">登入</a>-->
+            <!--             <div id="status" class="hidden" ></div><!-- Your like button code -->
+            <!--        </li>-->
+            <!--        <li>-->
+            <!--            <a class="ring">-->
+            <!--                <div>-->
+            <!--                    <img class="ring_img" src="{% static 'img/tones.png' %}">-->
+            <!--                </div>-->
+            <!--            </a>-->
+            <!--        </li>-->
+            <!--        <li>-->
+            <!--            <div class="buttons_search">-->
+            <!--                <a class = "search">-->
+            <!--                    <img class="search_img" src="{% static 'img/search.png' %}">-->
+            <!--                    <input class="find" type="text" placeholder="對某句話有疑惑嘛?">-->
+            <!--                </a>-->
+            <!--            </div>    -->
+            <!--        </li>-->
+            <!--    </ul>-->
+            <!--</div>-->
+            {% block profile %}
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+             <ul class="nav navbar-nav navbar-right">
+  
+                    <li> 
+                        
+                        <a href="https://sna-wowoo-wenxuanlee.c9users.io/logined/" class="page-scroll "   onclick="fb_login();" style="cursor:pointer" id="login1">Login</a>
+                        <div id="status" class="hidden" ></div>
+
                     </li>
-                    <li>
-                        <a class="ring">
-                            <div>
-                                <img class="ring_img" src="{% static 'img/tones.png' %}">
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="buttons_search">
-                            <a class = "search">
-                                <img class="search_img" src="{% static 'img/search.png' %}">
-                                <input class="find" type="text" placeholder="對某句話有疑惑嘛?">
-                            </a>
-                        </div>    
-                    </li>
+					<li><img class="responsive img-circle hidden"  src="" style="width:40px;height:40px;display:inline" id = "profilephoto"></img></li>
+                    <li class="dropdown hidden" id = "user">
+                    <a class="" data-toggle="dropdown" href="#" id="profileName"></a>
+                    
+      
+            
+				     </li>
                 </ul>
             </div>
+            {% endblock %}
         </div>
     </nav>
 
@@ -168,59 +203,61 @@ function statusChangeCallback(response) {
     <section style="padding-top:45px">
     <div  class="col-lg-1 col-md-1 col-sm-1" ></div>
     <div  class="col-lg-3 col-md-3 col-sm-3" >
-        <div id="left" class="fixed_sidebar">
+        {% block achievement %}
+        <!--<div id="left" class="fixed_sidebar">-->
             <!--profile-->
-            <div id="info_profile">
+        <!--    <div id="info_profile">-->
                 
-                <div class="frame">
-                    <img class="headshot" src="{% static 'img/head.gif' %}">
-                    <div class ="switch1"><font class="now_left">個人資訊</font></div>
-                </div>
+        <!--        <div class="frame">-->
+        <!--            <img class="headshot" src="{% static 'img/head.gif' %}">-->
+        <!--            <div class ="switch1"><font class="now_left">個人資訊</font></div>-->
+        <!--        </div>-->
                 
-                <div class="clear"></div>
-                <div></div>
-            </div>
+        <!--        <div class="clear"></div>-->
+        <!--        <div></div>-->
+        <!--    </div>-->
             <!--achievement-->
-            <div id="info_achievement" class="hidden">
-                <div class="achi">
-                    <div class="achievement">
-                        <div id = "box" class="box">
-                            <div class="box_inside" >
-                                <img class="medal" src="{% static 'img/medal.png' %}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class ="switch2">成就列表</div>
-                </div>
-                <div class="clear"></div>
-                <div class="achieve">
-                    <ul>
-                        <li>
-                            <p class="achievename">achievement_1</p>
-                            <div id="myProgress">
-                              <div id="myBar" class="bar1"></div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <p class="achievename">achievement_2</p>
-                            <div id="myProgress">
-                              <div id="myBar" class="bar2"></div>
-                            </div>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <p class="achievename">achievement_3</p>
-                            <div id="myProgress">
-                              <div id="myBar" class="bar3"></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <!--    <div id="info_achievement" class="hidden">-->
+        <!--        <div class="achi">-->
+        <!--            <div class="achievement">-->
+        <!--                <div id = "box" class="box">-->
+        <!--                    <div class="box_inside" >-->
+        <!--                        <img class="medal" src="{% static 'img/medal.png' %}">-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class ="switch2">成就列表</div>-->
+        <!--        </div>-->
+        <!--        <div class="clear"></div>-->
+        <!--        <div class="achieve">-->
+        <!--            <ul>-->
+        <!--                <li>-->
+        <!--                    <p class="achievename">achievement_1</p>-->
+        <!--                    <div id="myProgress">-->
+        <!--                      <div id="myBar" class="bar1"></div>-->
+        <!--                    </div>-->
+        <!--                </li>-->
+        <!--            </ul>-->
+        <!--            <ul>-->
+        <!--                <li>-->
+        <!--                    <p class="achievename">achievement_2</p>-->
+        <!--                    <div id="myProgress">-->
+        <!--                      <div id="myBar" class="bar2"></div>-->
+        <!--                    </div>-->
+        <!--                </li>-->
+        <!--            </ul>-->
+        <!--            <ul>-->
+        <!--                <li>-->
+        <!--                    <p class="achievename">achievement_3</p>-->
+        <!--                    <div id="myProgress">-->
+        <!--                      <div id="myBar" class="bar3"></div>-->
+        <!--                    </div>-->
+        <!--                </li>-->
+        <!--            </ul>-->
+        <!--        </div>-->
+        <!--    </div>-->
+        <!--</div>-->
+         {% endblock achievement %}
     </div>
        
     <div id = "xuan" class="col-lg-6 col-md-6 col-sm-6">
@@ -273,17 +310,20 @@ function statusChangeCallback(response) {
     <div id="theModal" class="modal fade text-center" >
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header" style="">
-                    <button type="button" class="close" data-dismiss="modal">X</button>         
-                </div>
 
-                <div class="modal-body">
-                <form id="dialog" action="/post/" method="POST"  role="form">
-                {% csrf_token %}  
 
-                <input id="title" name="post_title" class="center" type="text" placeholder="Title" required>  
-                <h3> 哪一句話最讓你捉摸不透呢 </h3>   
                
+                <form action="/post/" method="POST"  role="form">
+                {% csrf_token %}  
+                  
+                <div class="modal-header" style="">
+                     <input id="title" name="post_title" class="center" type="text" placeholder="Title" required>  
+                    <button type="button" class="close" data-dismiss="modal">X</button>     
+                     
+                </div>
+                  <div class="modal-body"  id="dialog">  
+                <h3> 哪一句話最讓你捉摸不透呢 </h3>   
+                
                         <!-- one input text -->
                         
                         <div class ="row">
@@ -331,19 +371,19 @@ function statusChangeCallback(response) {
                         <div class ="row">
                             <div class="btn-group">
                                 <a class="btn btn-link dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-plus fa-2x" style = "color:#18aa8d"></i>
+                                    <i class="fa fa-plus fa-2x" id = "plus" style = "color:#18aa8d"></i>
                                 </a>
-                                <ul class="dropdown-menu ">
-                                    <li>
-                                        <div class="btn-group">
-                                            <button type="button" id="btnAddmale"> <i class="fa fa-male questionmark"  ></i> </button>
-                                            <button type="button" id="btnAddfemale"> <i class="fa fa-female questionmark"  ></i></button>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <!--<ul class="dropdown-menu ">-->
+                                <!--    <li>-->
+                                <!--        <div class="btn-group">-->
+                                <!--            <button type="button" id="btnAddmale"> <i class="fa fa-male questionmark"  ></i> </button>-->
+                                <!--            <button type="button" id="btnAddfemale"> <i class="fa fa-female questionmark"  ></i></button>-->
+                                <!--        </div>-->
+                                <!--    </li>-->
+                                <!--</ul>-->
                             </div>
                         </div>
-
+                       
                         <!-- send button -->
                         <div class="col-lg-7"></div>
                         <div class="form-group text-center">
@@ -383,7 +423,7 @@ function statusChangeCallback(response) {
 
     <!-- Theme JavaScript -->
     <script src="{% static 'js/agency.js' %}"></script>
-    <script src="{% static 'js/Xuan.js' %}"></script>
+    <script src="{% static 'js/NewXuan.js' %}"></script>
     
     <!-- Fixed the sidebar -->
     <script src="{% static 'js/Ray.js' %}" type="text/JavaScript"></script>
