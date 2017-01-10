@@ -159,12 +159,12 @@ def post_detail(request, pk):
     talk_list = talk.split('###')
 
     cmt = Comment.objects.filter(post = pk)
-    
-    happys = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "happy").count()) / (float)(cmt.count()))
-    wows = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "wow").count()) / (float)(cmt.count()))
-    sads = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "sad").count()) / (float)(cmt.count()))
-    angrys = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "angry").count()) / (float)(cmt.count()))
-    confus = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "confu").count()) / (float)(cmt.count()))
+    cmt_count = cmt.count()
+    happys = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "happy").count()) / (float)(cmt.count() + 1))
+    wows = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "wow").count()) / (float)(cmt.count() + 1))
+    sads = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "sad").count()) / (float)(cmt.count() + 1))
+    angrys = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "angry").count()) / (float)(cmt.count() + 1))
+    confus = '{0:.0%}'.format((float)(cmt.filter(comment_emotion = "confu").count()) / (float)(cmt.count() + 1))
     
     emotions_list = [happys, wows, sads, angrys, confus]
     
@@ -175,6 +175,7 @@ def post_detail(request, pk):
         "post" : post,
         "comments" : cmt,
         "emotions" :emotions_list,
+        "count" : cmt_count,
     }
     return render(request, 'wowoo/content.html',context)
 

@@ -27,6 +27,60 @@
 
 <body id="page-top" class="index">
 <script>
+function statusChangeCallback(response) {
+    console.log('statusChangeCallback');
+    console.log(response);
+    // The response object is returned with a status field that lets the
+    // app know the current login status of the person.
+    // Full docs on the response object can be found in the documentation
+    // for FB.getLoginStatus().
+    if (response.status === 'connected') {
+      // Logged into your app and Facebook.
+            // FB.api('/me', function(response) {
+            //     user_Id = response.id;
+            //     user_name = response.name;
+            //     $('#fbId1').val(user_Id);
+            //     $('#id_field').val(user_Id);
+            //     $('#profileName').html(user_name);
+            //     $('#user').removeAttr('class','hidden');
+            //     $('#host').removeAttr('class','hidden');
+            //     $('#services').attr('class','hidden');
+            //     $('#login').attr('class','hidden');
+            //     $('#login1').attr('class','hidden');
+               
+            // });
+             
+            // FB.api('/me/picture?width=240&height=240', function(response) {
+            //     userpicture = response.data.url;
+                
+            //     $('#profilephoto').attr('src',userpicture);
+            //     $('#profilephoto').removeAttr('class','hidden');
+            //     $.get('/getuserid/',{
+            //         userId: user_Id,
+            //         userName: user_name,
+            //         userPicture : userpicture,
+            //     }, function(data) {;}); 
+            // });
+
+    } else if (response.status === 'not_authorized') {
+      // The person is logged into Facebook, but not your app.
+    
+    } else {
+      // The person is not logged into Facebook, so we're not sure if
+      // they are logged into this app or not.
+  
+    }
+  }
+  // This function is called when someone finishes with the Login
+  // Button.  See the onlogin handler attached to it in the sample
+  // code below.
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+     
+      statusChangeCallback(response);
+       
+    });
+  }
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '910500799080831',
@@ -43,6 +97,47 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
    
+   function fb_login(){
+    FB.login(function(response) {
+
+        if (response.authResponse) {
+            
+            //console.log(response); // dump complete info
+            FB.api('/me',{fields: 'name,email'},  function(response) {
+                user_Id = response.id;
+                user_name = response.name;
+                user_email = response.email;
+                $('#id_field').val(user_Id);
+                $('#profileName').html(user_name);
+                $('#user').removeAttr('class','hidden');
+                $('#profileName1').html(user_name);
+                $('#user1').removeAttr('class','hidden');
+          
+              
+            });
+             
+            FB.api('/me/picture?width=240&height=240', function(response) {
+                userpicture = response.data.url;
+                $('#profilephoto').attr('src',userpicture);
+                $('#profilephoto').removeAttr('class','hidden');
+                $('#profilephoto1').attr('src',userpicture);
+                $('#profilephoto1').removeAttr('class','hidden');
+                $.get('/getuserid/',{
+                    userId: user_Id,
+                    userName: user_name,
+                    userPicture : userpicture,
+                    userEmail : user_email,
+                }
+               
+                , function(data) { window.location.replace("https://sna-wowoo-wenxuanlee.c9users.io/logined");});          
+            });
+           
+        } 
+    }, {
+        scope: 'public_profile,email'
+    });
+   
+}
     var sharing = function(){
        
         var bannerImage = new Image();
@@ -57,10 +152,68 @@
             title: 'Wowoo',  // The same than name in feed method
             picture: bannerImage.src,  
             caption: 'by Team Wowoo',  
-            description: '{{post.post_title}}',
+            description: '一起來猜猜',
         });
     }
 </script>
+    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a href="https://sna-wowoo-wenxuanlee.c9users.io/" class="navbar-brand page-scroll">WoWoo</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+            <!--    <ul>-->
+            <!--        <li>-->
+            <!--            <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login">登入</a>-->
+            <!--             <div id="status" class="hidden" ></div><!-- Your like button code -->
+            <!--        </li>-->
+            <!--        <li>-->
+            <!--            <a class="ring">-->
+            <!--                <div>-->
+            <!--                    <img class="ring_img" src="{% static 'img/tones.png' %}">-->
+            <!--                </div>-->
+            <!--            </a>-->
+            <!--        </li>-->
+            <!--        <li>-->
+            <!--            <div class="buttons_search">-->
+            <!--                <a class = "search">-->
+            <!--                    <img class="search_img" src="{% static 'img/search.png' %}">-->
+            <!--                    <input class="find" type="text" placeholder="對某句話有疑惑嘛?">-->
+            <!--                </a>-->
+            <!--            </div>    -->
+            <!--        </li>-->
+            <!--    </ul>-->
+            <!--</div>-->
+            {% block profile %}
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+             <ul class="nav navbar-nav navbar-right">
+  
+                    <li> 
+                         <a class="page-scroll"  scope="public_profile,email"  onclick="fb_login();" style="cursor:pointer" id="login">登入</a>
+                        <div id="status" class="hidden" ></div>
+
+                    </li>
+					<li><img class="responsive img-circle hidden"  src="" style="width:40px;height:40px;display:inline" id = "profilephoto"></img></li>
+                    <li class="dropdown hidden" id = "user">
+                    <a class="" data-toggle="dropdown" href="#" id="profileName"></a>
+                    
+      
+            
+				     </li>
+                </ul>
+            </div>
+            {% endblock profile%}
+        </div>
+    </nav>
+
+
+
     <div class="col-lg-2 leftinfo"></div>
     <div class="col-lg-8 mid">
         <div id="post">
@@ -198,7 +351,7 @@
                             <i class="fa fa-flag" style="color:#ff4c4c;font-size:20px" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#ff4c4c">檢舉</span>
                         </div>
                         <div style="float:right;;margin-right:1%">
-                            <i class="fa fa-thumbs-up " style="color:#56A690;font-size:20px;" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">1234</span>
+                            <i class="fa fa-thumbs-up " style="color:#56A690;font-size:20px;" aria-hidden="true"></i>&nbsp;<span style="font: bold 15px/13px Helvetica, Verdana, Tahoma;font-size:16px;color:#56A690">0</span>
                         </div> 
                         <hr>
                     </div>
